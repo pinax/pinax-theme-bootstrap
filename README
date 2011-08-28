@@ -1,0 +1,27 @@
+Twitter's Bootstrap for Pinax.
+
+Include "pinax-bootstrap-theme" in your requirements file and
+"bootstrap_theme" in your INSTALLED APPS.
+
+Make sure both template loaders and staticfiles finders includes
+app directories.
+
+Your settings should include SITE_NAME.
+
+Your "site_base.html" should extend "theme_base.html" and should provide
+"footer" and "nav" blocks (the latter should just be a ul of li of a links).
+
+Your pages should have blocks "head_title" and "body" and should extend
+"site_base.html".
+
+The url name "home" should be defined as the homepage.
+
+
+TODO / ISSUES
+
+* decide if this app should have account styles / templates or put them in
+  another app
+* build additional apps for other starter projects
+* review all block names
+* consider using LESS here
+* build a forms filter (either in this app or another)

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block head_title_base %}{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
+        <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-1.1.1.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/extra.css">
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
+    </head>
+    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+        
+        {% block topbar_base %}
+            <div class="topbar">
+                <div class="fill">
+                    <div class="container">
+                        {% block topbar %}
+                            <h3><a href="{% url home %}">{{ SITE_NAME }}</a></h3>
+                            {% block nav %}{% endblock %}
+                            {% block secondary_nav %}{% include "_account_bar.html" %}{% endblock %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        
+        {% block body_base %}
+            <div class="container">
+                {% block body %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+        
+        {% block footer_base %}
+            <div id="footer">
+                <div class="inner">
+                    <div class="container">
+                        {% block footer %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        
+        {% block extra_body_base %}
+            {% block extra_body %}{% endblock %}
+        {% endblock %}
+    </body>
+</html>
