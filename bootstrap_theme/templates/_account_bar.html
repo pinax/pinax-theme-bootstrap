@@ -1,6 +1,6 @@
 <ul class="secondary-nav">
     {% if user.is_authenticated %}
-        <li><b>{{ user }}</b></li>
+        <li><a href="#"><b>{{ user }}</b></a></li>
         <li><a href="{% url acct_email %}">Account</a></li>
         {% if user.is_staff %}
             <li><a href="/admin/">Admin</a></li>
