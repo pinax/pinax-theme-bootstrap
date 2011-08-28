@@ -62,15 +62,15 @@
     
     <h3>{% trans "Add Email Address" %}</h3>
     
-    <form method="post" action="" class="uniForm" autocapitalize="off">
+    <form method="post" action="" autocapitalize="off">
         {% csrf_token %}
-        <fieldset class="inlineLabels">
+        <fieldset>
             {{ add_email_form|as_uni_form }}
-             <div class = "form_block">
-                 <input type="hidden" name="action" value="add"/>
-                 <input type="submit" value="{% trans "add" %}"/>
-            </div>
         </fieldset>
+        <input type="hidden" name="action" value="add"/>
+         <div class="actions">
+             <button type="submit" class="btn primary">{% trans "add" %}</button>
+        </div>
     </form>
     
 {% endblock %}

@@ -14,9 +14,9 @@
         {% csrf_token %}
         <fieldset class="inlineLabels">
             {{ form|as_uni_form }}
-            <div class="form_block">
-                <input type="submit" value="{% trans "Change my timezone" %}" />
-            </div>
         </fieldset>
+        <div class="actions">
+            <button type="submit" class="btn primary">{% trans "Change my timezone" %}</button>
+        </div>
     </form>
 {% endblock %}

@@ -10,13 +10,13 @@
     
     <p>{% trans "Pinax can be used in your preferred language." %}</p>
     
-    <form method="POST" action="" class="uniForm">
+    <form method="POST" action="">
         {% csrf_token %}
         <fieldset class="inlineLabels">
             {{ form|as_uni_form }}
-             <div class = "form_block">
-                 <input type="submit" value="{% trans "Change my language" %}" />
-            </div>
         </fieldset>
+        <div class="actions">
+            <button type="submit" class="btn primary">{% trans "Change my language" %}</button>
+        </div>
     </form>
 {% endblock %}
