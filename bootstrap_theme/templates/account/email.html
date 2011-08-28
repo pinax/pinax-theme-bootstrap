@@ -6,8 +6,6 @@
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Account" %}</h1>
-    
     <h2>{% trans "Email Addresses" %}</h2>
     
     {% if user.emailaddress_set.all %}
