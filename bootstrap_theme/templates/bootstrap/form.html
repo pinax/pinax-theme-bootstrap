@@ -1,0 +1,30 @@
+{% if form.non_field_errors %}
+    <div>
+        {% if form_error_title %}<h3>{{ form_error_title }}</h3>{% endif %}
+        <ol>
+            {{ form.non_field_errors|unordered_list }}
+        </ol>
+    </div>
+{% endif %}
+{% for field in form %}
+    {% if field.is_hidden %}
+        {{ field }}
+    {% else %}
+        <div class="clearfix{% if field.errors %} error{% endif %}">
+            {% if field.label %}
+                <label for="{{ field.auto_id }}" {% if field.field.required %}class="requiredField"{% endif %}>
+                    {{ field.label|safe }}
+                </label>
+                <div class="input">
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <span class="help-block-inline">{{ error|safe }}</span>
+                    {% endfor %}
+                    {% if field.help_text %}
+                        <span class="help-block">{{ field.help_text|safe }}</span>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endfor %}

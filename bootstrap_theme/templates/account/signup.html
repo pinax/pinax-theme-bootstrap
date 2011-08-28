@@ -1,7 +1,7 @@
 {% extends "site_base.html" %}
 
 {% load i18n %}
-{% load uni_form_tags %}
+{% load bootstrap_form_filters %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
@@ -16,7 +16,7 @@
         <form class="signup uniForm" id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off">
             {% csrf_token %}
             <fieldset class="inlineLabels">
-                {{ form|as_uni_form }}
+                {{ form|as_bootstrap }}
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}

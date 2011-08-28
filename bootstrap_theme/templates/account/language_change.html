@@ -1,19 +1,19 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
-{% load uni_form_tags %}
+{% load bootstrap_form_filters %}
 
 {% block head_title %}{% trans "Language" %}{% endblock %}
 
 {% block body %}
     <h2>{% trans "Language" %}</h2>
     
-    <p>{% trans "Pinax can be used in your preferred language." %}</p>
+    <p>{% trans "This site can be used in your preferred language." %}</p>
     
     <form method="POST" action="">
         {% csrf_token %}
         <fieldset>
-            {{ form|as_uni_form }}
+            {{ form|as_bootstrap }}
         </fieldset>
         <div class="actions">
             <button type="submit" class="btn primary">{% trans "Change my language" %}</button>
