@@ -27,3 +27,5 @@ TODO / ISSUES
 * build a forms filter (either in this app or another)
 * username on secondary nav has to be an anchor for boostrap styling but if
   there is no profile, what could it link to?
+* I've switched account to a sidebar subnav but perhaps we should consider
+  a tabbed interface
