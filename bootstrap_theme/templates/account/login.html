@@ -1,7 +1,7 @@
 {% extends "site_base.html" %}
 
 {% load i18n %}
-{% load uni_form_tags %}
+{% load bootstrap_form_filters %}
 {% load ifsetting_tag %}
 {% load account_tags %}
 
@@ -27,14 +27,14 @@
     <form method="POST" action="{% url acct_login %}" autocapitalize="off">
         {% csrf_token %}
         <fieldset>
-            {{ form|as_uni_form }}
-            {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-            {% endif %}
-            <div class="actions">
-                <button type="submit" class="btn primary">{% trans "Log in" %}</button>
-            </div>
+            {{ form|as_bootstrap }}
         </fieldset>
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="actions">
+            <button type="submit" class="btn primary">{% trans "Log in" %}</button>
+        </div>
     </form>
     
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>

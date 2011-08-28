@@ -17,13 +17,13 @@
             {% csrf_token %}
             <fieldset class="inlineLabels">
                 {{ form|as_bootstrap }}
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <div class="form_block">
-                    <input type="submit" value="{% trans "Sign Up &raquo;" %}" />
-                </div>
             </fieldset>
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <div class="actions">
+                <button type="submit" class="btn primary">{% trans "Sign Up" %}</button>
+            </div>
         </form>
         
         {% url terms as terms_url %}
