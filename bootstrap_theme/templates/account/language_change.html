@@ -12,7 +12,7 @@
     
     <form method="POST" action="">
         {% csrf_token %}
-        <fieldset class="inlineLabels">
+        <fieldset>
             {{ form|as_uni_form }}
         </fieldset>
         <div class="actions">
