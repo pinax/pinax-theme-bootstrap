@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name = "pinax-bootstrap-theme",
-    version = "0.1",
+    name = "pinax-theme-bootstrap",
+    version = "0.1.dev1",
     author = "James Tauber",
     author_email = "jtauber@jtauber.com",
-    description = "a theme for Pinax",
-    license = "BSD",
-    # url = "http://github.com/pinax/bootstrap-theme",
+    description = "a theme for Pinax based on Twitter's Bootstrap",
+    license = "MIT",
+    url = "http://github.com/pinax/pinax-theme-bootstrap",
     packages = find_packages(),
     classifiers = [
         "Development Status :: 3 - Alpha",
