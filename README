@@ -1,7 +1,12 @@
-Twitter's Bootstrap for Pinax.
+A Pinax theme based on Twitter's Bootstrap
+==========================================
 
-Include "pinax-bootstrap-theme" in your requirements file and
-"bootstrap_theme" in your INSTALLED APPS.
+
+Quick Start
+-----------
+
+Include "pinax-theme-bootstrap" in your requirements file and
+"pinax_bootstrap" in your INSTALLED APPS.
 
 Make sure both template loaders and staticfiles finders includes
 app directories.
@@ -17,15 +22,30 @@ Your pages should have blocks "head_title" and "body" and should extend
 The url name "home" should be defined as the homepage.
 
 
-TODO / ISSUES
+Forms
+-----
 
-* decide if this app should have account styles / templates or put them in
-  another app
-* build additional apps for other starter projects
-* review all block names
-* consider using LESS here
-* build a forms filter (either in this app or another)
+To style forms, 
+    
+    {% load bootstrap_form_filters %}
+
+and do something like:
+    
+    <form method="POST" action="">
+        {% csrf_token %}
+        <fieldset>
+            {{ form|as_bootstrap }}
+        </fieldset>
+        <div class="actions">
+            <button type="submit" class="btn primary">Submit</button>
+        </div>
+    </form>
+
+
+Todo / Issues
+-------------
+
+* build additional templates for other apps (possibly as add-ons)
+* include LESS source files here
 * username on secondary nav has to be an anchor for boostrap styling but if
   there is no profile, what could it link to?
-* I've switched account to a sidebar subnav but perhaps we should consider
-  a tabbed interface
