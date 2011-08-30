@@ -6,7 +6,7 @@ Quick Start
 -----------
 
 Include "pinax-theme-bootstrap" in your requirements file and
-"pinax_bootstrap" in your INSTALLED APPS.
+"pinax_theme_bootstrap" in your INSTALLED APPS.
 
 Make sure both template loaders and staticfiles finders includes
 app directories.
