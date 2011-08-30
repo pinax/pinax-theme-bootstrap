@@ -27,7 +27,7 @@ Forms
 
 To style forms, 
     
-    {% load bootstrap_form_filters %}
+    {% load bootstrap_tags %}
 
 and do something like:
     
