@@ -33,6 +33,13 @@
         
         {% block body_base %}
             <div class="container">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert-message{% if message.tags %} {{ message.tags }}{% endif %}">
+                 <a class="close" href="#">&times;</a><p>{{ message }}</p>
+                </div>
+                {% endfor %}
+                {% endif %}
                 {% block body %}
                 {% endblock %}
             </div>
