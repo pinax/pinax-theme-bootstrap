@@ -1,7 +1,6 @@
 {% extends "account/base.html" %}
 
-{% load i18n %}
-{% load bootstrap_tags %}
+{% load i18n bootstrap_tags %}
 
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
@@ -17,7 +16,7 @@
                         <td>
                             <span class="verified">{% trans "verified" %}</span>
                             {% if emailaddress.primary %}
-                                - <span class="primary">{% trans "primary" %}</span>
+                                - <span class="btn success disabled">{% trans "primary" %}</span>
                             {% else %}
                                 <form style="display: none;" id="primary_{{ forloop.counter }}" method="post" action="">
                                     {% csrf_token %}
@@ -25,7 +24,7 @@
                                     <input type="hidden" name="action" value="primary"/>
                                 </form>
                                 -
-                                <a href="#" onclick="$('#primary_{{ forloop.counter }}').submit();">{% trans "make primary" %}</a>
+                                <a class="btn" href="#" onclick="$('#primary_{{ forloop.counter }}').submit();">{% trans "make primary" %}</a>
                             {% endif %}
                         </td>
                     {% else %}
@@ -37,18 +36,18 @@
                                 <input type="hidden" name="action" value="send"/>
                             </form>
                             -
-                            <a href="#" onclick="$('#send_{{ forloop.counter }}').submit();">{% trans "re-send verification email" %}</a>
+                            <a class="btn info" href="#" onclick="$('#send_{{ forloop.counter }}').submit();">{% trans "re-send verification email" %}</a>
                         </td>
                     {% endif %}
                     <td>
                         {% if emailaddress.primary %}
                         {% else %}
-                            <form style="display: none;" id="remove_{{ forloop.counter }}" method="post" action="">
+                            <form style="display:none;" id="remove_{{ forloop.counter }}" method="post" action="">
                                 {% csrf_token %}
                                 <input type="hidden" name="email" value="{{ emailaddress.email }}"/>
                                 <input type="hidden" name="action" value="remove"/>
                             </form>
-                            <a class="remove" href="#" onclick="$('#remove_{{ forloop.counter }}').submit()">{% trans "remove" %}</a>
+                            <a class="btn danger small" href="#" onclick="$('#remove_{{ forloop.counter }}').submit()">{% trans "remove" %}</a>
                         {% endif %}
                     </td>
                 </tr>
