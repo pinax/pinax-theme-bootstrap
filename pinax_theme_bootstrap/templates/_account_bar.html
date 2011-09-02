@@ -28,7 +28,11 @@
                </ul>
  </li>     
     {% else %}
+<li class="menu"><a class="menu" href="#">{% trans "Account" %}</a>
+   <ul class="menu-dropdown">
         <li><a href="{% url acct_login %}">{% trans "Login" %}</a></li>
         <li><a href="{% url acct_signup %}">{% trans "Sign Up" %}</a></li>
+   </ul>
+ </li>
     {% endif %}
 </ul>
