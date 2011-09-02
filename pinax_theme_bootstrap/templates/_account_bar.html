@@ -1,13 +1,34 @@
+{% load i18n ifsetting_tag %}
 <ul class="secondary-nav">
     {% if user.is_authenticated %}
-        <li><a href="#"><b>{{ user }}</b></a></li>
-        <li><a href="{% url acct_email %}">Account</a></li>
-        {% if user.is_staff %}
-            <li><a href="/admin/">Admin</a></li>
-        {% endif %}
-        <li><a href="{% url acct_logout %}">Logout</a></li>
+ <li class="menu"><a class="menu" href="#"><b>{{ user }}</b></a>
+  <ul class="menu-dropdown">
+   <li><a href="{% url acct_logout %}">{% trans "Logout" %}</a></li>
+   {% if user.is_staff %}<li class="divider"></li><li><a href="{% url admin:index %}">{% trans "Admin" %}</a></li>{% endif %}
+  </ul>
+ </li>
+ <li class="menu"><a class="menu" href="{% url acct_email %}">{% trans "Account" %}</a>
+                <ul class="menu-dropdown">
+                    <li><a href="{% url acct_email %}">{% trans "Email Addresses" %}</a></li>
+                    {% ifsetting ACCOUNT_USE_OPENID %}
+                        <li><a href="/openid/associations/">{% trans "OpenID Associations" %}</a></li>
+                    {% endifsetting %}
+                    {% if user.password %}
+                    <li><a href="{% url acct_passwd %}">{% trans "Change Password" %}</a></li>
+                    {% else %}
+                    <li><a href="{% url acct_passwd_set %}">{% trans "Set Password" %}</a></li>
+                    {% endif %}
+                    {% if user.password and request.openids %}
+                    <li><a href="{% url acct_passwd_delete %}">{% trans "Delete Password" %}</a></li>
+                    {% endif %}
+                    {% ifsetting USE_I18N %}
+                        <li><a href="{% url acct_language_change %}">{% trans "Language" %}</a></li>
+                    {% endifsetting %}
+                    <li><a href="{% url acct_timezone_change %}">{% trans "Timezone" %}</a></li>
+               </ul>
+ </li>     
     {% else %}
-        <li><a href="{% url acct_login %}">Login</a></li>
-        <li><a href="{% url acct_signup %}">Sign Up</a></li>
+        <li><a href="{% url acct_login %}">{% trans "Login" %}</a></li>
+        <li><a href="{% url acct_signup %}">{% trans "Sign Up" %}</a></li>
     {% endif %}
 </ul>
