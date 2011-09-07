@@ -1,6 +1,6 @@
 <ul class="secondary-nav">
     {% if user.is_authenticated %}
-        <li><a href="#"><b>{{ user }}</b></a></li>
+        <li><p><b>{{ user }}</b></p></li>
         <li><a href="{% url acct_email %}">Account</a></li>
         {% if user.is_staff %}
             <li><a href="/admin/">Admin</a></li>
@@ -8,6 +8,7 @@
         <li><a href="{% url acct_logout %}">Logout</a></li>
     {% else %}
         <li><a href="{% url acct_login %}">Login</a></li>
+        <li><p>or</p></li>
         <li><a href="{% url acct_signup %}">Sign Up</a></li>
     {% endif %}
 </ul>
