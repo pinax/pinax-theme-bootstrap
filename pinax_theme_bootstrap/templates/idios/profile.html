@@ -16,14 +16,16 @@
         <p><a id="edit-profile" href="#" class="btn">Edit profile</a></p>
     {% endif %}
     
-    <div id="edit-profile-box" class="modal fade" style="display: none"></div>
+    <div id="edit-profile-box" class="modal" style="display: none"></div>
 {% endblock %}
 
 {% block extra_body %}
     <script>
         $(function() {
             $("#edit-profile-box").load("{% url profile_edit %}");
-            var edit_modal = $("#edit-profile-box").modal();
+            var edit_modal = $("#edit-profile-box").modal({
+                backdrop: true
+            });
             $("#edit-profile").click(function() {
                 edit_modal.open();
                 return false;
