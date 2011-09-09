@@ -13,6 +13,21 @@
     {% include "profiles/_profile_info.html" %}
     
     {% if is_me %}
-        <p><a href="{% url profile_edit %}" class="btn" rel="facebox">Edit profile</a></p>
+        <p><a id="edit-profile" href="#" class="btn">Edit profile</a></p>
     {% endif %}
+    
+    <div id="edit-profile-box" class="modal fade" style="display: none"></div>
+{% endblock %}
+
+{% block extra_body %}
+    <script>
+        $(function() {
+            $("#edit-profile-box").load("{% url profile_edit %}");
+            var edit_modal = $("#edit-profile-box").modal();
+            $("#edit-profile").click(function() {
+                edit_modal.open();
+                return false;
+            });
+        });
+    </script>
 {% endblock %}
