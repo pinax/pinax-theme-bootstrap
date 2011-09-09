@@ -1,4 +1,4 @@
-{% extends "site_base.html" %}
+{% extends "subnav_base.html" %}
 
 {% load i18n %}
 
@@ -9,20 +9,10 @@
 
 {% block body_class %}notices{% endblock %}
 
-{% block body_base %}
-    <div class="container">
-        <div class="row">
-            <div class="span4 columns">
-                <h1>{% trans "Notices" %}</h1>
-                <ul>
-                    <li><a href="{% url notification_notices %}">{% trans "Notices" %}</a></li>
-                    <li><a href="{% url notification_notice_settings %}">{% trans "Settings" %}</a></li>
-                </ul>
-            </div>
-            <div class="span12 columns">
-                {% block body %}
-                {% endblock %}
-            </div>
-        </div>
-    </div>
+{% block subnav %}
+    <h1>{% trans "Notices" %}</h1>
+    <ul>
+        <li><a href="{% url notification_notices %}">{% trans "Notices" %}</a></li>
+        <li><a href="{% url notification_notice_settings %}">{% trans "Settings" %}</a></li>
+    </ul>
 {% endblock %}
