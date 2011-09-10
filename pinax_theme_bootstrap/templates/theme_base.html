@@ -30,7 +30,7 @@
                         {% block topbar %}
                             <h3><a href="{% url home %}">{{ SITE_NAME }}</a></h3>
                             {% block nav %}{% endblock %}
-                            {% block secondary_nav %}{% include "_account_bar.html" %}{% endblock %}
+                            {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
                         {% endblock %}
                     </div>
                 </div>
