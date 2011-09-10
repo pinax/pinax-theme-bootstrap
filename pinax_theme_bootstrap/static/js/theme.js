@@ -36,8 +36,18 @@ $(document).ajaxSend(function(event, xhr, settings) {
     function safeMethod(method) {
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
     }
-
+    
     if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
         xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
     }
+});
+
+$(function() {
+    $(".topbar li").removeClass("active");
+    
+    var class_list = $("body").attr("class").split(/\s+/);
+    $.each(class_list, function(index, item) {
+        var selector = ".topbar li#tab_" + item;
+        $(selector).addClass("active");
+    });
 });
