@@ -6,7 +6,7 @@
     <a href="#" class="close">&times;</a>
 </div>
 
-<form method="POST" action="{% url profile_edit %}">
+<form class="ajax" method="POST" action="{% url profile_edit %}">
     {% csrf_token %}
     
     <div class="modal-body">
