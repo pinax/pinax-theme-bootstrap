@@ -1,5 +1,5 @@
 $(function() {
-    # Topbar active tab support
+    // Topbar active tab support
     $(".topbar li").removeClass("active");
     
     var class_list = $("body").attr("class").split(/\s+/);
@@ -8,16 +8,16 @@ $(function() {
         $(selector).addClass("active");
     });
 
-    # Enable dropdowns for topbar items
+    // Enable dropdowns for topbar items
     $(".topbar").dropdown();
 
-    # Make messages close when clicked
+    // Make messages close when clicked
     $("#messages li a").click(function() {
         $(this).parent().fadeOut();
         return false;
     });
 
-    # Disabled future features
+    // Disabled future features
     // $("a[rel=popover]").popover({offset:10});
     // $("a.tip").twipsy({live:true});
     // $(".alert-message").alert();
