@@ -12,7 +12,7 @@ $(function() {
     $(".topbar").dropdown();
 
     // Make messages close when clicked
-    $("#messages li a").click(function() {
+    $("div.alert-message a.close").click(function() {
         $(this).parent().fadeOut();
         return false;
     });
