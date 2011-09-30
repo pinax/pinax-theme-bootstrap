@@ -37,6 +37,31 @@
         </div>
     </form>
     
+    <p>{% trans "Or sign in with your OpenID" %}:</p>
+    <form action="/openid/register/" method="POST" autocapitalize="off">
+        {% csrf_token %}
+        <fieldset>
+            {% if url_required %}
+                <div class="clearfix">
+                    <label for="id_username">* OpenID Identifier</label>
+                    <div class="input">
+                        <input class="openid" type="text" name="openid_url" />
+                    </div>
+                </div>
+            {% else %}
+                <div class="clearfix">
+                    <label for="id_username">* OpenID Identifier</label>
+                    <div class="input">
+                        <input class="openid" type="text" name="openid_url" />
+                    </div>
+                </div>
+            {% endif %}
+            <div class="actions">
+                <input type="submit" value="{% trans "Log in &raquo;" %}" />
+            </div>
+        </fieldset>
+    </form>
+    
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
 {% endblock %}
 
