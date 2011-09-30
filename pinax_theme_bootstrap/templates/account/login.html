@@ -36,8 +36,8 @@
             <button type="submit" class="btn primary">{% trans "Log in" %}</button>
         </div>
     </form>
-    
-    <p>{% trans "Or sign in with your OpenID" %}:</p>
+
+    <h2>{% trans "Or sign in with your OpenID" %}:</h2>
     <form action="/openid/register/" method="POST" autocapitalize="off">
         {% csrf_token %}
         <fieldset>
@@ -57,7 +57,7 @@
                 </div>
             {% endif %}
             <div class="actions">
-                <input type="submit" value="{% trans "Log in &raquo;" %}" />
+                <input type="submit" value="{% trans "Log in" %}" />
             </div>
         </fieldset>
     </form>
