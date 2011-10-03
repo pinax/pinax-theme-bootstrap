@@ -1,34 +1,53 @@
-/* Adapted from the original jQuery.tipsy by Jason Frame */
+/* ==========================================================
+ * bootstrap-twipsy.js v1.3.0
+ * http://twitter.github.com/bootstrap/javascript.html#twipsy
+ * Adapted from the original jQuery.tipsy by Jason Frame
+ * ==========================================================
+ * Copyright 2011 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
 
 (function( $ ) {
 
-  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
-   * ======================================================= */
-
-  $.support.transition = (function () {
-    var thisBody = document.body || document.documentElement
-      , thisStyle = thisBody.style
-      , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
-    return support
-  })()
-
-
- /* SHARED VARS
-  * =========== */
+ /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
+  * ======================================================= */
 
   var transitionEnd
 
-  // set CSS transition event type
-  if ( $.support.transition ) {
-    transitionEnd = "TransitionEnd"
-    if ( $.browser.webkit ) {
-    	transitionEnd = "webkitTransitionEnd"
-    } else if ( $.browser.mozilla ) {
-    	transitionEnd = "transitionend"
-    } else if ( $.browser.opera ) {
-    	transitionEnd = "oTransitionEnd"
+  $(document).ready(function () {
+
+    $.support.transition = (function () {
+      var thisBody = document.body || document.documentElement
+        , thisStyle = thisBody.style
+        , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
+      return support
+    })()
+
+    // set CSS transition event type
+    if ( $.support.transition ) {
+      transitionEnd = "TransitionEnd"
+      if ( $.browser.webkit ) {
+      	transitionEnd = "webkitTransitionEnd"
+      } else if ( $.browser.mozilla ) {
+      	transitionEnd = "transitionend"
+      } else if ( $.browser.opera ) {
+      	transitionEnd = "oTransitionEnd"
+      }
     }
-  }
+
+  })
 
 
  /* TWIPSY PUBLIC CLASS DEFINITION
@@ -187,34 +206,34 @@
   * ======================== */
 
   $.fn.twipsy = function (options) {
-    $.fn.twipsy.initWith.call(this, options, Twipsy)
+    $.fn.twipsy.initWith.call(this, options, Twipsy, 'twipsy')
+    return this
   }
 
-  $.fn.twipsy.initWith = function (options, Constructor) {
-
+  $.fn.twipsy.initWith = function (options, Constructor, name) {
     var twipsy
       , binder
       , eventIn
       , eventOut
 
     if (options === true) {
-      return this.data('twipsy')
+      return this.data(name)
     } else if (typeof options == 'string') {
-      twipsy = this.data('twipsy')
+      twipsy = this.data(name)
       if (twipsy) {
         twipsy[options]()
       }
       return this
     }
 
-    options = $.extend({}, $.fn.twipsy.defaults, options)
+    options = $.extend({}, $.fn[name].defaults, options)
 
     function get(ele) {
-      var twipsy = $.data(ele, 'twipsy')
+      var twipsy = $.data(ele, name)
 
       if (!twipsy) {
         twipsy = new Constructor(ele, $.fn.twipsy.elementOptions(ele, options))
-        $.data(ele, 'twipsy', twipsy)
+        $.data(ele, name, twipsy)
       }
 
       return twipsy
@@ -285,4 +304,4 @@
     return $.metadata ? $.extend({}, options, $(ele).metadata()) : options
   }
 
-})( jQuery || ender )
+})( window.jQuery || window.ender )
