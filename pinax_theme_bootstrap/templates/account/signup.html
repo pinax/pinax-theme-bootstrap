@@ -28,7 +28,7 @@
         
         {# @@@ currently OpenID signup is not supported via signup codes #}
         {% if not code %}
-            <p>{% trans "Or sign in with your OpenID" %}:</p>
+            <h2>{% trans "Or sign in with your OpenID" %}:</h2>
             <form action="{% url openid-register %}" method="post">
                 {% csrf_token %}
                 <fieldset>

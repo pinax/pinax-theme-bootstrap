@@ -36,31 +36,21 @@
             <button type="submit" class="btn primary">{% trans "Log in" %}</button>
         </div>
     </form>
-
+    
     <h2>{% trans "Or sign in with your OpenID" %}:</h2>
-    <form action="/openid/register/" method="POST" autocapitalize="off">
+    <form action="{% url openid-register %}" method="post">
         {% csrf_token %}
         <fieldset>
-            {% if url_required %}
-                <div class="clearfix">
-                    <label for="id_username">* OpenID Identifier</label>
-                    <div class="input">
-                        <input class="openid" type="text" name="openid_url" />
-                    </div>
-                </div>
-            {% else %}
-                <div class="clearfix">
-                    <label for="id_username">* OpenID Identifier</label>
-                    <div class="input">
-                        <input class="openid" type="text" name="openid_url" />
-                    </div>
-                </div>
-            {% endif %}
-            <div class="actions">
-                <input type="submit" value="{% trans "Log in" %}" class="btn primary" />
-            </div>
+            {{ openid_form|as_bootstrap }}
         </fieldset>
+        <div class="actions">
+            <button type="submit" class="btn primary">{% trans "Log In" %}</button>
+        </div>
     </form>
+    
+    {% if request.user.is_authenticated %}
+        <div><a href="{% url acct_logout %}?next={{ request.path }}">logout</a></div>
+    {% endif %}
     
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
 {% endblock %}
