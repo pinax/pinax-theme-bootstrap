@@ -40,7 +40,7 @@
             </form>
             
             {% if request.user.is_authenticated %}
-                <div><a href="{% url acct_logout %}?next={{ request.path }}&amp;sm={{ split_test }}&amp;sn=logout">logout</a></div>
+                <div><a href="{% url acct_logout %}?next={{ request.path }}">logout</a></div>
             {% endif %}
         
         {% endif %}
