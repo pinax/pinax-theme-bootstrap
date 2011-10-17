@@ -37,17 +37,6 @@
         </div>
     </form>
     
-    <h2>{% trans "Or sign in with your OpenID" %}:</h2>
-    <form action="{% url openid-register %}" method="post">
-        {% csrf_token %}
-        <fieldset>
-            {{ openid_form|as_bootstrap }}
-        </fieldset>
-        <div class="actions">
-            <button type="submit" class="btn primary">{% trans "Log In" %}</button>
-        </div>
-    </form>
-    
     {% if request.user.is_authenticated %}
         <div><a href="{% url acct_logout %}?next={{ request.path }}">logout</a></div>
     {% endif %}

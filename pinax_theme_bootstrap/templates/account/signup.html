@@ -26,25 +26,6 @@
             </div>
         </form>
         
-        {# @@@ currently OpenID signup is not supported via signup codes #}
-        {% if not code %}
-            <h2>{% trans "Or sign in with your OpenID" %}:</h2>
-            <form action="{% url openid-register %}" method="post">
-                {% csrf_token %}
-                <fieldset>
-                    {{ openid_form|as_bootstrap }}
-                </fieldset>
-                <div class="actions">
-                    <button type="submit" class="btn primary">{% trans "Log In" %}</button>
-                </div>
-            </form>
-            
-            {% if request.user.is_authenticated %}
-                <div><a href="{% url acct_logout %}?next={{ request.path }}">logout</a></div>
-            {% endif %}
-        
-        {% endif %}
-        
         {% url terms as terms_url %}
         {% url privacy as privacy_url %}
         <p>{% blocktrans %}By clicking "Sign Up", you are indicating that you have read and agree to the <a href="{{ terms_url }}">Terms of Use</a> and <a href="{{ privacy_url }}">Privacy Policy</a>.{% endblocktrans %}</p>
