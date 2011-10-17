@@ -13,9 +13,9 @@
     {% else %}
         <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log In" %}</a>!</p>
         
-        <form class="signup uniForm" id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off">
+        <form id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off">
             {% csrf_token %}
-            <fieldset class="inlineLabels">
+            <fieldset>
                 {{ form|as_bootstrap }}
             </fieldset>
             {% if redirect_field_value %}
@@ -25,34 +25,20 @@
                 <button type="submit" class="btn primary">{% trans "Sign Up" %}</button>
             </div>
         </form>
-
+        
         {# @@@ currently OpenID signup is not supported via signup codes #}
         {% if not code %}
             <p>{% trans "Or sign in with your OpenID" %}:</p>
-            {# @@@ why isn't this just does as a form object ? #}
-            <form class="login uniForm" action="/openid/register/" method="POST">
+            <form action="/openid/register/" method="post">
                 {% csrf_token %}
-                <fieldset class="inlineLabels">
-                    {% if url_required %}
-                        <div class="ctrlHolder error">
-                            <p class="errorField">
-                                <strong>This field is required.</strong>
-                            </p>
-                            <label for="id_username">* OpenID Identifier</label>
-                            <input class="openid" type="text" name="openid_url" />
-                        </div>
-                    {% else %}
-                        <div class="ctrlHolder">
-                            <label for="id_username">* OpenID Identifier</label>
-                            <input class="openid" type="text" name="openid_url" />
-                        </div>
-                    {% endif %}
-                    <div class="form_block">
-                        <input type="submit" value="{% trans "Log in &raquo;" %}" />
-                    </div>
+                <fieldset>
+                    {{ openid_form|as_bootstrap }}
                 </fieldset>
+                <div class="actions">
+                    <button type="submit" class="btn primary">{% trans "Log In" %}</button>
+                </div>
             </form>
-
+            
             {% if request.user.is_authenticated %}
                 <div><a href="{% url acct_logout %}?next={{ request.path }}&amp;sm={{ split_test }}&amp;sn=logout">logout</a></div>
             {% endif %}
