@@ -17,11 +17,9 @@
             {% if next %}
                 <input type="hidden" name="next" value="{{ next }}">
             {% endif %}
-            <input type="submit" value="Verify Association" />
+            <input class="btn primary" type="submit" value="Verify Association" />
+            <a class="btn" href="/openid/associations/">Decline</a>
         </div>
     </fieldset>
-</form>
-<form id="openid-decline-association" action="/openid/associations/" method="GET">
-    <input type="submit" value="Decline Association" />
 </form>
 {% endblock %}
