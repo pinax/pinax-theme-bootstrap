@@ -6,24 +6,28 @@
 
 {% block body %}
     <h1>{% trans "Manage OpenID Associations" %}</h1>
+    
     {% url acct_passwd_set as acct_passwd_set_url %}
     {% if not request.user.password %}
-    <strong>{% blocktrans %}You have not set a password for this user account. You are unable to remove OpenID associations until you <a href="{{ acct_passwd_set_url }}">set a password</a>.{% endblocktrans %}</strong>
+        <strong>{% blocktrans %}You have not set a password for this user account. You are unable to remove OpenID associations until you <a href="{{ acct_passwd_set_url }}">set a password</a>.{% endblocktrans %}</strong>
     {% endif %}
+    
     {% if openids %}
-    <p>{% blocktrans with del_buttons|pluralize as buttons %}Your account is currently associated with the following OpenID {{ buttons }}:{% endblocktrans %}</p>
-    {% for openid in openids %}
-    <form action="{{ action }}" method="POST">
-        {% csrf_token %}
-        <p>
-            {{ openid.openid }}
-            {% if request.user.password %}
-            - <input type="hidden" name="todelete" value="{{ openid.button }}" />
-              <input type="submit" value="{% trans "Remove association" %}" />
-            {% endif %}
-        </p>
-    </form>
-    {% endfor %}
+        <p>{% blocktrans with del_buttons|pluralize as buttons %}Your account is currently associated with the following OpenID {{ buttons }}:{% endblocktrans %}</p>
+        <table class="zebra-striped">
+            {% for openid in openids %}
+                <tr>
+                    <td>{{ openid.openid }}</td>
+                    <td>
+                        <form style="display: none;" id="remove_{{ forloop.counter }}" method="post" action="{{ action }}">
+                            {% csrf_token %}
+                            <input type="hidden" name="todelete" value="{{ openid.button }}" />
+                        </form>
+                        <a class="remove" href="#" onclick="$('#remove_{{ forloop.counter }}').submit()">{% trans "remove" %}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
     {% endif %}
     
     <p>{% trans "To associate a new OpenID with this account, sign in with it here:" %}</p>
@@ -33,7 +37,7 @@
         <p>
             <input type="text" name="openid_url" value="" />
             <input type="hidden" name="next" value="{{ associate_next }}">
-            <input type="submit" value="{% trans "Authenticate and associate with this account" %}" />
+            <input class="btn" type="submit" value="{% trans "Authenticate and associate with this account" %}" />
         </p>
     </form>
 {% endblock %}
