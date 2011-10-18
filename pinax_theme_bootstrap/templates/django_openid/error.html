@@ -1,0 +1,11 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Error using OpenID" %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans "Error using OpenID" %}</h1>
+    
+    <p>{{ message }}</p>
+{% endblock %}
