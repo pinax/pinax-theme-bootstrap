@@ -18,7 +18,7 @@
                 <div class="input">
                     {{ field }}
                     {% for error in field.errors %}
-                        <span class="help-block-inline">{{ error|safe }}</span>
+                        <span class="help-block-inline">{{ error }}</span>
                     {% endfor %}
                     {% if field.help_text %}
                         <span class="help-block">{{ field.help_text|safe }}</span>
