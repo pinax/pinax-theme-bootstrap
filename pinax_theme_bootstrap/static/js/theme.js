@@ -12,7 +12,7 @@ $(function() {
     $(".topbar").dropdown();
 
     // Make messages close when clicked
-    $(".alert-message").alert("close");
+    $(".alert-message").alert();
 
     // Disabled future features
     // $("a[rel=popover]").popover({offset:10});
