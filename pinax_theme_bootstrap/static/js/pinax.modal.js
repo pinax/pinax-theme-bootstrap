@@ -30,7 +30,7 @@
                 this.$backdrop.appendTo("#modal");
             }
             // .close class in modal can close itself
-            this.$modal.delegate(".close", "click", function (e) {
+            this.$modal.delegate(".modal-close", "click", function (e) {
                 e.preventDefault();
                 that.close();
             });
