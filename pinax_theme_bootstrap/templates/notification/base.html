@@ -3,7 +3,6 @@
 {% load i18n %}
 
 {% block extra_head %}
-    <link rel="alternate" type="application/atom+xml" title="Notices Feed" href="{% url notification_feed_for_user %}" />
     <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/notification.css" />
 {% endblock %}
 
@@ -12,7 +11,6 @@
 {% block subnav %}
     <h1>{% trans "Notices" %}</h1>
     <ul>
-        <li><a href="{% url notification_notices %}">{% trans "Notices" %}</a></li>
         <li><a href="{% url notification_notice_settings %}">{% trans "Settings" %}</a></li>
     </ul>
 {% endblock %}
