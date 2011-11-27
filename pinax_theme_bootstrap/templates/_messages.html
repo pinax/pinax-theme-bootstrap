@@ -1,0 +1,5 @@
+{% for messsage in messages %}
+    <div class="alert-message fade in {% if message.tags %} {{ message.tags }}{% endif %}">
+        <a class="close" href="#">&times;</a><p>{{ message }}</p>
+    </div>
+{% endfor %}
