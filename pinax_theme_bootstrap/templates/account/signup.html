@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load bootstrap_tags %}
+{% load ifsetting_tag %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
@@ -25,6 +26,33 @@
                 <button type="submit" class="btn primary">{% trans "Sign Up" %}</button>
             </div>
         </form>
+
+        {% ifsetting ACCOUNT_USE_OPENID %}
+        <h2>{% trans "Or sign in with your OpenID" %}:</h2>
+        <form action="/openid/register/" method="POST" autocapitalize="off">
+            {% csrf_token %}
+            <fieldset>
+                {% if url_required %}
+                    <div class="clearfix">
+                        <label for="id_username">* OpenID Identifier</label>
+                        <div class="input">
+                            <input class="openid" type="text" name="openid_url" />
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="clearfix">
+                        <label for="id_username">* OpenID Identifier</label>
+                        <div class="input">
+                            <input class="openid" type="text" name="openid_url" />
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="actions">
+                    <input type="submit" value="{% trans "Log in" %}" class="btn primary" />
+                </div>
+            </fieldset>
+        </form>
+        {% endifsetting %}
         
         {% url terms as terms_url %}
         {% url privacy as privacy_url %}

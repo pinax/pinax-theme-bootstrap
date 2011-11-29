@@ -37,6 +37,7 @@
         </div>
     </form>
     
+    {% ifsetting ACCOUNT_USE_OPENID %}
     <h2>{% trans "Or sign in with your OpenID" %}:</h2>
     <form action="/openid/register/" method="POST" autocapitalize="off">
         {% csrf_token %}
@@ -61,6 +62,7 @@
             </div>
         </fieldset>
     </form>
+    {% endifsetting %}
     
     {% if request.user.is_authenticated %}
         <div><a href="{% url acct_logout %}?next={{ request.path }}">logout</a></div>
