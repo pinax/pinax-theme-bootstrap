@@ -5,7 +5,7 @@
             <ul class="menu-dropdown">
                 <li><a href="{% url acct_email %}">Account</a></li>
                 {% if user.is_staff %}
-                    <li><a href="/admin/">Admin</a></li>
+                    <li><a href="{% url admin:index %}">Admin</a></li>
                 {% endif %}
                 <li class="divider"></li>
                 <li><a href="{% url acct_logout %}">Log Out</a></li>
