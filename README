@@ -47,5 +47,3 @@ Todo / Issues
 
 * build additional templates for other apps (possibly as add-ons)
 * include LESS source files here
-* username on secondary nav has to be an anchor for boostrap styling but if
-  there is no profile, what could it link to?
