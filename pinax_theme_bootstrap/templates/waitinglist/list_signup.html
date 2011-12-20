@@ -1,0 +1,24 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load bootstrap_tags %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body %}
+
+    <h1>{% trans "Signup for the waiting list" %}</h1>
+    
+    <p>{% blocktrans %}Give us your e-mail address and you'll be added to the waiting list{% endblocktrans %}</p>
+    
+    <form method="POST" action="{% url waitinglist_list_signup %}">
+        {% csrf_token %}
+        <fieldset>
+            {{ form|as_bootstrap }}
+        </fieldset>
+        <div class="actions">
+            <input class="btn primary" type="submit" value="Sign up" />
+        </div>
+    </form>
+
+{% endblock %}
