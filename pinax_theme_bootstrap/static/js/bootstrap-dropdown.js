@@ -2,7 +2,7 @@
  * bootstrap-dropdown.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#dropdown
  * ============================================================
- * Copyright 2011 Twitter, Inc.
+ * Copyright 2012 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,12 +38,14 @@
       var $this = $(this)
         , selector = $this.attr('data-target') || $this.attr('href')
         , $parent = $(selector)
+        , isActive
 
       $parent.length || ($parent = $this.parent())
+      isActive = $parent.hasClass('open')
 
       clearMenus()
 
-      !$parent.hasClass('open') && $parent.toggleClass('open')
+      !isActive && $parent.toggleClass('open')
 
       return false
     }
@@ -74,7 +76,7 @@
    * =================================== */
 
   $(function () {
-    $('html').on('click.dropdown.data-api', clearMenus)
+    $(window).on('click.dropdown.data-api', clearMenus)
     $('body').on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
   })
 

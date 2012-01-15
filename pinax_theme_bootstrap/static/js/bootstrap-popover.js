@@ -2,7 +2,7 @@
  * bootstrap-popover.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#popover
  * ===========================================================
- * Copyright 2011 Twitter, Inc.
+ * Copyright 2012 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@
     this.init('popover', element, options)
   }
 
-  /* NOTE: POPOVER EXTENDS BOOTSTRAP-TWIPSY.js
-     ========================================= */
+  /* NOTE: POPOVER EXTENDS BOOTSTRAP-TOOLTIP.js
+     ========================================== */
 
-  Popover.prototype = $.extend({}, $.fn.twipsy.Constructor.prototype, {
+  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype, {
 
     constructor: Popover
 
@@ -86,7 +86,7 @@
 
   $.fn.popover.Constructor = Popover
 
-  $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, {
+  $.fn.popover.defaults = $.extend({} , $.fn.tooltip.defaults, {
     placement: 'right'
   , content: ''
   , template: '<div class="popover"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'

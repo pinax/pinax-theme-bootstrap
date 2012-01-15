@@ -2,7 +2,7 @@
  * bootstrap-tabs.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#tabs
  * ========================================================
- * Copyright 2011 Twitter, Inc.
+ * Copyright 2012 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,6 +77,8 @@
         if (transition) {
           element[0].offsetWidth // reflow for transition
           element.addClass('in')
+        } else {
+          element.removeClass('fade')
         }
 
         if ( element.parent('.dropdown-menu') ) {

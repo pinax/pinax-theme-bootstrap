@@ -2,7 +2,7 @@
  * bootstrap-modal.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#modal
  * =========================================================
- * Copyright 2011 Twitter, Inc.
+ * Copyright 2012 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,8 +51,9 @@
         backdrop.call(this, function () {
           var transition = $.support.transition && that.$element.hasClass('fade')
 
+          !that.$element.parent().length && that.$element.appendTo(document.body) //don't move modals dom position
+
           that.$element
-            .appendTo(document.body)
             .show()
 
           if (transition) {
