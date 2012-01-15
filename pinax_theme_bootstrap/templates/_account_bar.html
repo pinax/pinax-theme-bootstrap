@@ -1,19 +1,24 @@
-<ul class="secondary-nav">
-    {% if user.is_authenticated %}
-        <li>
-            <a href="#" class="menu">{{ user }}</a>
-            <ul class="menu-dropdown">
-                <li><a href="{% url acct_email %}">Account</a></li>
-                {% if user.is_staff %}
-                    <li><a href="{% url admin:index %}">Admin</a></li>
-                {% endif %}
-                <li class="divider"></li>
-                <li><a href="{% url acct_logout %}">Log Out</a></li>
-            </ul>
-        </li>
-    {% else %}
-        <li><a href="{% url acct_login %}">Log In</a></li>
-        <li><p>or</p></li>
-        <li><a href="{% url acct_signup %}">Sign Up</a></li>
-    {% endif %}
-</ul>
+<div class="secondary-nav pull-right">
+    <ul class="nav">
+        {% if user.is_authenticated %}
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {{ user }}
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url acct_email %}">Account</a></li>
+                    {% if user.is_staff %}
+                        <li><a href="{% url admin:index %}">Admin</a></li>
+                    {% endif %}
+                    <li class="divider"></li>
+                    <li><a href="{% url acct_logout %}">Log Out</a></li>
+                </ul>
+            </li>
+        {% else %}
+            <li><a href="{% url acct_login %}">Log In</a></li>
+            <li><p>or</p></li>
+            <li><a href="{% url acct_signup %}">Sign Up</a></li>
+        {% endif %}
+    </ul>
+</div>

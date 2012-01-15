@@ -13,12 +13,13 @@
         <script src="{{ STATIC_URL }}js/jquery-1.7.min.js"></script>
         <script src="{{ STATIC_URL }}js/jquery.form.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap-alert.js"></script>
-        <script src="{{ STATIC_URL }}js/bootstrap-twipsy.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap-tooltip.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap-popover.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap-tab.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap-scrollspy.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap-button.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap-typeahead.js"></script>
         <script src="{{ STATIC_URL }}js/theme.js"></script>
         <script src="{{ STATIC_URL }}js/pinax.modal.js"></script>
         {% block extra_head_base %}
@@ -28,12 +29,17 @@
     <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
         
         {% block topbar_base %}
-            <div class="topbar">
-                <div class="fill">
+            <div class="navbar navbar-fixed">
+                <div class="navbar-inner">
                     <div class="container">
                         {% block topbar %}
-                            <h3><a href="{% url home %}">{{ SITE_NAME }}</a></h3>
-                            {% block nav %}{% endblock %}
+                            <a class="brand" href="{% url home %}">{{ SITE_NAME }}</a>
+                            {% block nav %}
+                                {# <ul class="nav">
+                                    <li><a href="#one">One</a></li>
+                                    <li><a href="#two">Two</a></li>
+                                </ul> #}
+                            {% endblock %}
                             {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
                         {% endblock %}
                     </div>
