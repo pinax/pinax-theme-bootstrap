@@ -12,21 +12,17 @@
     {% if field.is_hidden %}
         {{ field }}
     {% else %}
-        <div class="clearfix{% if field.errors %} error{% endif %}">
-            {% if field.label %}
-                <label for="{{ field.auto_id }}" {% if field.field.required %}class="requiredField"{% endif %}>
-                    {{ field.label|safe }}
-                </label>
-                <div class="input">
-                    {{ field }}
-                    {% for error in field.errors %}
-                        <span class="help-block-inline">{{ error }}</span>
-                    {% endfor %}
-                    {% if field.help_text %}
-                        <span class="help-block">{{ field.help_text|safe }}</span>
-                    {% endif %}
-                </div>
-            {% endif %}
-        </div>
+        <fieldset class="control-group {% if field.errors %}error{% endif %}">
+            <label class="control-label" for="{{ field.auto_id }}" {% if field.field.required %}class="requiredField"{% endif %}>{{ field.label|safe }}</label>
+            <div class="controls">
+                {{ field }}
+                {% for error in field.errors %}
+                    <span class="help-block-inline">{{ error }}</span>
+                {% endfor %}
+                {% if field.help_text %}
+                    <p class="help-block">{{ field.help_text|safe }}</span>
+                {% endif %}
+            </div>
+        </fieldset>
     {% endif %}
 {% endfor %}
