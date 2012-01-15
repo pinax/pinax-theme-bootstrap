@@ -6,7 +6,8 @@
 
 {% block subnav %}
     {% if user.is_authenticated %}
-        <ul>
+        <ul class="nav list">
+            <li class="nav-header">{% trans "Profile" %}</li>
             <li><a href="{% url profile_detail user.username %}">{% trans "Your Profile" %}</a></li>
             <li><a href="{% url profile_list %}">{% trans "All Profiles" %}</a></li>
         </ul>
