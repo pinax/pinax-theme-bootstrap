@@ -73,6 +73,8 @@
 
 {% block extra_body %}
 <script>
-    $("#id_username").focus();
+    $(document).ready(function(){
+       $("#id_username").focus();
+     });
 </script>
 {% endblock %}
