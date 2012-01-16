@@ -33,19 +33,32 @@ and do something like:
     
     <form method="POST" action="">
         {% csrf_token %}
-        <fieldset>
-            {{ form|as_bootstrap }}
-        </fieldset>
-        <div class="actions">
+        {{ form|as_bootstrap }}
+        <fieldset class="form-actions">
             <button type="submit" class="btn primary">Submit</button>
-        </div>
+        </fieldset>
     </form>
 
 
-Todo / Issues
--------------
+Navigation
+----------
 
-* build additional templates for other apps (possibly as add-ons)
-* include LESS source files here
-* username on secondary nav has to be an anchor for boostrap styling but if
-  there is no profile, what could it link to?
+To modify your site's navigation bar, implement the "nav" block in
+your site_base.html using the following pattern:
+
+    <ul class="nav">
+        <li><a href="#">First Link</a></li>
+        <li><a href="#">Second Link</a></li>
+    </ul>
+
+
+Upgrading from Bootstrap 1.x
+----------------------------
+
+Previous versions of this theme were based off of Bootstrap 1.x.
+The following is a list of changes that you might need to make when
+upgrading existing sites:
+
+- The default grid has changed from 16 columns to 12 columns.
+- Forms markup has changed slightly, see the example above.
+- Navigation bar markup now requires a class="nav" on the ul.
