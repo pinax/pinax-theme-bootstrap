@@ -16,12 +16,10 @@
     
     <form method="post" action="">
         {% csrf_token %}
-        <fieldset>
-            {{ form|as_bootstrap }}
-        </fieldset>
-        <div class="actions">
+        {{ form|as_bootstrap }}
+        <fieldset class="form-actions">
             <button type="submit" class="primary btn">{% trans "Sign Up" %}</button>
-        </div>
+        </fieldset>
     </form>
     
     {% url acct_login_openid as acct_login_openid_url %}

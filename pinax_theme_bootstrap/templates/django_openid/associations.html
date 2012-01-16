@@ -34,10 +34,15 @@
     
     <form action="{{ action_new }}" method="POST">
         {% csrf_token %}
-        <p>
-            <input type="text" name="openid_url" value="" />
-            <input type="hidden" name="next" value="{{ associate_next }}">
-            <input class="btn" type="submit" value="{% trans "Authenticate and associate with this account" %}" />
-        </p>
+        <input type="hidden" name="next" value="{{ associate_next }}">
+        <fieldset class="control-group">
+            <label class="control-label" for="openid_url">OpenID Identifier</label>
+            <div class="controls">
+                <input type="text" name="openid_url" value="" />
+            </div>
+        </fieldset>
+        <fieldset class="form-actions">
+            <input class="btn primary" type="submit" value="{% trans "Authenticate and associate with this account" %}" />
+        </fieldset>
     </form>
 {% endblock %}
