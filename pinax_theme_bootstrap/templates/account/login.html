@@ -13,7 +13,10 @@
     
     {% if user.is_authenticated %}
         {% user_display user as user_display %}
-        <p><span class="warning">{% trans "Note" %}</span>: {% blocktrans %}you are already logged in as {{ user_display }}.{% endblocktrans %}</p>
+        <div class="alert info-alert">
+            <strong>{% trans "Note" %}</strong>
+            {% blocktrans %}you are already logged in as {{ user_display }}.{% endblocktrans %}
+        </div>
     {% else %}
         {% ifsetting ACCOUNT_OPEN_SIGNUP %}
         {% url acct_signup as signup_url %}
