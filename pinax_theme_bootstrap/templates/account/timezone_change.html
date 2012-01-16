@@ -12,11 +12,9 @@
     
     <form method="POST" action="">
         {% csrf_token %}
-        <fieldset>
-            {{ form|as_bootstrap }}
-        </fieldset>
-        <div class="actions">
+        {{ form|as_bootstrap }}
+        <fieldset class="form-actions">
             <button type="submit" class="btn primary">{% trans "Change my timezone" %}</button>
-        </div>
+        </fieldset>
     </form>
 {% endblock %}
