@@ -7,18 +7,16 @@
 
 {% block body %}
 
-    <h1>{% trans "Signup for the waiting list" %}</h1>
+    <h1>{% trans "Sign up for the waiting list" %}</h1>
     
-    <p>{% blocktrans %}Give us your e-mail address and you'll be added to the waiting list{% endblocktrans %}</p>
+    <p>{% blocktrans %}Give us your email address and you'll be added to the waiting list{% endblocktrans %}</p>
     
     <form method="POST" action="{% url waitinglist_list_signup %}">
         {% csrf_token %}
-        <fieldset>
-            {{ form|as_bootstrap }}
-        </fieldset>
-        <div class="actions">
+        {{ form|as_bootstrap }}
+        <fieldset class="form-actions">
             <input class="btn primary" type="submit" value="Sign up" />
-        </div>
+        </fieldset>
     </form>
 
 {% endblock %}
