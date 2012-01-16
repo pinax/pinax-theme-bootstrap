@@ -2,11 +2,9 @@
 
 <form method="POST" action="{% url profile_edit %}">
     {% csrf_token %}
-    <fieldset>
-        {{ profile_form|as_bootstrap }}
-    </fieldset>
-    <div class="actions">
+    {{ profile_form|as_bootstrap }}
+    <fieldset class="form-actions">
         <button type="submit" class="btn primary">Update</button>
         <a href="{% url profile_detail profile.user.username %}" class="btn">Cancel</a>
-    </div>
+    </fieldset>
 </form>

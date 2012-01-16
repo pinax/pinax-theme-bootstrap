@@ -10,9 +10,7 @@
     {% csrf_token %}
     
     <div class="modal-body">
-        <fieldset>
-            {{ profile_form|as_bootstrap }}
-        </fieldset>
+        {{ profile_form|as_bootstrap }}
     </div>
     
     <div class="modal-footer">

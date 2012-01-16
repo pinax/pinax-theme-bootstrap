@@ -9,17 +9,15 @@
 <h1>{% trans "Verify this Association" %}</h1>
 <p>You have begun to associate <strong>{{ specific_openid }}</strong> with your existing account.  This will allow you to sign in as <strong>{% user_display user %}</strong> using that OpenID.  Click below to verify that association.</p>
 
-<form class="uniForm" id="openid-verify-association" action="{{ action }}" method="POST">
+<form id="openid-verify-association" action="{{ action }}" method="POST">
     {% csrf_token %}
-    <fieldset class="inlineLabels">
-        <div class="form_block">
-            <input type="hidden" name="openid_token" value="{{ openid_token }}" />
-            {% if next %}
-                <input type="hidden" name="next" value="{{ next }}">
-            {% endif %}
-            <input class="btn primary" type="submit" value="Verify Association" />
-            <a class="btn" href="/openid/associations/">Decline</a>
-        </div>
+    <input type="hidden" name="openid_token" value="{{ openid_token }}" />
+    {% if next %}
+        <input type="hidden" name="next" value="{{ next }}">
+    {% endif %}
+    <fieldset class="form-actions">
+        <input class="btn primary" type="submit" value="Verify Association" />
+        <a class="btn" href="/openid/associations/">Decline</a>
     </fieldset>
 </form>
 {% endblock %}
