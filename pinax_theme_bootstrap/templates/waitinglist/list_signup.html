@@ -13,10 +13,12 @@
     
     <form method="POST" action="{% url waitinglist_list_signup %}">
         {% csrf_token %}
-        {{ form|as_bootstrap }}
-        <fieldset class="form-actions">
-            <input class="btn primary" type="submit" value="Sign up" />
+        <fieldset>
+            {{ form|as_bootstrap }}
         </fieldset>
+        <div class="actions">
+            <input class="btn primary" type="submit" value="Sign up" />
+        </div>
     </form>
 
 {% endblock %}
