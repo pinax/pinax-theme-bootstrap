@@ -10,7 +10,7 @@
     <h1>{% trans "Sign Up" %}</h1>
     
     <div class="row">
-        <div class="span9">
+        <div class="span8">
             {% if user.is_authenticated %}
                 <p>{% trans "You are already logged in." %}</p>
             {% else %}
@@ -48,7 +48,7 @@
                 <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
             {% endif %}
         </div>
-        <div class="span3">
+        <div class="span4">
             {% include "account/_signup_sidebar.html" %}
         </div>
     </div>

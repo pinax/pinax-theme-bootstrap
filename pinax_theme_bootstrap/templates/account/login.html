@@ -12,7 +12,7 @@
     <h1>{% trans "Log In" %}</h1>
     
     <div class="row">
-        <div class="span9">
+        <div class="span8">
             {% if user.is_authenticated %}
                 {% user_display user as user_display %}
                 <div class="alert info-alert">
@@ -61,7 +61,7 @@
             {% endif %}
             
         </div>
-        <div class="span3">
+        <div class="span4">
             {% include "account/_login_sidebar.html" %}
         </div>
     </div>
