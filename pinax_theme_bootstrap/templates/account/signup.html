@@ -9,45 +9,49 @@
 {% block body %}
     <h1>{% trans "Sign Up" %}</h1>
     
-    {% if user.is_authenticated %}
-        <p>{% trans "You are already logged in." %}</p>
-    {% else %}
-        <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log In" %}</a>!</p>
-        
-        <form id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off" class="form-horizontal">
-            {% csrf_token %}
-            {{ form|as_bootstrap }}
-            {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    <div class="row">
+        <div class="span9">
+            {% if user.is_authenticated %}
+                <p>{% trans "You are already logged in." %}</p>
+            {% else %}
+                <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log In" %}</a>!</p>
+                
+                <form id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off" class="form-horizontal">
+                    {% csrf_token %}
+                    {{ form|as_bootstrap }}
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <fieldset class="form-actions">
+                        <button type="submit" class="btn primary">{% trans "Sign Up" %}</button>
+                    </fieldset>
+                </form>
+                
+                {% ifsetting ACCOUNT_USE_OPENID %}
+                <form action="/openid/register/" method="POST" autocapitalize="off" class="form-horizontal">
+                    <legend>{% trans "Or sign in with your OpenID" %}</legend>
+                    {% csrf_token %}
+                    <fieldset class="control-group">
+                        <label class="control-label" for="openid_url">OpenID Identifier</label>
+                        <div class="controls">
+                            <input class="openid" type="text" name="openid_url" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-actions">
+                        <input type="submit" value="{% trans "Log in" %}" class="btn primary" />
+                    </fieldset>
+                </form>
+                {% endifsetting %}
+                
+                {% include "account/_terms.html" %}
+                
+                <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
             {% endif %}
-            <fieldset class="form-actions">
-                <button type="submit" class="btn primary">{% trans "Sign Up" %}</button>
-            </fieldset>
-        </form>
-
-        {% ifsetting ACCOUNT_USE_OPENID %}
-        <form action="/openid/register/" method="POST" autocapitalize="off" class="form-horizontal">
-            <legend>{% trans "Or sign in with your OpenID" %}</legend>
-            {% csrf_token %}
-            <fieldset class="control-group">
-                <label class="control-label" for="openid_url">OpenID Identifier</label>
-                <div class="controls">
-                    <input class="openid" type="text" name="openid_url" />
-                </div>
-            </fieldset>
-            <fieldset class="form-actions">
-                <input type="submit" value="{% trans "Log in" %}" class="btn primary" />
-            </fieldset>
-        </form>
-        {% endifsetting %}
-        
-        {% url terms as terms_url %}
-        {% url privacy as privacy_url %}
-        <p>{% blocktrans %}By clicking "Sign Up", you are indicating that you have read and agree to the <a href="{{ terms_url }}">Terms of Use</a> and <a href="{{ privacy_url }}">Privacy Policy</a>.{% endblocktrans %}</p>
-        
-        <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
-        
-    {% endif %}
+        </div>
+        <div class="span3">
+            {% include "account/_signup_sidebar.html" %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block extra_body %}
