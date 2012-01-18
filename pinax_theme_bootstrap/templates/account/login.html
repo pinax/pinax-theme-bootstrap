@@ -15,7 +15,7 @@
         <div class="span8">
             {% if user.is_authenticated %}
                 {% user_display user as user_display %}
-                <div class="alert info-alert">
+                <div class="alert alert-info">
                     <strong>{% trans "Note" %}</strong>:
                     {% blocktrans %}you are already logged in as {{ user_display }}.{% endblocktrans %}
                 </div>
