@@ -14,7 +14,12 @@
     {% else %}
         <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log In" %}</a>!</p>
         
-        <form id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off">
+        {% if form.is_multipart %}
+            <form id="signup_form" enctype="multipart/form-data" method="post" action="{% url acct_signup %}" autocapitalize="off">
+        {% else %}
+            <form id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off">
+        {% endif %}
+        
             {% csrf_token %}
             <fieldset>
                 {{ form|as_bootstrap }}
