@@ -1,28 +1,27 @@
 // ACCORDION
 // ---------
 
+
+// Parent container
 .accordion {
-  padding: 0;
+  margin-bottom: @baseLineHeight;
 }
 
+// Group == heading + body
+.accordion-group {
+  background-color: #f5f5f5;
+  .border-radius(4px);
+}
 .accordion-heading {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
+  padding: 8px 15px;
   border-bottom: 0;
 }
-
 .accordion-body {
-  margin: 0 0 1px 0;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 2px;
 }
 
+// Inner needs the styles because you can't animate properly with any styles on the element
 .accordion-inner {
-  padding: 10px;
-  margin-bottom: 0;
-  border: 1px solid #ddd;
-  border-bottom: 0;
-}
-
-.accordion .in {
-  margin-bottom: @baseLineHeight / 2;
+  padding: 9px 15px;
+  border-top: 1px solid #e5e5e5;
 }
