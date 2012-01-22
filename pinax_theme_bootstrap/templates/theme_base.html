@@ -30,7 +30,7 @@
         {% block topbar_base %}
             <div class="topbar">
                 <div class="fill">
-                    <div class="container">
+                    <div class="{{ bootstrap_container_class|default:'container' }}">
                         {% block topbar %}
                             <h3><a href="{% url home %}">{{ SITE_NAME }}</a></h3>
                             {% block nav %}{% endblock %}
@@ -42,7 +42,7 @@
         {% endblock %}
         
         {% block body_base %}
-            <div class="container">
+            <div class="{{ bootstrap_container_class|default:'container' }}">
                 {% include "_messages.html" %}
                 {% block body %}
                 {% endblock %}
@@ -52,7 +52,7 @@
         {% block footer_base %}
             <div id="footer">
                 <div class="inner">
-                    <div class="container">
+                    <div class="{{ bootstrap_container_class|default:'container' }}">
                         {% block footer %}{% endblock %}
                     </div>
                 </div>

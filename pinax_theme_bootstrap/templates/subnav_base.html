@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block body_base %}
-    <div class="container">
+    <div class="{{ bootstrap_container_class|default:'container' }}">
         {% include "_messages.html" %}
         <div class="row">
             <div class="span4 columns">

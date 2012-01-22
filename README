@@ -42,6 +42,17 @@ and do something like:
     </form>
 
 
+Bootstrap layout
+----------------
+
+http://twitter.github.com/bootstrap/#layouts
+By default, the fixed layout is used. If you want to use the fluid layout add:
+    "pinax_theme_bootstrap.context_processors.bootstrap_layout"
+to TEMPLATE_CONTEXT_PROCESSORS and
+    BOOTSTRAP_LAYOUT = 'fluid'
+in the settings.py file.
+
+
 Todo / Issues
 -------------
 
