@@ -27,7 +27,7 @@
         
         <form method="POST" action="">
             {% csrf_token %}
-            <table class="notice_settings zebra-striped">
+            <table class="notice_settings table table-striped">
                 <tr>
                     <th>{% trans "Notification Type" %}</th>
                     {% for header in notice_settings.column_headers %}
