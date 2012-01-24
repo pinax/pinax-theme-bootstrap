@@ -14,7 +14,7 @@
     
     {% if openids %}
         <p>{% blocktrans with del_buttons|pluralize as buttons %}Your account is currently associated with the following OpenID {{ buttons }}:{% endblocktrans %}</p>
-        <table class="zebra-striped">
+        <table class="table table-striped">
             {% for openid in openids %}
                 <tr>
                     <td>{{ openid.openid }}</td>
