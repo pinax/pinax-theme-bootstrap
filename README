@@ -33,7 +33,9 @@ and do something like:
     
     <form method="POST" action="">
         {% csrf_token %}
-        {{ form|as_bootstrap }}
+        <fieldset class="form-controls">
+            {{ form|as_bootstrap }}
+        </fieldset>
         <fieldset class="form-actions">
             <button type="submit" class="btn primary">Submit</button>
         </fieldset>
