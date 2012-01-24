@@ -9,7 +9,7 @@
     <h2>{% trans "Email Addresses" %}</h2>
     
     {% if user.emailaddress_set.all %}
-        <table class="table">
+        <table class="table table-striped">
             {% for emailaddress in user.emailaddress_set.all %}
                 <tr>
                     <td>{% if emailaddress.primary %}<b>{{ emailaddress.email }}</b>{% else %}{{ emailaddress.email }}{% endif %}</td>
