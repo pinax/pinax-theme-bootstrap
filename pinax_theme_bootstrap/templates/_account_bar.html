@@ -1,8 +1,8 @@
-{% load ifsetting_tag %}
+{% load ifsetting_tag account_tags %}
 <ul class="secondary-nav">
     {% if user.is_authenticated %}
         <li>
-            <a href="#" class="menu">{{ user }}</a>
+            <a href="#" class="menu">{% user_display user %}</a>
             <ul class="menu-dropdown">
                 <li><a href="{% url acct_email %}">Account</a></li>
                 {% if user.is_staff %}
