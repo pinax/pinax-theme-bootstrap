@@ -1,0 +1,16 @@
+// LABELS
+// ------
+
+.label {
+  padding: 1px 3px 2px;
+  font-size: @baseFontSize * .75;
+  font-weight: bold;
+  color: @white;
+  text-transform: uppercase;
+  background-color: @grayLight;
+  .border-radius(3px);
+  &.important { background-color: @errorText; }
+  &.warning   { background-color: @orange; }
+  &.success   { background-color: @successText; }
+  &.info      { background-color: @infoText; }
+}
