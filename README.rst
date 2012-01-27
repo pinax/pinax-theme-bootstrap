@@ -1,6 +1,7 @@
-A Pinax theme based on Twitter's Bootstrap
-==========================================
+Twitter Bootstrap Theme, for Pinax
+==================================
 
+A theme for Pinax 0.9 based on Twitter's open source Bootstrap framework.
 
 Quick Start
 -----------
@@ -58,8 +59,8 @@ Upgrading from Bootstrap 1.x
 ----------------------------
 
 Previous versions of this theme were based off of Bootstrap 1.x.
-The following is a list of changes that you might need to make when
-upgrading existing sites:
+The following is a list of changes that you need to be aware of
+when upgrading existing sites:
 
 - The default grid has changed from 16 columns to 12 columns.
 - Forms markup has changed slightly, see the example above.
