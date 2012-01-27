@@ -40,10 +40,3 @@ and do something like:
             <button type="submit" class="btn primary">Submit</button>
         </div>
     </form>
-
-
-Todo / Issues
--------------
-
-* build additional templates for other apps (possibly as add-ons)
-* include LESS source files here
