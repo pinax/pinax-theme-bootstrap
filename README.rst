@@ -26,11 +26,11 @@ The url name "home" should be defined as the homepage.
 Forms
 -----
 
-To style forms, 
+To style forms, ::
     
     {% load bootstrap_tags %}
 
-and do something like:
+and do something like: ::
     
     <form method="POST" action="">
         {% csrf_token %}
@@ -47,7 +47,7 @@ Navigation
 ----------
 
 To modify your site's navigation bar, implement the "nav" block in
-your site_base.html using the following pattern:
+your site_base.html using the following pattern: ::
 
     <ul class="nav">
         <li><a href="#">First Link</a></li>
