@@ -43,10 +43,12 @@
                         {% block topbar %}
                             <a class="brand" href="{% url home %}">{{ SITE_NAME }}</a>
                             {% block nav %}
-                                {# <ul class="nav">
-                                    <li><a href="#one">One</a></li>
-                                    <li><a href="#two">Two</a></li>
-                                </ul> #}
+                                {% comment %}
+                                    <ul class="nav">
+                                        <li><a href="#tab_one">One</a></li>
+                                        <li><a href="#tab_two">Two</a></li>
+                                    </ul>
+                                {% endcomment %}
                             {% endblock %}
                             {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
                         {% endblock %}
