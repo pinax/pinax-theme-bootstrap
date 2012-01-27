@@ -4,12 +4,9 @@ $(function() {
     
     var class_list = $("body").attr("class").split(/\s+/);
     $.each(class_list, function(index, item) {
-        var selector = ".topbar li#tab_" + item;
+        var selector = "ul.nav li#tab_" + item;
         $(selector).addClass("active");
     });
-
-    // Enable dropdowns for topbar items
-    $(".topbar").dropdown();
 
     // Make messages close when clicked
     $(".alert").alert();
