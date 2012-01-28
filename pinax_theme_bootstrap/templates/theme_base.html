@@ -10,24 +10,30 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.css" %}">
-        <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}">
-        <link rel="stylesheet" href="{% static "pinax/css/theme.css" %}">
-        <script src="{% static "pinax/js/jquery-1.7.1.min.js" %}"></script>
-        <script src="{% static "pinax/js/jquery.form.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-alert.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-button.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-carousel.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-collapse.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-dropdown.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-scrollspy.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-tab.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-tooltip.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-popover.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-transition.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap-typeahead.js" %}"></script>
-        <script src="{% static "pinax/js/theme.js" %}"></script>
-        <script src="{% static "pinax/js/pinax.modal.js" %}"></script>
+        {% block style_base %}
+            <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
+            <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+            <link href="{% static "bootstrap/css/bootstrap-responsive.css" %}" rel="stylesheet">
+            {% block extra_style %}{% endblock %}
+        {% endblock %}
+        {% block script_base %}
+            <script src="{% static "pinax/js/jquery-1.7.1.min.js" %}"></script>
+            <script src="{% static "pinax/js/jquery.form.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-alert.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-button.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-carousel.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-collapse.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-dropdown.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-scrollspy.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-tab.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-tooltip.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-popover.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-transition.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-typeahead.js" %}"></script>
+            <script src="{% static "pinax/js/theme.js" %}"></script>
+            <script src="{% static "pinax/js/pinax.modal.js" %}"></script>
+            {% block extra_script %}{% endblock %}
+        {% endblock %}
         {% block extra_head_base %}
             {% block extra_head %}{% endblock %}
         {% endblock %}
