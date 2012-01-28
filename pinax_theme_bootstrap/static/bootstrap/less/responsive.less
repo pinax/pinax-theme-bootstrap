@@ -27,6 +27,12 @@
 
 @media (max-width: 480px) {
 
+  // Block level the page header small tag for readability
+  .page-header h1 small {
+    display: block;
+    line-height: @baseLineHeight;
+  }
+
   // Remove the horizontal form styles
   .form-horizontal .control-group > label {
     float: none;
@@ -50,15 +56,21 @@
   // Modals
   .modal {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
+    top:   10px;
+    left:  10px;
+    right: 10px;
     width: auto;
     margin: 0;
     &.fade.in { top: auto; }
   }
   .modal-header .close {
     padding: 10px;
+    margin: -10px;
+  }
+
+  // Carousel
+  .carousel-caption {
+    position: static;
   }
 
 }

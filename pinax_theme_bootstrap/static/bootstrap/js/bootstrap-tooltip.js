@@ -145,6 +145,8 @@
             break
         }
 
+        if (this.options['z-index']) tp['z-index'] = this.options['z-index']
+
         $tip
           .css(tp)
           .addClass(placement)
@@ -265,6 +267,7 @@
   , trigger: 'hover'
   , title: ''
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , 'z-index': false
   }
 
 }( window.jQuery )

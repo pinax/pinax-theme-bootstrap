@@ -3,6 +3,10 @@
   visibility: hidden;
 }
 @media (max-width: 480px) {
+  .page-header h1 small {
+    display: block;
+    line-height: 18px;
+  }
   .form-horizontal .control-group > label {
     float: none;
     width: auto;
@@ -20,9 +24,9 @@
   }
   .modal {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
     width: auto;
     margin: 0;
   }
@@ -31,6 +35,10 @@
   }
   .modal-header .close {
     padding: 10px;
+    margin: -10px;
+  }
+  .carousel-caption {
+    position: static;
   }
 }
 @media (max-width: 768px) {
