@@ -6,7 +6,6 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 16:39:57 PST 2012
  */
 article,
 aside,
@@ -35,6 +34,11 @@ html {
 }
 a:focus {
   outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  -moz-outline: 5px auto -moz-mac-focusring;
+  -moz-outline-radius: 6px;
+  -moz-outline-offset: 0;
 }
 a:hover, a:active {
   outline: 0;
@@ -523,7 +527,7 @@ select,
 label input, label textarea, label select {
   display: block;
 }
-input[type=image], input[type=checkbox], input[type=radio] {
+input[type="image"], input[type="checkbox"], input[type="radio"] {
   width: auto;
   height: auto;
   padding: 0;
@@ -538,7 +542,7 @@ input[type=image], input[type=checkbox], input[type=radio] {
   -moz-border-radius: 0;
   border-radius: 0;
 }
-input[type=file] {
+input[type="file"] {
   padding: initial;
   line-height: initial;
   border: initial;
@@ -548,11 +552,11 @@ input[type=file] {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-input[type=button], input[type=reset], input[type=submit] {
+input[type="button"], input[type="reset"], input[type="submit"] {
   width: auto;
   height: auto;
 }
-select, input[type=file] {
+select, input[type="file"] {
   height: 28px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
 
@@ -568,7 +572,7 @@ select {
 select[multiple], select[size] {
   height: auto;
 }
-input[type=image] {
+input[type="image"] {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -576,13 +580,13 @@ input[type=image] {
 textarea {
   height: auto;
 }
-input[type=hidden] {
+input[type="hidden"] {
   display: none;
 }
 .radio, .checkbox {
   padding-left: 18px;
 }
-.radio input[type=radio], .checkbox input[type=checkbox] {
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
   float: left;
   margin-left: -18px;
 }
@@ -611,16 +615,20 @@ input:focus, textarea:focus {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-  outline: 0;
-  outline: 1px dotted #666 \9;
+  outline: thin dotted \9;
   /* IE6-8 */
 
 }
-input[type=file]:focus, input[type=checkbox]:focus, select:focus {
+input[type="file"]:focus, input[type="checkbox"]:focus, select:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  outline: 1px dotted #666;
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  -moz-outline: 5px auto -moz-mac-focusring;
+  -moz-outline-radius: 6px;
+  -moz-outline-offset: 0;
 }
 .input-mini {
   width: 60px;
@@ -943,6 +951,14 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 }
 .form-horizontal .control-group {
   margin-bottom: 18px;
+  *zoom: 1;
+}
+.form-horizontal .control-group:before, .form-horizontal .control-group:after {
+  display: table;
+  content: "";
+}
+.form-horizontal .control-group:after {
+  clear: both;
 }
 .form-horizontal .control-group > label {
   float: left;
@@ -1200,7 +1216,7 @@ table .span12 {
   background-position: -264px -24px;
 }
 .icon.lock {
-  background-position: -288px -24px;
+  background-position: -287px -24px;
 }
 .icon.flag {
   background-position: -312px -24px;
@@ -1664,6 +1680,9 @@ table .span12 {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   background-color: #0088cc;
 }
+.nav.list .icon {
+  margin-right: 2px;
+}
 .tabs, .pills {
   *zoom: 1;
 }
@@ -2081,6 +2100,7 @@ table .span12 {
   color: #ffffff;
 }
 .navbar .nav.pull-right .dropdown-menu {
+  left: auto;
   right: 0;
 }
 .navbar .nav.pull-right .dropdown-menu:before {
@@ -2474,6 +2494,12 @@ table .span12 {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   color: #ffffff;
 }
+.btn.primary.active,
+.btn.danger.active,
+.btn.success.active,
+.btn.info.active {
+  color: rgba(255, 255, 255, 0.75);
+}
 .btn.primary {
   background-color: #0074cc;
   background-image: -moz-linear-gradient(top, #0088cc, #0055cc);
@@ -2489,9 +2515,7 @@ table .span12 {
 .btn.primary:hover,
 .btn.primary:active,
 .btn.primary.active,
-.btn.primary.disabled {
-  background-color: #0055cc;
-}
+.btn.primary.disabled,
 .btn.primary[disabled] {
   background-color: #0055cc;
 }
@@ -2513,9 +2537,7 @@ table .span12 {
 .btn.danger:hover,
 .btn.danger:active,
 .btn.danger.active,
-.btn.danger.disabled {
-  background-color: #c43c35;
-}
+.btn.danger.disabled,
 .btn.danger[disabled] {
   background-color: #c43c35;
 }
@@ -2537,9 +2559,7 @@ table .span12 {
 .btn.success:hover,
 .btn.success:active,
 .btn.success.active,
-.btn.success.disabled {
-  background-color: #57a957;
-}
+.btn.success.disabled,
 .btn.success[disabled] {
   background-color: #57a957;
 }
@@ -2561,9 +2581,7 @@ table .span12 {
 .btn.info:hover,
 .btn.info:active,
 .btn.info.active,
-.btn.info.disabled {
-  background-color: #339bb9;
-}
+.btn.info.disabled,
 .btn.info[disabled] {
   background-color: #339bb9;
 }
@@ -2612,7 +2630,12 @@ table .span12 {
   transition: background-position 0.1s linear;
 }
 .btn:focus {
-  outline: 1px dotted #666;
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  -moz-outline: 5px auto -moz-mac-focusring;
+  -moz-outline-radius: 6px;
+  -moz-outline-offset: 0;
 }
 .btn.active, .btn:active {
   background-image: none;
@@ -2621,18 +2644,9 @@ table .span12 {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
   background-color: #e6e6e6;
   background-color: #d9d9d9 \9;
+  color: rgba(0, 0, 0, 0.5);
 }
-.btn.disabled {
-  cursor: default;
-  background-image: none;
-  background-color: #e6e6e6;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-.btn[disabled] {
+.btn.disabled, .btn[disabled] {
   cursor: default;
   background-image: none;
   background-color: #e6e6e6;
@@ -2659,21 +2673,21 @@ table .span12 {
   line-height: 16px;
 }
 .btn.small .icon {
-  margin-top: -2px;
+  margin-top: -1px;
 }
-button.btn, input[type=submit].btn {
+button.btn, input[type="submit"].btn {
   *padding-top: 2px;
   *padding-bottom: 2px;
 }
-button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
+button.btn::-moz-focus-inner, input[type="submit"].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-button.btn.large, input[type=submit].btn.large {
+button.btn.large, input[type="submit"].btn.large {
   *padding-top: 7px;
   *padding-bottom: 7px;
 }
-button.btn.small, input[type=submit].btn.small {
+button.btn.small, input[type="submit"].btn.small {
   *padding-top: 3px;
   *padding-bottom: 3px;
 }
@@ -2694,6 +2708,10 @@ button.btn.small, input[type=submit].btn.small {
 }
 .btn-group + .btn-group {
   margin-left: 5px;
+}
+.btn-toolbar {
+  margin-top: 9px;
+  margin-bottom: 9px;
 }
 .btn-toolbar .btn-group {
   display: inline-block;
@@ -2744,7 +2762,10 @@ button.btn.small, input[type=submit].btn.small {
   -moz-border-radius-bottomright: 6px;
   border-bottom-right-radius: 6px;
 }
-.btn-group .btn:hover, .btn-group .btn:focus, .btn-group .btn:active {
+.btn-group .btn:hover,
+.btn-group .btn:focus,
+.btn-group .btn:active,
+.btn-group .btn.active {
   z-index: 2;
 }
 .btn-group .dropdown-toggle {
@@ -2773,8 +2794,12 @@ button.btn.small, input[type=submit].btn.small {
   box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .btn .caret {
-  margin-top: 6px;
+  margin-top: 7px;
   margin-left: 0;
+}
+.btn:hover .caret, .open.btn-group .caret {
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
 .primary .caret,
 .danger .caret,
@@ -2919,12 +2944,8 @@ a.thumbnail:hover {
     background-position: 40px 0;
   }
 }
-.progress, .progress .bar {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
 .progress {
+  overflow: hidden;
   height: 18px;
   margin-bottom: 18px;
   background-color: #f7f7f7;
@@ -2938,6 +2959,9 @@ a.thumbnail:hover {
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 .progress .bar {
   width: 0%;
