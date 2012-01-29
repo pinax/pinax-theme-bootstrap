@@ -306,7 +306,7 @@
 // LARGE DESKTOP & UP
 // ------------------
 
-@media (min-width: 1210px) {
+@media (min-width: 1200px) {
 
   // Reset grid variables
   @gridColumns:       12;
@@ -357,5 +357,13 @@
   .offset9   { .offset(9); }
   .offset10  { .offset(10); }
   .offset11  { .offset(11); }
+
+  // Thumbnails
+  .thumbnails {
+    margin-left: @gridGutterWidth * -1;
+  }
+  .thumbnails > li {
+    margin-left: @gridGutterWidth;
+  }
 
 }
