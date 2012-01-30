@@ -50,12 +50,14 @@ Bootstrap includes styles for four types of forms. To change the display of
 your form, add one of the following class attributes to your form tag:
 
 
+==================  ================   ==============================================================
         Name             Class                        Description
 ==================  ================   ==============================================================
 Vertical (default)  .form-vertical     Stacked, left-aligned labels over controls
 Horizontal          .form-horizontal   Float left, right-aligned labels on same line as controls
 Inline              .form-inline       Left-aligned label and inline-block controls for compact style
 Search              .form-search       Extra-rounded text input for a typical search aesthetic
+==================  ================   ==============================================================
 
 
 Navigation
