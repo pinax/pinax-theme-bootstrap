@@ -17,12 +17,12 @@
             {{ form|as_bootstrap }}
         </fieldset>
         <div class="actions">
-            <button type="submit" class="btn primary">{% trans "Log In" %}</button>
+            <button type="submit" class="btn primary">{% trans "Log in" %}</button>
         </div>
     </form>
     
     {% if request.user.is_authenticated %}
-        <div><a href="{% url acct_logout %}?next={{ request.path }}">logout</a></div>
+        <div><a href="{% url acct_logout %}?next={{ request.path }}">Log out</a></div>
     {% endif %}
     
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
