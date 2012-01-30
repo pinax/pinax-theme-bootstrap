@@ -1,3 +1,12 @@
+/*!
+ * Bootstrap Responsive v2.0.0
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
 .hidden {
   display: none;
   visibility: hidden;
@@ -305,12 +314,14 @@
   .btn-navbar {
     display: block;
   }
-  .nav-collapse.collapse {
+  .nav-collapse {
     overflow: hidden;
     height: 0;
   }
-  .nav-collapse.collapse.in {
-    height: auto;
+}
+@media (min-width: 940px) {
+  .nav-collapse.collapse {
+    height: auto !important;
   }
 }
 @media (min-width: 1200px) {
