@@ -12,14 +12,14 @@
                     <li><a href="{% url admin:index %}"><i class="icon cog"></i> Admin</a></li>
                 {% endif %}
                 <li class="divider"></li>
-                <li><a href="{% url acct_logout %}"><i class="icon off"></i> Log Out</a></li>
+                <li><a href="{% url acct_logout %}"><i class="icon off"></i> Log out</a></li>
             </ul>
         </li>
     {% else %}
-        <li><a href="{% url acct_login %}">Log In</a></li>
+        <li><a href="{% url acct_login %}">Log in</a></li>
         {% ifsetting ACCOUNT_OPEN_SIGNUP %}
             <li class="navbar-text">or</li>
-            <li><a href="{% url acct_signup %}">Sign Up</a></li>
+            <li><a href="{% url acct_signup %}">Sign up</a></li>
         {% endifsetting %}
     {% endif %}
 </ul>

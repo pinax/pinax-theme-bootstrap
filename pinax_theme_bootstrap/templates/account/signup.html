@@ -14,7 +14,7 @@
             {% if user.is_authenticated %}
                 <p>{% trans "You are already logged in." %}</p>
             {% else %}
-                <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log In" %}</a>!</p>
+                <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log in" %}</a>!</p>
                 
                 <form id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off" class="form-horizontal">
                     {% csrf_token %}
@@ -23,7 +23,7 @@
                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                     {% endif %}
                     <fieldset class="form-actions">
-                        <button type="submit" class="btn primary">{% trans "Sign Up" %}</button>
+                        <button type="submit" class="btn primary">{% trans "Sign up" %}</button>
                     </fieldset>
                 </form>
                 

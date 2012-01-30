@@ -25,7 +25,7 @@
                                     <input type="hidden" name="action" value="primary"/>
                                 </form>
                                 -
-                                <a href="#" onclick="$('#primary_{{ forloop.counter }}').submit();">{% trans "make primary" %}</a>
+                                <a href="#" onclick="$('#primary_{{ forloop.counter }}').submit();">{% trans "Make primary" %}</a>
                             {% endif %}
                         </td>
                     {% else %}
@@ -37,7 +37,7 @@
                                 <input type="hidden" name="action" value="send"/>
                             </form>
                             -
-                            <a href="#" onclick="$('#send_{{ forloop.counter }}').submit();">{% trans "re-send verification email" %}</a>
+                            <a href="#" onclick="$('#send_{{ forloop.counter }}').submit();">{% trans "Re-send verification email" %}</a>
                         </td>
                     {% endif %}
                     <td>
@@ -48,7 +48,7 @@
                                 <input type="hidden" name="email" value="{{ emailaddress.email }}"/>
                                 <input type="hidden" name="action" value="remove"/>
                             </form>
-                            <a class="remove" href="#" onclick="$('#remove_{{ forloop.counter }}').submit()">{% trans "remove" %}</a>
+                            <a class="remove" href="#" onclick="$('#remove_{{ forloop.counter }}').submit()">{% trans "Remove" %}</a>
                         {% endif %}
                     </td>
                 </tr>
@@ -67,7 +67,7 @@
         {{ add_email_form|as_bootstrap }}
         <input type="hidden" name="action" value="add"/>
         <fieldset class="form-actions">
-             <button type="submit" class="btn primary">{% trans "add" %}</button>
+             <button type="submit" class="btn primary">{% trans "Add" %}</button>
         </fieldset>
     </form>
     
