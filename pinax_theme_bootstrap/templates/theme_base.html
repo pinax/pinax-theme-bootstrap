@@ -7,7 +7,7 @@
         {% block viewport %}
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% endblock %}
-        
+
         <!-- HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,7 +42,7 @@
         {% endblock %}
     </head>
     <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
-        
+
         {% block topbar_base %}
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
@@ -53,7 +53,7 @@
                                 <span class="i-bar"></span>
                                 <span class="i-bar"></span>
                             </a>
-                            <a class="brand" href="{% url home %}">{{ SITE_NAME }}</a>
+                            {% block site_brand %}<a class="brand" href="{% url home %}">{{ SITE_NAME }}</a>{% endblock %}
                             <div class="nav-collapse">
                                 {% block nav %}
                                     {% comment %}
@@ -70,7 +70,7 @@
                 </div>
             </div>
         {% endblock %}
-        
+
         {% block body_base %}
             <div class="container">
                 {% include "_messages.html" %}
@@ -78,7 +78,7 @@
                 {% endblock %}
             </div>
         {% endblock %}
-        
+
         {% block footer_base %}
             <div id="footer">
                 <div class="inner">
@@ -88,7 +88,7 @@
                 </div>
             </div>
         {% endblock %}
-        
+
         {% block extra_body_base %}
             {% block extra_body %}{% endblock %}
         {% endblock %}
