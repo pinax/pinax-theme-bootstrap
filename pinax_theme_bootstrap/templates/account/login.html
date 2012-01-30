@@ -31,7 +31,9 @@
             
             <form method="POST" action="{% url acct_login %}" autocapitalize="off" class="form-horizontal">
                 {% csrf_token %}
-                {{ form|as_bootstrap }}
+                <fieldset class="form-controls">
+                    {{ form|as_bootstrap }}
+                </fieldset>
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
