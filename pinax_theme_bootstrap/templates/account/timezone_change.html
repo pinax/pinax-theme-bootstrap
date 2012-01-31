@@ -11,10 +11,12 @@
     <p>{% trans "This site can localize all times into your preferred timezone. Change your timezone below." %}</p>
     
     <form method="POST" action="">
-        {% csrf_token %}
-        {{ form|as_bootstrap }}
-        <fieldset class="form-actions">
-            <button type="submit" class="btn btn-primary">{% trans "Change my timezone" %}</button>
+        <fieldset>
+            {% csrf_token %}
+            {{ form|as_bootstrap }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">{% trans "Change my timezone" %}</button>
+            </div>
         </fieldset>
     </form>
 {% endblock %}

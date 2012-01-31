@@ -12,10 +12,12 @@
     <p>{% blocktrans %}Give us your email address and you'll be added to the waiting list{% endblocktrans %}</p>
     
     <form method="POST" action="{% url waitinglist_list_signup %}">
-        {% csrf_token %}
-        {{ form|as_bootstrap }}
-        <fieldset class="form-actions">
-            <input class="btn btn-primary" type="submit" value="Sign up" />
+        <fieldset>
+            {% csrf_token %}
+            {{ form|as_bootstrap }}
+            <div class="form-actions">
+                <input class="btn btn-primary" type="submit" value="Sign up" />
+            </div>
         </fieldset>
     </form>
 

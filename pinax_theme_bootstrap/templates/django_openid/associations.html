@@ -33,16 +33,18 @@
     <p>{% trans "To associate a new OpenID with this account, sign in with it here:" %}</p>
     
     <form action="{{ action_new }}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ associate_next }}">
-        <fieldset class="control-group">
-            <label class="control-label" for="openid_url">OpenID Identifier</label>
-            <div class="controls">
-                <input type="text" name="openid_url" value="" />
+        <fieldset>
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ associate_next }}">
+            <div class="control-group">
+                <label class="control-label" for="openid_url">OpenID Identifier</label>
+                <div class="controls">
+                    <input type="text" name="openid_url" value="" />
+                </div>
             </div>
-        </fieldset>
-        <fieldset class="form-actions">
-            <input class="btn btn-primary" type="submit" value="{% trans "Authenticate and associate with this account" %}" />
+            <div class="form-actions">
+                <input class="btn btn-primary" type="submit" value="{% trans "Authenticate and associate with this account" %}" />
+            </div>
         </fieldset>
     </form>
 {% endblock %}

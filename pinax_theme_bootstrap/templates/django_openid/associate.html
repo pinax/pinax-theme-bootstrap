@@ -10,14 +10,12 @@
 <p>You have begun to associate <strong>{{ specific_openid }}</strong> with your existing account.  This will allow you to sign in as <strong>{% user_display user %}</strong> using that OpenID.  Click below to verify that association.</p>
 
 <form id="openid-verify-association" action="{{ action }}" method="POST">
-    {% csrf_token %}
-    <input type="hidden" name="openid_token" value="{{ openid_token }}" />
-    {% if next %}
-        <input type="hidden" name="next" value="{{ next }}">
-    {% endif %}
-    <fieldset class="form-actions">
+        {% csrf_token %}
+        <input type="hidden" name="openid_token" value="{{ openid_token }}" />
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
         <input class="btn btn-primary" type="submit" value="Verify Association" />
         <a class="btn" href="/openid/associations/">Decline</a>
-    </fieldset>
 </form>
 {% endblock %}

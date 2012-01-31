@@ -12,13 +12,13 @@
     <h1>{% trans "Log In to OpenID" %}</h1>
     
     <form action="{% url openid-register %}" method="post">
-        {% csrf_token %}
         <fieldset>
+            {% csrf_token %}
             {{ form|as_bootstrap }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
+            </div>
         </fieldset>
-        <div class="actions">
-            <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
-        </div>
     </form>
     
     {% if request.user.is_authenticated %}

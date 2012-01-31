@@ -15,10 +15,12 @@
     <p>{% blocktrans %}Now that you have logged in with your OpenID, we need you to choose a username for this site.{% endblocktrans %}</p>
     
     <form method="post" action="">
-        {% csrf_token %}
-        {{ form|as_bootstrap }}
-        <fieldset class="form-actions">
-            <button type="submit" class="primary btn">{% trans "Sign up" %}</button>
+        <fieldset>
+            {% csrf_token %}
+            {{ form|as_bootstrap }}
+            <div class="form-actions">
+                <button type="submit" class="btn-primary btn">{% trans "Sign up" %}</button>
+            </div>
         </fieldset>
     </form>
     

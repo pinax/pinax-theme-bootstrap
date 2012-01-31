@@ -30,30 +30,32 @@
             {% endif %}
             
             <form method="POST" action="{% url acct_login %}" autocapitalize="off" class="form-horizontal">
-                {% csrf_token %}
-                <fieldset class="form-controls">
+                <fieldset>
+                    {% csrf_token %}
                     {{ form|as_bootstrap }}
-                </fieldset>
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <fieldset class="form-actions">
-                    <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
+                    </div>
                 </fieldset>
             </form>
             
             {% ifsetting ACCOUNT_USE_OPENID %}
             <form action="/openid/register/" method="POST" autocapitalize="off" class="form-horizontal">
-                <legend>{% trans "Or sign in with your OpenID" %}</legend>
-                {% csrf_token %}
-                <fieldset class="control-group">
-                    <label class="control-label" for="id_username">OpenID Identifier</label>
-                    <div class="controls">
-                        <input class="openid" type="text" name="openid_url" />
+                <fieldset>
+                    <legend>{% trans "Or sign in with your OpenID" %}</legend>
+                    {% csrf_token %}
+                    <div class="control-group">
+                        <label class="control-label" for="id_username">OpenID Identifier</label>
+                        <div class="controls">
+                            <input class="openid" type="text" name="openid_url" />
+                        </div>
                     </div>
-                </fieldset>
-                <fieldset class="form-actions">
-                    <input type="submit" value="{% trans "Log in" %}" class="btn btn-primary" />
+                    <div class="form-actions">
+                        <input type="submit" value="{% trans "Log in" %}" class="btn btn-primary" />
+                    </div>
                 </fieldset>
             </form>
             {% endifsetting %}
