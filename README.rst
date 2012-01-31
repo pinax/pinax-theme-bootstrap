@@ -3,6 +3,7 @@ Twitter Bootstrap Theme, for Pinax
 
 A theme for Pinax 0.9 based on Twitter's open source Bootstrap framework.
 
+
 Quick Start
 -----------
 
@@ -26,7 +27,6 @@ The url name "home" should be defined as the homepage.
 Forms
 -----
 
-
 This theme ships with a basic template tag for rendering forms that match
 the markup expected by Bootstrap.
 
@@ -36,13 +36,15 @@ To style forms, add the following to the top of your template ::
 
 and include your form using the following markup: ::
     
-    <form method="POST" action="">
-        {% csrf_token %}
-        <fieldset class="form-controls">
+    <form>
+        <fieldset>
+            <legend>My Form</legend>
+            {% csrf_token %}
             {{ form|as_bootstrap }}
-        </fieldset>
-        <fieldset class="form-actions">
-            <button type="submit" class="btn primary">Submit</button>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="reset" class="btn">Cancel</button>
+            </div>
         </fieldset>
     </form>
 
