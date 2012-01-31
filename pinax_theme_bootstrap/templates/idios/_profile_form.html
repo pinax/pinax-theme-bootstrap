@@ -4,7 +4,7 @@
     {% csrf_token %}
     {{ profile_form|as_bootstrap }}
     <fieldset class="form-actions">
-        <button type="submit" class="btn primary">Update</button>
+        <button type="submit" class="btn btn-primary">Update</button>
         <a href="{% url profile_detail profile.user.username %}" class="btn">Cancel</a>
     </fieldset>
 </form>
