@@ -43,7 +43,6 @@ and include your form using the following markup: ::
             {{ form|as_bootstrap }}
             <div class="form-actions">
               <button type="submit" class="btn btn-primary">Save changes</button>
-              <button type="reset" class="btn">Cancel</button>
             </div>
         </fieldset>
     </form>
