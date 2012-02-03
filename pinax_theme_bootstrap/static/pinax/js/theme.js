@@ -7,14 +7,6 @@ $(function() {
         var selector = "ul.nav li#tab_" + item;
         $(selector).addClass("active");
     });
-
-    // Make messages close when clicked
-    $(".alert").alert();
-
-    // Disabled future features
-    // $("a[rel=popover]").popover({offset:10});
-    // $("a.tip").twipsy({live:true});
-    // $(".alert-message").alert();
 });
 
 $(document).ajaxSend(function(event, xhr, settings) {
