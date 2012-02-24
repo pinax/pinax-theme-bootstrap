@@ -91,11 +91,13 @@
             e.preventDefault();
             $("body").append('<div id="modal" style="display: none;"></div>');
             $("#modal").append('<div id="modal-popup" class="modal"></div>');
+            $("#modal-popup").css("max-height", modal.settings.maxheight);
             modal.open();
         });
         return modal;
     }
     $.fn.modal.defaults = {
-        backdrop: false
+        backdrop: false,
+        maxheight: "500px"
     }
 })(jQuery)
