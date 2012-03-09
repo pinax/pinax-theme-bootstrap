@@ -134,7 +134,4 @@ setup(
         "Framework :: Django",
     ],
     zip_safe=False,
-    install_requires=[
-        "django-staticfiles==1.1.2",
-    ],
 )
