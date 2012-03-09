@@ -110,7 +110,17 @@ AUTHOR = "James Tauber"
 AUTHOR_EMAIL = "jtauber@jtauber.com"
 URL = "http://github.com/pinax/pinax-theme-bootstrap"
 VERSION = __import__(PACKAGE).__version__
+INSTALL_REQUIRES = []
 
+try:
+    import django
+except ImportError:
+    # Django was unable to be imported; assume user will take care of our
+    # dependencies too
+    pass
+else:
+    if django.VERSION < (1, 4, 0):
+        INSTALL_REQUIRES.append("django-staticfiles==1.1.2")
 
 setup(
     name=NAME,
@@ -134,4 +144,5 @@ setup(
         "Framework :: Django",
     ],
     zip_safe=False,
+    install_requires=INSTALL_REQUIRES,
 )
