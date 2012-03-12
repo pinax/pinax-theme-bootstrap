@@ -72,10 +72,6 @@
             </div>
         {% endblock %}
 
-        {% block extra_body_base %}
-            {% block extra_body %}{% endblock %}
-        {% endblock %}
-
         {% block script_base %}
             <script src="{% static "pinax/js/jquery-1.7.1.min.js" %}"></script>
             <script src="{% static "pinax/js/jquery.form.js" %}"></script>
@@ -93,6 +89,10 @@
             <script src="{% static "bootstrap/js/bootstrap-typeahead.js" %}"></script>
             <script src="{% static "pinax/js/theme.js" %}"></script>
             {% block extra_script %}{% endblock %}
+        {% endblock %}
+
+        {% block extra_body_base %}
+            {% block extra_body %}{% endblock %}
         {% endblock %}
     </body>
 </html>
