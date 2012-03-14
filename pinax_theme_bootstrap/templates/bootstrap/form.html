@@ -19,30 +19,55 @@
                     {{ field.label|safe }}
                 </label>
                 <div class="controls">
-                    <label class="checkbox">
+                    {% for choice in field.field.choices %}
+                        <label class="checkbox">
+                            <input {% if choice.0 in field.value %}checked="checked" {% endif %}type="checkbox" id="{{ field.attrs.id }}_{{ forloop.counter }}" name="{{ field.name }}" value="{{ choice.0 }}">
+                            {{ choice.1 }}
+                        </label>
+                    {% empty %}
                         {{ field }}
-                        {{ field.help_text|safe }}
-                        {% for error in field.errors %}
-                            <span class="help-inline">{{ error }}</span>
-                        {% endfor %}
-                    </label>
-                </div>
-            </div>
-        {% else %}
-            <div class="control-group {% if field.errors %}error{% endif %}">
-                <label class="control-label{% if field.field.required %} required-field{% endif %}" for="{{ field.auto_id }}">
-                    {{ field.label|safe }}
-                </label>
-                <div class="controls">
-                    {{ field }}
+                    {% endfor %}
+                    <p class="help-block">{{ field.help_text|safe }}</p>
                     {% for error in field.errors %}
                         <span class="help-inline">{{ error }}</span>
                     {% endfor %}
-                    {% if field.help_text %}
-                        <p class="help-block">{{ field.help_text|safe }}</p>
-                    {% endif %}
                 </div>
             </div>
+        {% else %}
+            {% if field|is_radio %}
+                <div class="control-group {% if field.errors %}error{% endif %}">
+                    <label class="control-label {% if field.field.required %}required-field{% endif %}" for="{{ field.auto_id }}">
+                        {{ field.label|safe }}
+                    </label>
+                    <div class="controls">
+                        {% for choice in field.field.choices %}
+                            <label class="radio">
+                                <input type="radio" id="{{ attrs.id }}_{{ forloop.counter }}" value="{{ choice.0 }}" name="{{ field.name }}"{% if required %} required{% endif %}{% if value == choice.0 %} checked{% endif %}>
+                                    {{ choice.1 }}
+                            </label>
+                        {% endfor %}
+                        <p class="help-block">{{ field.help_text|safe }}</p>
+                        {% for error in field.errors %}
+                            <span class="help-inline">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="control-group {% if field.errors %}error{% endif %}">
+                    <label class="control-label{% if field.field.required %} required-field{% endif %}" for="{{ field.auto_id }}">
+                        {{ field.label|safe }}
+                    </label>
+                    <div class="controls">
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <span class="help-inline">{{ error }}</span>
+                        {% endfor %}
+                        {% if field.help_text %}
+                            <p class="help-block">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
         {% endif %}
     {% endif %}
 {% endfor %}
