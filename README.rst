@@ -106,3 +106,17 @@ when upgrading existing sites:
 - Bootstrap 2 provides a responsive grid, which we've enabled by default.
 - Forms markup has changed slightly, see the example above.
 - Navigation bar markup now requires a class="nav" on the ul.
+
+
+License & Attribution
+---------------------
+
+The Pinax Bootstrap theme is released under the MIT license.
+
+This theme includes styles and scripts from the Twitter Bootstrap project,
+which is released under the Apache License, Version 2.0.
+
+For copies of both licenses, see LICENSE.
+
+Includes icons from `Glyphicons Free <http://glyphicons.com/>`_, licensed
+under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>`_.
