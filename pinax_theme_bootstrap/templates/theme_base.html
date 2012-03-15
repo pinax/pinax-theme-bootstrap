@@ -27,7 +27,7 @@
     <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
 
         {% block topbar_base %}
-            <div class="navbar navbar-fixed-top">
+            <div class="navbar {% block navbar_class %}navbar-fixed-top{% endblock %}">
                 <div class="navbar-inner">
                     <div class="container">
                         {% block topbar %}
