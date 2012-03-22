@@ -1,6 +1,10 @@
 {% load bootstrap_tags %}
 
-<form method="POST" action="{% url profile_edit %}">
+{% if profile_form.is_multipart %}
+    <form method="POST" enctype="multipart/form-data" action="{% url profile_edit %}">
+{% else %}
+    <form method="POST" action="{% url profile_edit %}">
+{% endif %}
     <fieldset>
         {% csrf_token %}
         {{ profile_form|as_bootstrap }}
