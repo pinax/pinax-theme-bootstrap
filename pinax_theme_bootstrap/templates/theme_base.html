@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -8,17 +9,24 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% endblock %}
 
+		{% block extra_head %}
+		{% endblock %}
+
         <!-- HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
+		{% compress css %}
         {% block style_base %}
             <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
             <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
             <link href="{% static "bootstrap/css/bootstrap-responsive.css" %}" rel="stylesheet">
             {% block extra_style %}{% endblock %}
         {% endblock %}
+		{% endcompress %}
+		
+		{% compress js %}
         {% block script_base %}
             <script src="{% static "pinax/js/jquery-1.7.1.min.js" %}"></script>
             <script src="{% static "pinax/js/jquery.form.js" %}"></script>
@@ -37,6 +45,8 @@
             <script src="{% static "pinax/js/pinax.modal.js" %}"></script>
             {% block extra_script %}{% endblock %}
         {% endblock %}
+		{% endcompress %}
+		
         {% block extra_head_base %}
             {% block extra_head %}{% endblock %}
         {% endblock %}
