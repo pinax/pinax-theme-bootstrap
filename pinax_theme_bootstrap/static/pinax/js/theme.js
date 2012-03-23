@@ -44,4 +44,14 @@ $(document).ajaxSend(function(event, xhr, settings) {
     if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
         xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
     }
+
+});
+
+$(function () {
+	//Activating login using openid buttons
+	$('#openidLogin a.openidLogo').live('click', function (e) {console.log('clicked');
+		$('#otherOpenidLogin input[name="openid_url"]').val($(this).attr('href'));
+		e.preventDefault();
+		$('#formOpenid').submit();
+	});
 });

@@ -43,19 +43,26 @@
             </form>
             
             {% ifsetting ACCOUNT_USE_OPENID %}
-            <form action="/openid/register/" method="POST" autocapitalize="off" class="form-horizontal">
+            <form action="/openid/register/" method="POST" autocapitalize="off" class="form-horizontal" id="formOpenid">
                 <fieldset>
                     <legend>{% trans "Or sign in with your OpenID" %}</legend>
                     {% csrf_token %}
 					<div style="padding-top:20px;"></div>
                     <div class="control-group">
-                        <label class="control-label" for="id_username">OpenID Identifier</label>
-                        <div class="controls">
-                            <input class="openid" type="text" name="openid_url" />
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <input type="submit" value="{% trans "Log in" %}" class="btn btn-primary" />
+						<div id="openidLogin">
+							<a class="openidLogo google" href="https://www.google.com/accounts/o8/id" title="Loging using Google account">&nbsp;</a>
+							<a class="openidLogo yahoo" href="http://yahoo.com/" title="Loging using Yahoo account">&nbsp;</a>
+						</div>
+						<div id="otherOpenidLogin">
+							<hr/>
+							<label class="control-label" for="id_username">Or Any Other OpenID Identifier</label>
+	                        <div class="controls">
+	                            <input class="openid" type="text" name="openid_url" />
+	                        </div>
+							<div class="form-actions">
+		                        <input type="submit" value="{% trans "Log in" %}" class="btn btn-primary" />
+		                    </div>
+						</div>
                     </div>
                 </fieldset>
             </form>
@@ -76,6 +83,7 @@
 <script>
     $(document).ready(function(){
        $("#id_username").focus();
+       $('#otherOpenidLogin input[name="openid_url"]').val('');
      });
 </script>
 {% endblock %}
