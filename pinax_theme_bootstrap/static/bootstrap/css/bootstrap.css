@@ -3988,3 +3988,44 @@ a.thumbnail:hover {
 .invisible {
   visibility: hidden;
 }
+
+#otherOpenidLogin {
+	float: left;
+	clear: both;
+	margin-top: 10px;
+	width: 90%;
+}
+#otherOpenidLogin .control-label {
+	width: 200px;
+}
+#otherOpenidLogin .controls {
+	margin-left: 210px;
+}
+.openidLogo {
+	width: 100px;
+	height: 60px;
+	border: 2px solid #DDD;
+	border-right: 2px solid #CCC;
+	border-bottom: 2px solid #CCC;
+	margin: 3px;
+	float: left;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: 2px 2px 4px #ddd;
+	-moz-box-shadow: 2px 2px 4px #ddd;
+	-webkit-box-shadow: 2px 2px 4px #ddd;
+	background-image: url("../img/login-openid-logos.png");
+	text-indent: -9999px;
+}
+.openidLogo:hover {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.openidLogo.google {
+	background-position: -1px -1px;
+}
+.openidLogo.yahoo {
+	background-position: -1px 61px;
+}
