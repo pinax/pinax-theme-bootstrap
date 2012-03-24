@@ -51,6 +51,7 @@ $(function () {
 	//Activating login using openid buttons
 	$('#openidLogin a.openidLogo').live('click', function (e) {console.log('clicked');
 		$('#otherOpenidLogin input[name="openid_url"]').val($(this).attr('href'));
+		$('#otherOpenidLogin').hide();
 		e.preventDefault();
 		$('#formOpenid').submit();
 	});
