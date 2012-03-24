@@ -18,7 +18,7 @@
  * ============================================================ */
 
 
-!function( $ ){
+(function( $ ){
 
   "use strict"
 
@@ -53,7 +53,7 @@
 
       isActive = $parent.hasClass('open')
 
-      clearMenus()
+      clearMenus();
       !isActive && $parent.toggleClass('open')
 
       return false
@@ -89,4 +89,4 @@
     $('body').on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
   })
 
-}( window.jQuery );
+})( window.jQuery );

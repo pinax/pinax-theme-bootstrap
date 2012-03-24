@@ -17,7 +17,7 @@
  * limitations under the License.
  * ========================================================== */
 
-!function( $ ) {
+(function( $ ) {
 
   $(function () {
 
@@ -48,4 +48,4 @@
 
   })
 
-}( window.jQuery );
+})( window.jQuery );

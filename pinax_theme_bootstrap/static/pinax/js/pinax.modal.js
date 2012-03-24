@@ -6,7 +6,7 @@
             $.extend(this.settings, options);
         }
         return this;
-    }
+    };
     Modal.prototype = {
         toggle: function () {
             return this[!this.is_open ? "open" : "close"]();
@@ -83,7 +83,7 @@
                 });
             }
         }
-    }
+    };
     $.fn.modal = function(options) {
         options = options || {}
         var modal = new Modal(this, options);
@@ -95,9 +95,9 @@
             modal.open();
         });
         return modal;
-    }
+    };
     $.fn.modal.defaults = {
         backdrop: false,
         maxheight: "500px"
-    }
-})(jQuery)
+    };
+})(jQuery);
