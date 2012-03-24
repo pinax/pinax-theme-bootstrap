@@ -48,6 +48,9 @@
                     <legend>{% trans "Or sign in with your OpenID" %}</legend>
                     {% csrf_token %}
 					<div style="padding-top:20px;"></div>
+					{% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
                     <div class="control-group">
 						<div id="openidLogin">
 							<a class="openidLogo google" href="https://www.google.com/accounts/o8/id" title="Loging using Google account">&nbsp;</a>
