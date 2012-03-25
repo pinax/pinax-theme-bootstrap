@@ -9,7 +9,21 @@
 
 {% block body %}
     
+	{% ifsetting ACCOUNT_USE_OPENID_ONLY %}
+    <h1>{% trans "Log In / Sign Up" %}</h1>
+	{% else %}
     <h1>{% trans "Log In" %}</h1>
+	{% endifsetting %}
+	
+	{% if redirect_field_value %}
+	<p>Before you can continue, you must login first.</p>
+	{% endif %}
+	
+	{% ifsetting ACCOUNT_USE_OPENID_ONLY %}
+	<p>{% trans "You can login or signup using one of the following providers." %}</p>
+	{% else %}
+	<p>{% trans "Login please." %}</p>
+	{% endifsetting %}
     
     <div class="row">
         <div class="span8">
@@ -48,6 +62,7 @@
             </form>
             {% endifsetting %}
             {% include "account/_openid_register.html" %}
+			
             {% if not user.is_authenticated %}
                 <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
             {% endif %}

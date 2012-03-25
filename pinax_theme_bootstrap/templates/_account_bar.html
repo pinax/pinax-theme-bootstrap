@@ -17,12 +17,14 @@
             </ul>
         </li>
     {% else %}
-        <li><a href="{% url acct_login %}">Log in</a></li>
-        {% ifsetting ACCOUNT_OPEN_SIGNUP %}
-		{% ifsetting not ACCOUNT_USE_OPENID_ONLY %}
-            <li class="navbar-text">or</li>
-            <li><a href="{% url acct_signup %}">Sign up</a></li>
-        {% endifsetting %}
+		{% ifsetting ACCOUNT_USE_OPENID_ONLY %}
+			<li><a href="{% url acct_login %}">Log in / Sign up</a></li>
+		{% else %}
+			<li><a href="{% url acct_login %}">Log in</a></li>
+	        {% ifsetting ACCOUNT_OPEN_SIGNUP %}
+	            <li class="navbar-text">or</li>
+	            <li><a href="{% url acct_signup %}">Sign up</a></li>
+	        {% endifsetting %}
 		{% endifsetting %}
     {% endif %}
 </ul>
