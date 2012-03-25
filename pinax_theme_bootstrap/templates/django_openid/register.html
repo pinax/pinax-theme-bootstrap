@@ -2,18 +2,27 @@
 
 {% load i18n %}
 {% load bootstrap_tags %}
+{% load ifsetting_tag %}
 
 {% block head_title %}{% trans "Choose a Username" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Choose a Username" %}</h1>
+	{% ifsetting not ACCOUNT_USE_OPENID_ONLY %}
+    	<h1>{% trans "Choose a Username" %}</h1>
+	{% else %}
+		<h1>{% trans "Enter your email" %}</h1>
+	{% endifsetting %}
     
     {% if form.errors %}
         <p class="error">{% trans "Please correct the errors below:" %}</p>
     {% endif %}
     
+	{% ifsetting not ACCOUNT_USE_OPENID_ONLY %}
     <p>{% blocktrans %}Now that you have logged in with your OpenID, we need you to choose a username for this site.{% endblocktrans %}</p>
-    
+	{% else %}
+	<p>{% blocktrans %}You are now signing up for a new account on this site.{% endblocktrans %}</p>
+    {% endifsetting %}
+
     <form method="post" action="">
         <fieldset>
             {% csrf_token %}

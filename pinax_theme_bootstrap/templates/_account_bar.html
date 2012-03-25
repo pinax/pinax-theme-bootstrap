@@ -1,9 +1,10 @@
 {% load ifsetting_tag %}
+{% load account_tags %}
 <ul class="nav pull-right">
     {% if user.is_authenticated %}
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                {{ user }}
+                {% user_display user %}
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
@@ -18,8 +19,10 @@
     {% else %}
         <li><a href="{% url acct_login %}">Log in</a></li>
         {% ifsetting ACCOUNT_OPEN_SIGNUP %}
+		{% ifsetting not ACCOUNT_USE_OPENID_ONLY %}
             <li class="navbar-text">or</li>
             <li><a href="{% url acct_signup %}">Sign up</a></li>
         {% endifsetting %}
+		{% endifsetting %}
     {% endif %}
 </ul>

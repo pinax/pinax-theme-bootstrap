@@ -3535,3 +3535,20 @@ a.thumbnail:hover {
 .openidLogo.yahoo {
 	background-position: -1px 61px;
 }
+input[type=text].openid {
+	background-image: url("../img/openid-icon.png");
+	padding-left: 20px;
+	background-position: 3px;
+	background-repeat: no-repeat;
+	width: 500px;
+	margin-left: 25px;
+}
+#otherOpenidLogin fieldset {
+	border: 1px solid #eee;
+	padding: 10px;
+}
+#otherOpenidLogin fieldset legend {
+	width: auto;
+	border-bottom: 0;
+}
+

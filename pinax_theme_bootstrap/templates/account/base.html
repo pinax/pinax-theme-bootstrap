@@ -12,6 +12,7 @@
         {% ifsetting ACCOUNT_USE_OPENID %}
             <li><a href="/openid/associations/">{% trans "OpenID Associations" %}</a></li>
         {% endifsetting %}
+		{% ifsetting not ACCOUNT_USE_OPENID_ONLY %}
         {% if user.password %}
         <li><a href="{% url acct_passwd %}">{% trans "Change Password" %}</a></li>
         {% else %}
@@ -20,6 +21,7 @@
         {% if user.password and request.openids %}
         <li><a href="{% url acct_passwd_delete %}">{% trans "Delete Password" %}</a></li>
         {% endif %}
+		{% endifsetting %}
         {% ifsetting USE_I18N %}
             <li><a href="{% url acct_language_change %}">{% trans "Language" %}</a></li>
         {% endifsetting %}

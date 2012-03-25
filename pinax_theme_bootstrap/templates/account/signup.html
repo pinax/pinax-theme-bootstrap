@@ -15,7 +15,7 @@
                 <p>{% trans "You are already logged in." %}</p>
             {% else %}
                 <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log in" %}</a>!</p>
-                
+                {% ifsetting not ACCOUNT_USE_OPENID_ONLY %}
                 <form id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off" class="form-horizontal">
                     <fieldset>
                         {% csrf_token %}
@@ -28,26 +28,8 @@
                         </div>
                     </fieldset>
                 </form>
-                
-                {% ifsetting ACCOUNT_USE_OPENID %}
-                <form action="/openid/register/" method="POST" autocapitalize="off" class="form-horizontal">
-                    <fieldset>
-                        <legend>{% trans "Or sign in with your OpenID" %}</legend>
-                        {% csrf_token %}
-						<div style="padding-top:20px;"></div>
-                        <div class="control-group">
-                            <label class="control-label" for="openid_url">OpenID Identifier</label>
-                            <div class="controls">
-                                <input class="openid" type="text" name="openid_url" />
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <input type="submit" value="{% trans "Log in" %}" class="btn btn-primary" />
-                        </div>
-                    </fieldset>
-                </form>
                 {% endifsetting %}
-                
+                {% include "account/_openid_register.html" %}
                 {% include "account/_terms.html" %}
                 
                 <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>

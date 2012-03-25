@@ -50,8 +50,8 @@ $(document).ajaxSend(function(event, xhr, settings) {
 $(function () {
 	//Activating login using openid buttons
 	$('#openidLogin a.openidLogo').live('click', function (e) {console.log('clicked');
-		$('#otherOpenidLogin input[name="openid_url"]').val($(this).attr('href'));
-		$('#otherOpenidLogin').hide();
+		$('#otherOpenidLogin input[name="openid_url"]').val($(this).attr('href')).attr('readonly', 'readonly');
+		$('#otherOpenidLogin input[type="submit"]').attr('disabled', 'disabled');
 		e.preventDefault();
 		$('#formOpenid').submit();
 	});
