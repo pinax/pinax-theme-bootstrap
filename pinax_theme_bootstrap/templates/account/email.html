@@ -55,8 +55,8 @@
             {% endfor %}
         </table>
     {% else %} {# no user.emailaddress_set.all #}
-        <div class="alert warning">
-            <p>{% trans "You should really add an email address so you can receive notifications, reset your password if you forget it, etc." %}</p>
+        <div class="alert alert-info">
+            {% trans "You should really add an email address so you can receive notifications, reset your password if you forget it, etc." %}
         </div>
     {% endif %}
     
