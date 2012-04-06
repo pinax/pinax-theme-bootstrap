@@ -26,3 +26,7 @@ def is_radio(value):
     if not isinstance(value, BoundField):
         return False
     return isinstance(value.field.widget, RadioSelect)
+
+@register.filter
+def css_class(field):
+    return field.field.widget.__class__.__name__.lower()
