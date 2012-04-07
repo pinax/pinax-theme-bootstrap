@@ -120,7 +120,7 @@ except ImportError:
     pass
 else:
     if django.VERSION < (1, 4, 0):
-        INSTALL_REQUIRES.append("django-staticfiles==1.1.2")
+        INSTALL_REQUIRES.append("django-staticfiles>=1.1.2")
 
 setup(
     name=NAME,
