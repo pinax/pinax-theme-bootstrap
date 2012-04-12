@@ -1,4 +1,5 @@
 {% load ifsetting_tag %}
+{% load i18n %}
 <ul class="nav pull-right">
     {% if user.is_authenticated %}
         <li class="dropdown">
@@ -7,19 +8,19 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="{% url acct_email %}"><i class="icon-user"></i> Account</a></li>
+                <li><a href="{% url acct_email %}"><i class="icon-user"></i> {% trans "Account" %}</a></li>
                 {% if user.is_staff %}
-                    <li><a href="{% url admin:index %}"><i class="icon-cog"></i> Admin</a></li>
+                    <li><a href="{% url admin:index %}"><i class="icon-cog"></i> {% trans "Site administration" %}</a></li>
                 {% endif %}
                 <li class="divider"></li>
-                <li><a href="{% url acct_logout %}"><i class="icon-off"></i> Log out</a></li>
+                <li><a href="{% url acct_logout %}"><i class="icon-off"></i> {% trans "Log out" %}</a></li>
             </ul>
         </li>
     {% else %}
-        <li><a href="{% url acct_login %}">Log in</a></li>
+        <li><a href="{% url acct_login %}">{% trans "Log in" %}</a></li>
         {% ifsetting ACCOUNT_OPEN_SIGNUP %}
-            <li class="navbar-text">or</li>
-            <li><a href="{% url acct_signup %}">Sign up</a></li>
+            <li class="navbar-text">{% trans "or" %}</li>
+            <li><a href="{% url acct_signup %}">{% trans "Sign up" %}</a></li>
         {% endifsetting %}
     {% endif %}
 </ul>
