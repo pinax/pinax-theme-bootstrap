@@ -94,6 +94,25 @@ your site_base.html using the following pattern: ::
     </ul>
 
 
+Responsive Grid
+---------------
+
+Bootstrap's responsive grid makes designing layouts that work well on every
+device a snap. We've included the the responsive stylesheet in this theme by
+default. If you'd like to remove this from your site, include the following
+two in your site_base.html: ::
+
+    {# unset the viewport, telling mobile devices to scale your site #}
+    {% block viewport %}{% endblock %}
+
+    {# include all default stylesheets except the responsive grid #}
+    {% block style_base %}
+        <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
+        <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+        {% block extra_style %}{% endblock %}
+    {% endblock %}
+
+
 Upgrading from Bootstrap 1.x
 ----------------------------
 
