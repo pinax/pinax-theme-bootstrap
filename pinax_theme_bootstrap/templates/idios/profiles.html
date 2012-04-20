@@ -7,7 +7,10 @@
 {% block head_title %}{% trans "All Profiles" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "All Profiles" %}</h1>
+    <header class="jumbotron subhead" id="overview">
+        <h1>{% trans "All Profiles" %}</h1>
+        <p class="lead">{% trans "All profiles on the site." %}</p>
+    </header>
     
     {% autopaginate profiles %}
     

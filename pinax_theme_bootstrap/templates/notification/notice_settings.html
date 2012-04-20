@@ -6,7 +6,10 @@
 {% block head_title %}{% trans "Notification Settings" %}{% endblock %}
 
 {% block body %}
-    <h2>{% trans "Settings" %}</h2>
+    <header class="jumbotron subhead" id="overview">
+        <h1>{% trans "Notification Settings" %}</h1>
+        <p class="lead">{% trans "Use this page to manage all of your notification settings." %}</p>
+    </header>
     
     <div class="notice_settings">
         {% url acct_email as email_url %}

@@ -2,10 +2,11 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Welcome" %}{% endblock %}
+{% block head_title %}{% trans "Waiting list" %}{% endblock %}
 
 {% block body %}
-
-<p>You have been added to the waiting list.</p>
-
+    <header class="jumbotron subhead" id="overview">
+        <h1>{% trans "Thanks for your interest" %}</h1>
+        <p class="lead">{% trans "You have been added to the waiting list." %}</p>
+    </header>
 {% endblock %}

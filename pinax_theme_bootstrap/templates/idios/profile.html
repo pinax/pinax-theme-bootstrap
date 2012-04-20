@@ -7,22 +7,13 @@
 
 {% block body %}
     {% user_display page_user as page_user_display %}
-    
-    <h1>{% blocktrans %}Profile for {{ page_user_display }}{% endblocktrans %}</h1>
+    <header class="jumbotron subhead" id="overview">
+        <h1>{{ page_user_display }}</h1>
+    </header>
     
     {% include "profiles/_profile_info.html" %}
     
     {% if is_me %}
-        <p><a id="edit-profile-box" href="{% url profile_edit %}" class="btn">Edit profile</a></p>
+        <p><a href="{% url profile_edit %}" class="btn">{% trans "Update my profile" %}</a></p>
     {% endif %}
-{% endblock %}
-
-{% block extra_body %}
-    <script>
-        $(function() {
-            $("#edit-profile-box").modal({
-                backdrop: true
-            });
-        });
-    </script>
 {% endblock %}

@@ -2,11 +2,19 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Verify your email address" %}{% endblock %}
+{% block head_title %}{% trans "Verification email sent" %}{% endblock %}
 
 {% block body %}
-    <h2>{% trans "Verify your email address" %}</h2>
+    <header class="jumbotron subhead" id="overview">
+        <h1>{% trans "Verification email sent" %}</h1>
+        <p class="lead">
+            {% blocktrans %}
+                We have sent you an email to <b>{{ email }}</b> for verification. Follow the link provided to finalize the signup process.
+            {% endblocktrans %}
+        </p>
+    </header>
     
-    <p>{% blocktrans %}We have sent you an email to <b>{{ email }}</b> for verification. Follow the link provided to finalize the signup process. If you do not receive it within a few minutes, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
-    <p><a href="{{ success_url }}">Go back</a></p>
+    <p>{% blocktrans %}If you do not receive it within a few minutes, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
+
+    <p><a href="{{ success_url }}">{% trans "Go back" %}</a></p>
 {% endblock %}

@@ -5,17 +5,20 @@
 {% block head_title %}{% trans "Incorrect Code" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Incorrect Code" %}</h1>
-    
-    {% if code %}
-    <p>{% blocktrans %}The code <b>{{ code }}</b> is incorrect.{% endblocktrans %}</p>
-    {% else %}
-    <p>{% blocktrans %}You must specify a code.{% endblocktrans %}</p>
-    {% endif %}
+    <header class="jumbotron subhead" id="overview">
+        <h1>{% trans "Incorrect Code" %}</h1>
+        <p class="lead">
+            {% if code %}
+                {% blocktrans %}The code <b>{{ code }}</b> is incorrect.{% endblocktrans %}
+            {% else %}
+                {% blocktrans %}You must specify a code.{% endblocktrans %}
+            {% endif %}
+        </p>
+    </header>
     
     <p>{% trans "Try again:" %}</p>
     
-    <form action="">
+    <form action="" class="form-inline">
         <input type="text" name="code" />
         <input class="btn btn-primary" type="submit" value="Submit" />
     </form>

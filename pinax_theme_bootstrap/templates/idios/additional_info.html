@@ -1,12 +1,15 @@
 {% extends "site_base.html" %}
 
+{% load i18n %}
 {% load bootstrap_tags %}
 
 {% block head_title %}Additional Info{% endblock %}
 
 {% block body %}
-    <h1>Additional Info</h1>
-    <p>Please fill out the following form so we know a little about you.</p>
+    <header class="jumbotron subhead" id="overview">
+        <h1>{% trans "Additional Info" %}</h1>
+        <p class="lead">{% blocktrans %}Please fill out the following form so we know a little about you.{% endblocktrans %}</p>
+    </header>
     
     <form method="POST" action="">
         <fieldset>

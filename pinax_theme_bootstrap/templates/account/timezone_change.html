@@ -6,17 +6,16 @@
 {% block head_title %}{% trans "Timezone" %}{% endblock %}
 
 {% block body %}
-    <h2>{% trans "Timezone" %}</h2>
-    
-    <p>{% trans "This site can localize all times into your preferred timezone. Change your timezone below." %}</p>
+    <header class="jumbotron subhead" id="overview">
+        <h1>{% trans "Timezone settings" %}</h1>
+        <p class="lead">{% trans "This site can localize all times into your preferred timezone. Change your timezone below." %}</p>
+    </header>
     
     <form method="POST" action="">
-        <fieldset>
-            {% csrf_token %}
-            {{ form|as_bootstrap }}
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">{% trans "Change my timezone" %}</button>
-            </div>
-        </fieldset>
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{% trans "Change my timezone" %}</button>
+        </div>
     </form>
 {% endblock %}

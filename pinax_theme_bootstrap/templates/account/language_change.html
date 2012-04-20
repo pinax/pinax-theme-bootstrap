@@ -6,9 +6,10 @@
 {% block head_title %}{% trans "Language" %}{% endblock %}
 
 {% block body %}
-    <h2>{% trans "Language" %}</h2>
-    
-    <p>{% trans "This site can be used in your preferred language." %}</p>
+    <header class="jumbotron subhead" id="overview">
+        <h1>{% trans "Language Settings" %}</h1>
+        <p class="lead">{% trans "This site can be used in your preferred language." %}</p>
+    </header>
     
     <form method="POST" action="">
         <fieldset>
