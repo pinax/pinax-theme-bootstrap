@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load bootstrap_tags %}
 
 {% if profile_form.is_multipart %}
@@ -5,12 +6,10 @@
 {% else %}
     <form method="POST" action="{% url profile_edit %}">
 {% endif %}
-    <fieldset>
-        {% csrf_token %}
-        {{ profile_form|as_bootstrap }}
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{% url profile_detail profile.user.username %}" class="btn">Cancel</a>
-        </div>
-    </fieldset>
+    {% csrf_token %}
+    {{ profile_form|as_bootstrap }}
+    <div class="form-actions">
+        <a href="{% url profile_detail profile.user.username %}" class="btn">{% trans "Cancel" %}</a>
+        <button type="submit" class="btn btn-primary">{% trans "Update" %}</button>
+    </div>
 </form>

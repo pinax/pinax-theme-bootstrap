@@ -12,12 +12,10 @@
     </header>
     
     <form method="POST" action="">
-        <fieldset>
-            {% csrf_token %}
-            {{ form|as_bootstrap }}
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">{% trans "Change my language" %}</button>
-            </div>
-        </fieldset>
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{% trans "Change my language" %}</button>
+        </div>
     </form>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load bootstrap_tags %}
 
-{% block head_title %}Additional Info{% endblock %}
+{% block head_title %}{% trans "Additional Info" %}{% endblock %}
 
 {% block body %}
     <header class="jumbotron subhead" id="overview">
@@ -12,12 +12,10 @@
     </header>
     
     <form method="POST" action="">
-        <fieldset>
-            {% csrf_token %}
-            {{ form|as_bootstrap }}
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </fieldset>
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+        </div>
     </form>
 {% endblock %}

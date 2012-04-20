@@ -1,20 +1,19 @@
 {% load bootstrap_tags %}
 {% load i18n %}
 
-<div class="modal-header">
-    <h3>{% trans "Edit Profile" %}</h3>
-    <a href="#" class="close modal-close">&times;</a>
-</div>
-
-<form class="ajax" method="POST" action="{% url profile_edit %}">
-    {% csrf_token %}
+<form class="ajax modal-form" method="POST" action="{% url profile_edit %}">
+    <div class="modal-header">
+        <h3>{% trans "Edit Profile" %}</h3>
+        <a href="#" class="close modal-close">&times;</a>
+    </div>
     
     <div class="modal-body">
+        {% csrf_token %}
         {{ profile_form|as_bootstrap }}
     </div>
     
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="#" class="btn modal-close">Cancel</a>
+        <a href="#" class="btn modal-close">{% trans "Cancel" %}</a>
+        <button type="submit" class="btn btn-primary">{% trans "Update" %}</button>
     </div>
 </form>

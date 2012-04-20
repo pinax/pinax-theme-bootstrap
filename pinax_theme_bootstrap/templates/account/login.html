@@ -32,16 +32,15 @@
             {% endif %}
             
             <form method="POST" action="{% url acct_login %}" autocapitalize="off" class="form-horizontal">
-                <fieldset>
-                    {% csrf_token %}
-                    {{ form|as_bootstrap }}
-                    {% if redirect_field_value %}
-                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                    {% endif %}
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
-                    </div>
-                </fieldset>
+                <legend>{% trans "Log in with an existing account" %}</legend>
+                {% csrf_token %}
+                {{ form|as_bootstrap }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
+                </div>
             </form>
             
             {% ifsetting ACCOUNT_USE_OPENID %}
@@ -50,7 +49,7 @@
                     <legend>{% trans "Or sign in with your OpenID" %}</legend>
                     {% csrf_token %}
                     <div class="control-group">
-                        <label class="control-label" for="id_username">OpenID Identifier</label>
+                        <label class="control-label" for="id_username">{% trans "OpenID Identifier" %}</label>
                         <div class="controls">
                             <input class="openid" type="text" name="openid_url" />
                         </div>
