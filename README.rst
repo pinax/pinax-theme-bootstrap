@@ -42,17 +42,16 @@ To style forms, add the following to the top of your template ::
     
     {% load bootstrap_tags %}
 
-and include your form using the following markup: ::
+and include your form using something like the following markup: ::
     
     <form>
-        <fieldset>
-            <legend>My Form</legend>
-            {% csrf_token %}
-            {{ form|as_bootstrap }}
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-        </fieldset>
+        <legend>My Form</legend>
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <div class="form-actions">
+          <a href="#back" class="btn">Go back</a>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
     </form>
 
 Bootstrap includes styles for four types of forms. To change the display of
