@@ -2,27 +2,28 @@
 
 {% load i18n %}
 {% load ifsetting_tag %}
+{% load url from future %}
 
 {% block body_class %}account{% endblock %}
 
 {% block subnav %}
     <ul class="nav nav-list">
         <li class="nav-header">{% trans "Account" %}</li>
-        <li><a href="{% url acct_email %}">{% trans "Email Addresses" %}</a></li>
+        <li><a href="{% url "acct_email" %}">{% trans "Email Addresses" %}</a></li>
         {% ifsetting ACCOUNT_USE_OPENID %}
             <li><a href="/openid/associations/">{% trans "OpenID Associations" %}</a></li>
         {% endifsetting %}
         {% if user.password %}
-        <li><a href="{% url acct_passwd %}">{% trans "Change Password" %}</a></li>
+        <li><a href="{% url "acct_passwd" %}">{% trans "Change Password" %}</a></li>
         {% else %}
-        <li><a href="{% url acct_passwd_set %}">{% trans "Set Password" %}</a></li>
+        <li><a href="{% url "acct_passwd_set" %}">{% trans "Set Password" %}</a></li>
         {% endif %}
         {% if user.password and request.openids %}
-        <li><a href="{% url acct_passwd_delete %}">{% trans "Delete Password" %}</a></li>
+        <li><a href="{% url "acct_passwd_delete" %}">{% trans "Delete Password" %}</a></li>
         {% endif %}
         {% ifsetting USE_I18N %}
-            <li><a href="{% url acct_language_change %}">{% trans "Language" %}</a></li>
+            <li><a href="{% url "acct_language_change" %}">{% trans "Language" %}</a></li>
         {% endifsetting %}
-        <li><a href="{% url acct_timezone_change %}">{% trans "Timezone" %}</a></li>
+        <li><a href="{% url "acct_timezone_change" %}">{% trans "Timezone" %}</a></li>
     </ul>
 {% endblock %}
