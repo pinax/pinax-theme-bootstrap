@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load bootstrap_tags %}
+{% load url from future %}
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
 
@@ -11,7 +12,7 @@
         <p class="lead">{% blocktrans %}Give us your email address and you'll be added to the waiting list{% endblocktrans %}</p>
     </header>
     
-    <form method="POST" action="{% url waitinglist_list_signup %}">
+    <form method="POST" action="{% url "waitinglist_list_signup" %}">
         {% csrf_token %}
         {{ form|as_bootstrap }}
         <div class="form-actions">

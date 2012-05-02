@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load bootstrap_tags %}
 {% load ifsetting_tag %}
+{% load url from future %}
 
 {% block head_title %}{% trans "Sign Up" %}{% endblock %}
 
@@ -17,11 +18,11 @@
             {% if user.is_authenticated %}
                 <p>{% trans "You are already logged in." %}</p>
             {% else %}
-                <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log in" %}</a>!</p>
+                <p>{% trans "Already have an account?" %} <a href="{% url "acct_login" %}">{% trans "Log in" %}</a>!</p>
                 {% if form.is_multipart %}
-                    <form id="signup_form" method="post" action="{% url acct_signup %}" enctype="multipart/form-data" autocapitalize="off" class="form-horizontal">
+                    <form id="signup_form" method="post" action="{% url "acct_signup" %}" enctype="multipart/form-data" autocapitalize="off" class="form-horizontal">
                 {% else %}
-                    <form id="signup_form" method="post" action="{% url acct_signup %}" autocapitalize="off" class="form-horizontal">
+                    <form id="signup_form" method="post" action="{% url "acct_signup" %}" autocapitalize="off" class="form-horizontal">
                 {% endif %}
                     {% csrf_token %}
                     {{ form|as_bootstrap }}

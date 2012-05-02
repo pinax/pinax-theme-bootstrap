@@ -4,6 +4,7 @@
 {% load bootstrap_tags %}
 {% load ifsetting_tag %}
 {% load account_tags %}
+{% load url from future %}
 
 {% block head_title %}{% trans "Log In" %}{% endblock %}
 
@@ -23,15 +24,15 @@
                 </div>
             {% else %}
                 {% ifsetting ACCOUNT_OPEN_SIGNUP %}
-                {% url acct_signup as signup_url %}
+                {% url "acct_signup" as signup_url %}
                 <p>{% blocktrans %}Don't have an account? <a href="{{ signup_url }}">Sign up</a>!{% endblocktrans %}</p>
                 {% endifsetting %}
                 <p>
-                    <a href="{% url acct_passwd_reset %}">{% trans "Forgot password?" %}</a>
+                    <a href="{% url "acct_passwd_reset" %}">{% trans "Forgot password?" %}</a>
                 </p>
             {% endif %}
             
-            <form method="POST" action="{% url acct_login %}" autocapitalize="off" class="form-horizontal">
+            <form method="POST" action="{% url "acct_login" %}" autocapitalize="off" class="form-horizontal">
                 <legend>{% trans "Log in with an existing account" %}</legend>
                 {% csrf_token %}
                 {{ form|as_bootstrap }}

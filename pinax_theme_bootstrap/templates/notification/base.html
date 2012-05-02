@@ -1,9 +1,10 @@
 {% extends "subnav_base.html" %}
 
 {% load i18n %}
+{% load url from future %}
 
 {% block extra_head %}
-    <link rel="alternate" type="application/atom+xml" title="Notices Feed" href="{% url notification_feed_for_user %}" />
+    <link rel="alternate" type="application/atom+xml" title="Notices Feed" href="{% url "notification_feed_for_user" %}" />
 {% endblock %}
 
 {% block body_class %}notices{% endblock %}
@@ -11,7 +12,7 @@
 {% block subnav %}
     <ul class="nav nav-list">
         <li class="nav-header">{% trans "Notices" %}</li>
-        <li><a href="{% url notification_notices %}">{% trans "Notices" %}</a></li>
-        <li><a href="{% url notification_notice_settings %}">{% trans "Settings" %}</a></li>
+        <li><a href="{% url "notification_notices" %}">{% trans "Notices" %}</a></li>
+        <li><a href="{% url "notification_notice_settings" %}">{% trans "Settings" %}</a></li>
     </ul>
 {% endblock %}
