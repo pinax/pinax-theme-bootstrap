@@ -15,7 +15,7 @@ app directories.
 
 Site name comes from Sites fixture.
 
-Your "site_base.html" should extend "theme_base.html" and should provide
+Your "site_base.html" should extend "theme_bootstrap/base.html" and should provide
 "footer" and "nav" blocks (the latter should just be a ul of li of a links).
 
 Your pages should have blocks "head_title" and "body" and should extend
