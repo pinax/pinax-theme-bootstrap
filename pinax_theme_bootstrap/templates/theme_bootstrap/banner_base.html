@@ -1,0 +1,40 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block body_base %}
+    <div class="container">
+        {% include "_messages.html" %}
+        <div class="hero-unit well">
+        {% block banner %}
+            <h1>Hello, world!</h1>
+            <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+            <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        {% endblock %}
+        </div>
+        
+        <div class="row">
+            <div class="span4">
+            {% block column-1 %}
+                <h2>Heading</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit faucibus tincidunt. Phasellus fermentum elit ut erat varius cursus. Nunc posuere mauris sit amet enim congue quis elementum lectus tincidunt. Cras vel tempus metus.</p>
+                <p><a class="btn" href="#">View details &raquo;</a></p>
+            {% endblock %}
+            </div>
+            <div class="span4">
+            {% block column-2 %}
+                <h2>Heading</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit faucibus tincidunt. Phasellus fermentum elit ut erat varius cursus. Nunc posuere mauris sit amet enim congue quis elementum lectus tincidunt. Cras vel tempus metus.</p>
+                <p><a class="btn" href="#">View details &raquo;</a></p>
+            {% endblock %}
+            </div>
+            <div class="span4">
+            {% block column-3 %}
+                <h2>Heading</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit faucibus tincidunt. Phasellus fermentum elit ut erat varius cursus. Nunc posuere mauris sit amet enim congue quis elementum lectus tincidunt. Cras vel tempus metus.</p>
+                <p><a class="btn" href="#">View details &raquo;</a></p>
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

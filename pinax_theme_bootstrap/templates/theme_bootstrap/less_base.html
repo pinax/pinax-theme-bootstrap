@@ -1,0 +1,15 @@
+{% extends "theme_bootstrap/base.html" %}
+
+{% load staticfiles %}
+
+{% block style_base %}
+    <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap/less/bootstrap.less" %}" rel="stylesheet/less" type="text/css">
+    <link href="{% static "bootstrap/less/responsive.less" %}" rel="stylesheet/less" type="text/css">
+    {% block extra_style %}{% endblock %}
+{% endblock %}
+
+{% block script_base %}
+    <script src="{% static "pinax/js/less-1.3.0.min.js" %}" type="text/javascript"></script>
+    {{ block.super }}
+{% endblock %}
