@@ -7,8 +7,9 @@ A theme for Pinax 0.9 based on Twitter's open source Bootstrap framework.
 Quick Start
 -----------
 
-Include "pinax-theme-bootstrap" in your requirements file and
-"pinax_theme_bootstrap" in your INSTALLED APPS.
+Include "pinax-theme-bootstrap" in your requirements file and include
+"pinax_theme_bootstrap" and "django_forms_bootstrap" (which is installed alongside
+this theme) in your INSTALLED APPS.
 
 Make sure both template loaders and staticfiles finders includes
 app directories.
@@ -24,6 +25,20 @@ Your pages should have blocks "head_title" and "body" and should extend
 The url name "home" should be defined as the homepage.
 
 
+Upgrade Notes
+-------------
+
+- Base templates: To enable multiple themes to be used within a single site, base
+templates are now located under the "theme_bootstrap" folder. We will continue to
+provide base templates at the root path for backward compatibility, but these will
+likely be removed in a future version and you should update your site_base.html to
+extend from "theme_bootstrap/base.html".
+
+- Forms Rendering: Versions prior to 2.0.3 included template tags for forms rendering.
+This has now been moved out to a new app, django-forms-bootstrap. You'll need to add
+this app to your `INSTALLED_APPS` as "django_forms_bootstrap".
+
+
 Requirements
 ------------
 
@@ -35,8 +50,10 @@ version of django-staticfiles as we use the `{% render %}` template tag.
 Forms
 -----
 
-This theme ships with a basic template tag for rendering forms that match
-the markup expected by Bootstrap.
+This theme makes use of django-forms-bootstrap for simple forms support.
+Make sure you have the latest version of django-forms-bootstrap installed
+in your virtualenv (if you install this theme with pip it will be installed
+automatically) and add "django_forms_bootstrap" to your `INSTALLED_APPS`.
 
 To style forms, add the following to the top of your template ::
     
