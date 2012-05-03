@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load url from future %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -36,7 +37,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </a>
-                            {% block site_brand %}<a class="brand" href="{% url home %}">{{ SITE_NAME }}</a>{% endblock %}
+                            {% block site_brand %}<a class="brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
                             <div class="nav-collapse">
                                 {% block nav %}
                                     {% comment %}

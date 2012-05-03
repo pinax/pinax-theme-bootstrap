@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load bootstrap_tags %}
+{% load url from future %}
 
 {% block head_title %}{% trans "Notification Settings" %}{% endblock %}
 
@@ -12,7 +13,7 @@
     </header>
     
     <div class="notice_settings">
-        {% url acct_email as email_url %}
+        {% url "acct_email" as email_url %}
         {% if user.email %}
             <p>
                 {% trans "Primary email" %}:<br />

@@ -4,6 +4,7 @@
 {% load bootstrap_tags %}
 {% load ifsetting_tag %}
 {% load account_tags %}
+{% load url from future %}
 
 {% block head_title %}{% trans "Login" %}{% endblock %}
 
@@ -11,7 +12,7 @@
     
     <h1>{% trans "Log In to OpenID" %}</h1>
     
-    <form action="{% url openid-register %}" method="post">
+    <form action="{% url "openid-register" %}" method="post">
         <fieldset>
             {% csrf_token %}
             {{ form|as_bootstrap }}
@@ -22,7 +23,7 @@
     </form>
     
     {% if request.user.is_authenticated %}
-        <div><a href="{% url acct_logout %}?next={{ request.path }}">Log out</a></div>
+        <div><a href="{% url "acct_logout" %}?next={{ request.path }}">Log out</a></div>
     {% endif %}
     
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>

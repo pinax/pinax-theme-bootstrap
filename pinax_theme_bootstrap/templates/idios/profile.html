@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load account_tags %}
+{% load url from future %}
 
 {% block head_title %}{% user_display page_user as page_user_display %}{% blocktrans %}Profile for {{ page_user_display }}{% endblocktrans %}{% endblock %}
 
@@ -14,6 +15,6 @@
     {% include "profiles/_profile_info.html" %}
     
     {% if is_me %}
-        <p><a href="{% url profile_edit %}" class="btn">{% trans "Update my profile" %}</a></p>
+        <p><a href="{% url "profile_edit" %}" class="btn">{% trans "Update my profile" %}</a></p>
     {% endif %}
 {% endblock %}
