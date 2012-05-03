@@ -110,7 +110,9 @@ AUTHOR = "James Tauber"
 AUTHOR_EMAIL = "jtauber@jtauber.com"
 URL = "http://github.com/pinax/pinax-theme-bootstrap"
 VERSION = __import__(PACKAGE).__version__
-INSTALL_REQUIRES = []
+INSTALL_REQUIRES = [
+    "django-forms-bootstrap>=2.0.3",
+]
 
 try:
     import django
