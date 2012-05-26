@@ -29,14 +29,14 @@ Upgrade Notes
 -------------
 
 - Base templates: To enable multiple themes to be used within a single site, base
-templates are now located under the "theme_bootstrap" folder. We will continue to
-provide base templates at the root path for backward compatibility, but these will
-likely be removed in a future version and you should update your site_base.html to
-extend from "theme_bootstrap/base.html".
+  templates are now located under the "theme_bootstrap" folder. We will continue to
+  provide base templates at the root path for backward compatibility, but these will
+  likely be removed in a future version and you should update your site_base.html to
+  extend from "theme_bootstrap/base.html".
 
 - Forms Rendering: Versions prior to 2.0.3 included template tags for forms rendering.
-This has now been moved out to a new app, django-forms-bootstrap. You'll need to add
-this app to your `INSTALLED_APPS` as "django_forms_bootstrap".
+  This has now been moved out to a new app, django-forms-bootstrap. You'll need to add
+  this app to your `INSTALLED_APPS` as "django_forms_bootstrap".
 
 
 Requirements
