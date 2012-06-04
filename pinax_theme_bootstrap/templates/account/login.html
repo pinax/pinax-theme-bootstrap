@@ -33,7 +33,6 @@
             {% endif %}
             
             <form method="POST" action="{% url "acct_login" %}" autocapitalize="off" class="form-horizontal">
-                <legend>{% trans "Log in with an existing account" %}</legend>
                 {% csrf_token %}
                 {{ form|as_bootstrap }}
                 {% if redirect_field_value %}
