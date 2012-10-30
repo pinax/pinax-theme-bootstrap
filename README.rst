@@ -28,6 +28,13 @@ The url name "home" should be defined as the homepage.
 Upgrade Notes
 -------------
 
+- With newer versions of Bootstrap a light status bar is now default. If you'd like
+  to use the darker navbar, simply override the `navbar_class` block in your
+  site_base.html to something like the following (note we include the `fixed-top`
+  class in this block by default, but it's also optional): ::
+
+    {% block navbar_class %}navbar-inverse navbar-fixed-top{% endblock %}
+
 - Base templates: To enable multiple themes to be used within a single site, base
   templates are now located under the "theme_bootstrap" folder. We will continue to
   provide base templates at the root path for backward compatibility, but these will
