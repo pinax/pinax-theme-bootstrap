@@ -137,17 +137,6 @@ two in your site_base.html: ::
     {% endblock %}
 
 
-Upgrading from Bootstrap 1.x
-----------------------------
-
-Previous versions of this theme were based off of Bootstrap 1.x.
-The following is a list of changes that you need to be aware of
-when upgrading existing sites:
-
-- The default grid has changed from 16 columns to 12 columns.
-- Bootstrap 2 provides a responsive grid, which we've enabled by default.
-- Forms markup has changed slightly, see the example above.
-- Navigation bar markup now requires a class="nav" on the ul.
 
 
 License & Attribution
