@@ -140,11 +140,11 @@ two in your site_base.html: ::
 Roadmap
 -------
 
-The 2.2.x line of `pinax-theme-bootstrap` will be the last to support Pinax
-0.9 projects. We will soon release a 3.x line that will break backwards
-compatibility but fully support Pinax 1.0 projects. This will break our
-versioning strategy of indicating which version of Bootstrap media is included,
-so we'll indicate that in the release notes in the future.
+The 2.x line of `pinax-theme-bootstrap` with support for Pinax 0.9 will soon
+be phased out of major updates. We will be releasing a 3.x line that will
+break backwards compatibility but fully support Pinax 1.0 projects. This
+is a change towards a more semantic versioning strategy in lieu of merely
+indicating which version of Bootstrap media is included.
 
 
 License & Attribution
