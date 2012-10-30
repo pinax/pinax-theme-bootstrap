@@ -137,6 +137,14 @@ two in your site_base.html: ::
     {% endblock %}
 
 
+Roadmap
+-------
+
+The 2.2.x line of `pinax-theme-bootstrap` will be the last to support Pinax
+0.9 projects. We will soon release a 3.x line that will break backwards
+compatibility but fully support Pinax 1.0 projects. This will break our
+versioning strategy of indicating which version of Bootstrap media is included,
+so we'll indicate that in the release notes in the future.
 
 
 License & Attribution
