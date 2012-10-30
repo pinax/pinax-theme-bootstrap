@@ -62,16 +62,12 @@
                 {% include "_messages.html" %}
                 {% block body %}
                 {% endblock %}
-            </div>
-        {% endblock %}
-
-        {% block footer_base %}
-            <div id="footer">
-                <div class="inner">
-                    <div class="container">
+                {% block footer_base %}
+                    <hr />
+                    <footer>
                         {% block footer %}{% endblock %}
-                    </div>
-                </div>
+                    </footer>
+                {% endblock %}
             </div>
         {% endblock %}
 
