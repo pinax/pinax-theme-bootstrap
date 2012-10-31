@@ -136,6 +136,12 @@ two in your site_base.html: ::
         {% block extra_style %}{% endblock %}
     {% endblock %}
 
+Pagination
+----------
+
+This theme supports both ``django-pagination`` and Django builtin pagination.
+See PaginationTemplate_ for information how to switch between them.
+
 
 Roadmap
 -------
@@ -159,3 +165,6 @@ For copies of both licenses, see LICENSE.
 
 Includes icons from `Glyphicons Free <http://glyphicons.com/>`_, licensed
 under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>`_.
+
+
+.. _PaginationTemplate: https://github.com/pinax/pinax-theme-bootstrap/blob/master/pinax_theme_bootstrap/templates/pagination/pagination.html
