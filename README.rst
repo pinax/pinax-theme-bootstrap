@@ -139,7 +139,7 @@ two in your site_base.html: ::
 Pagination
 ----------
 
-This theme supports both ``django-pagination`` and Django builtin pagination.
+This theme supports both django-pagination_ and Django builtin pagination.
 See PaginationTemplate_ for information how to switch between them.
 
 
@@ -168,3 +168,4 @@ under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>`_.
 
 
 .. _PaginationTemplate: https://github.com/pinax/pinax-theme-bootstrap/blob/master/pinax_theme_bootstrap/templates/pagination/pagination.html
+.. _django-pagination: https://github.com/ericflo/django-pagination
