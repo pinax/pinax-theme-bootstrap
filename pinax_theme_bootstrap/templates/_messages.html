@@ -1,6 +1,6 @@
 {% for message in messages %}
     <div class="alert fade in {% if message.tags %} alert-{{ message.tags }}{% endif %}">
-        <a class="close" href="#" data-dismiss="alert">&times;</a>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         {{ message }}
     </div>
 {% endfor %}
