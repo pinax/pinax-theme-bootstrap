@@ -1,12 +1,23 @@
 {% extends "site_base.html" %}
 
+{% load url from future %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Logged Out" %}{% endblock %}
+{% block head_title %}{% trans "Log out" %}{% endblock %}
 
 {% block body %}
-    <header class="jumbotron subhead" id="overview">
-        <h1>{% trans "Logged Out" %}</h1>
-        <p class="lead">{% trans "You've been logged out. Come back soon." %}</p>
-    </header>
+    <div class="row">
+        <div class="span12">
+            <form method="POST" action="{% url "account_logout" %}" class="form-horizontal">
+                <legend>{% trans "Log out" %}</legend>
+                <fieldset>
+                    {% csrf_token %}
+                    <p>{% trans "Are you sure you want to log out?" %}</p>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">{% trans "Log out" %}</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 {% endblock %}

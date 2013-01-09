@@ -1,0 +1,4 @@
+{% load i18n account_tags %}{% user_display user as username %}{% blocktrans with site_name=current_site.name user_name=username %}User '{{ user_name }}' at {{ site_name }} has given this as an email address.
+
+To confirm this is correct, go to {{ activate_url }}
+{% endblocktrans %}

@@ -1,29 +1,17 @@
 {% extends "site_base.html" %}
 
+{% load url from future %}
 {% load i18n %}
 {% load bootstrap_tags %}
-{% load ifsetting_tag %}
-{% load url from future %}
 
-{% block head_title %}{% trans "Sign Up" %}{% endblock %}
+{% block head_title %}{% trans "Sign up" %}{% endblock %}
 
 {% block body %}
-    <header class="jumbotron subhead" id="overview">
-        <h1>{% trans "Sign Up" %}</h1>
-        <p class="lead">{% trans "To sign up with a new account, use the form below." %}</p>
-    </header>
-    
     <div class="row">
         <div class="span8">
-            {% if user.is_authenticated %}
-                <p>{% trans "You are already logged in." %}</p>
-            {% else %}
-                <p>{% trans "Already have an account?" %} <a href="{% url "acct_login" %}">{% trans "Log in" %}</a>!</p>
-                {% if form.is_multipart %}
-                    <form id="signup_form" method="post" action="{% url "acct_signup" %}" enctype="multipart/form-data" autocapitalize="off" class="form-horizontal">
-                {% else %}
-                    <form id="signup_form" method="post" action="{% url "acct_signup" %}" autocapitalize="off" class="form-horizontal">
-                {% endif %}
+            <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" class="form-horizontal"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                <legend>{% trans "Sign up" %}</legend>
+                <fieldset>
                     {% csrf_token %}
                     {{ form|as_bootstrap }}
                     {% if redirect_field_value %}
@@ -32,39 +20,11 @@
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
                     </div>
-                </form>
-                
-                {% ifsetting ACCOUNT_USE_OPENID %}
-                <form action="/openid/register/" method="POST" autocapitalize="off" class="form-horizontal">
-                    <legend>{% trans "Or sign in with your OpenID" %}</legend>
-                    {% csrf_token %}
-                    <div class="control-group">
-                        <label class="control-label" for="openid_url">{% trans "OpenID Identifier" %}</label>
-                        <div class="controls">
-                            <input class="openid" type="text" name="openid_url" />
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <input type="submit" value="{% trans "Sign in with OpenID" %}" class="btn btn-primary" />
-                    </div>
-                </form>
-                {% endifsetting %}
-                
-                {% include "account/_terms.html" %}
-                
-                <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
-            {% endif %}
+                </fieldset>
+            </form>
         </div>
         <div class="span4">
             {% include "account/_signup_sidebar.html" %}
         </div>
     </div>
-{% endblock %}
-
-{% block extra_body %}
-    <script type="text/javascript">
-        $(function(){
-            $("#id_username").focus();
-        });
-    </script>
 {% endblock %}

@@ -1,81 +1,29 @@
 {% extends "site_base.html" %}
 
+{% load url from future %}
 {% load i18n %}
 {% load bootstrap_tags %}
-{% load ifsetting_tag %}
-{% load account_tags %}
-{% load url from future %}
 
-{% block head_title %}{% trans "Log In" %}{% endblock %}
+{% block head_title %}{% trans "Log in" %}{% endblock %}
 
 {% block body %}
-    <header class="jumbotron subhead" id="overview">
-        <h1>{% trans "Log in" %}</h1>
-        <p class="lead">{% trans "If you have an existing account, provide your login credentials below." %}</p>
-    </header>
-    
     <div class="row">
         <div class="span8">
-            {% if user.is_authenticated %}
-                {% user_display user as user_display %}
-                <div class="alert alert-info">
-                    <strong>{% trans "Note" %}</strong>:
-                    {% blocktrans %}you are already logged in as {{ user_display }}.{% endblocktrans %}
-                </div>
-            {% else %}
-                {% ifsetting ACCOUNT_OPEN_SIGNUP %}
-                {% url "acct_signup" as signup_url %}
-                <p>{% blocktrans %}Don't have an account? <a href="{{ signup_url }}">Sign up</a>!{% endblocktrans %}</p>
-                {% endifsetting %}
-                <p>
-                    <a href="{% url "acct_passwd_reset" %}">{% trans "Forgot password?" %}</a>
-                </p>
-            {% endif %}
-            
-            <form method="POST" action="{% url "acct_login" %}" autocapitalize="off" class="form-horizontal">
+            <form method="POST" action="{% url "account_login" %}" autocapitalize="off" class="form-horizontal"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                <legend>{% trans "Log in to an existing account" %}</legend>
                 {% csrf_token %}
                 {{ form|as_bootstrap }}
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
                 <div class="form-actions">
+                    <a href="{% url "account_password_reset" %}" class="btn">{% trans "Forgot your password?" %}</a>
                     <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
                 </div>
             </form>
-            
-            {% ifsetting ACCOUNT_USE_OPENID %}
-            <form action="/openid/register/" method="POST" autocapitalize="off" class="form-horizontal">
-                <fieldset>
-                    <legend>{% trans "Or sign in with your OpenID" %}</legend>
-                    {% csrf_token %}
-                    <div class="control-group">
-                        <label class="control-label" for="id_username">{% trans "OpenID Identifier" %}</label>
-                        <div class="controls">
-                            <input class="openid" type="text" name="openid_url" />
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <input type="submit" value="{% trans "Log in" %}" class="btn btn-primary" />
-                    </div>
-                </fieldset>
-            </form>
-            {% endifsetting %}
-            
-            {% if not user.is_authenticated %}
-                <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
-            {% endif %}
-            
         </div>
         <div class="span4">
             {% include "account/_login_sidebar.html" %}
         </div>
     </div>
-{% endblock %}
-
-{% block extra_body %}
-<script>
-    $(document).ready(function(){
-       $("#id_username").focus();
-     });
-</script>
 {% endblock %}
