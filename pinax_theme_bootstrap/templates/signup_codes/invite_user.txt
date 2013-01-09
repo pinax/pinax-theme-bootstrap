@@ -1,3 +1,0 @@
-You have been invited to sign up at {{ domain }}.
-
-http://{{ domain }}/account/signup/?code={{ signup_code.code }}
