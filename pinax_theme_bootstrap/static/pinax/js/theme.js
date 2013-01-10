@@ -7,6 +7,11 @@ $(function() {
         var selector = "ul.nav li#tab_" + item;
         $(selector).addClass("active");
     });
+    
+    $("#account_logout").click(function(e) {
+        e.preventDefault();
+        $(this).closest("form").submit();
+    });
 });
 
 $(document).ajaxSend(function(event, xhr, settings) {

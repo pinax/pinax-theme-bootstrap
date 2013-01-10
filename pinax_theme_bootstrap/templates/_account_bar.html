@@ -19,7 +19,12 @@
                         <li><a href="{% url THEME_ACCOUNT_ADMIN_URL %}"><i class="icon-cog"></i> {% trans "Admin" %}</a></li>
                     {% endif %}
                     <li class="divider"></li>
-                    <li><a href="{% url "account_logout" %}"><i class="icon-off"></i> {% trans "Log out" %}</a></li>
+                    <form style="margin: 0;" action="{% url "account_logout" %}" method="POST">
+                        <li>
+                            {% csrf_token %}
+                            <a id="account_logout" href="{% url "account_logout" %}"><i class="icon-off"></i> {% trans "Log out" %}</a>
+                        </li>
+                    </form>
                 </ul>
             </li>
         {% else %}
