@@ -12,8 +12,8 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="{% url "account_settings" %}"><i class="icon-user"></i> {% trans "Settings" %}</a></li>
-                    {% if THEME_ACCOUNT_ADMIN_URL and request.user.is_staff %}
-                        <li><a href="{% url THEME_ACCOUNT_ADMIN_URL %}"><i class="icon-cog"></i> {% trans "Admin" %}</a></li>
+                    {% if request.user.is_staff %}
+                        <li><a href="{% url THEME_ADMIN_URL|default:"admin:index" %}"><i class="icon-cog"></i> {% trans "Admin" %}</a></li>
                     {% endif %}
                     <li class="divider"></li>
                     <form style="margin: 0;" action="{% url "account_logout" %}" method="POST">
