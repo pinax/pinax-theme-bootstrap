@@ -4,13 +4,13 @@
 {% load i18n %}
 {% load bootstrap_tags %}
 
-{% block head_title %}{% trans "Sign up closed" %}{% endblock %}
+{% block head_title %}{% trans "Sign up" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Sign up closed" %}</h1>
-    {% if code %}
-        <p>{% blocktrans %}The code you provided was not accepted.{% endblocktrans %}</p>
-    {% else %}
-        <p>{% blocktrans %}Sign up is closed to the general public.{% endblocktrans %}</p>
-    {% endif %}
+    <h1>{% trans "This site is in private beta" %}</h1>
+    <p>{% blocktrans %}If you have signup code you can enter it below.{% endblocktrans %}</p>
+    <form method="get" action="">
+        <div><input type="text" name="code" placeholder="Your signup code..." /></div>
+        <div><input type="submit" class="btn btn-primary"></div>
+    </form>
 {% endblock %}
