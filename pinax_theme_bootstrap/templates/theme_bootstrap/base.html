@@ -28,48 +28,50 @@
         {% endblock %}
     </head>
     <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+        <div class="{% block wrapper_class %}{% endblock %}">
 
-        {% block topbar_base %}
-            <div class="navbar {% block navbar_class %}navbar-fixed-top{% endblock %}">
-                <div class="navbar-inner">
-                    <div class="container">
-                        {% block topbar %}
-                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </a>
-                            {% block site_brand %}<a class="brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
-                            <div class="nav-collapse">
-                                {% block nav %}
-                                    {% comment %}
-                                        <ul class="nav">
-                                            <li><a href="#tab_one">One</a></li>
-                                            <li><a href="#tab_two">Two</a></li>
-                                        </ul>
-                                    {% endcomment %}
-                                {% endblock %}
-                                {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
-                            </div>
-                        {% endblock %}
+            {% block topbar_base %}
+                <div class="navbar {% block navbar_class %}navbar-fixed-top{% endblock %}">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            {% block topbar %}
+                                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </a>
+                                {% block site_brand %}<a class="brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
+                                <div class="nav-collapse">
+                                    {% block nav %}
+                                        {% comment %}
+                                            <ul class="nav">
+                                                <li><a href="#tab_one">One</a></li>
+                                                <li><a href="#tab_two">Two</a></li>
+                                            </ul>
+                                        {% endcomment %}
+                                    {% endblock %}
+                                    {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+                                </div>
+                            {% endblock %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endblock %}
+            {% endblock %}
 
-        {% block body_base %}
-            <div class="container">
-                {% include "_messages.html" %}
-                {% block body %}
-                {% endblock %}
-                {% block footer_base %}
-                    <hr />
-                    <footer>
-                        {% block footer %}{% endblock %}
-                    </footer>
-                {% endblock %}
-            </div>
-        {% endblock %}
+            {% block body_base %}
+                <div class="container">
+                    {% include "_messages.html" %}
+                    {% block body %}
+                    {% endblock %}
+                    {% block footer_base %}
+                        <hr />
+                        <footer>
+                            {% block footer %}{% endblock %}
+                        </footer>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
 
         {% block script_base %}
             <script src="{% block jquery_src %}{% static "pinax/js/jquery.js" %}{% endblock %}"></script>
