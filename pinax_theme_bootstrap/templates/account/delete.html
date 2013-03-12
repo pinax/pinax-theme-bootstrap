@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load bootstrap_tags %}
+{% load url from future %}
 
 {% block head_title %}Delete Account{% endblock %}
 
@@ -10,7 +11,7 @@
     
     <p>If you go ahead and delete your account, your information will be <b>expunged within {{ ACCOUNT_DELETION_EXPUNGE_HOURS }} hours</b>.</p>
     
-    <form method="post" action="{% url account_delete %}" autocapitalize="off">
+    <form method="post" action="{% url "account_delete" %}" autocapitalize="off">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Delete My Account</button>
     </form>
