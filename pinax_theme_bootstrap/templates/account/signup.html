@@ -31,6 +31,8 @@
 
 {% block extra_script %}
     <script type="text/javascript">
-        document.getElementById('id_username').focus()
+        $(document).ready(function() {
+            $('#id_username').focus();
+        });
     </script>
 {% endblock %}
