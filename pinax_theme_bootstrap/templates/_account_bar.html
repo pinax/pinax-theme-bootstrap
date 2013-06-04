@@ -16,12 +16,9 @@
                         <li><a href="{% url THEME_ADMIN_URL|default:"admin:index" %}"><i class="icon-cog"></i> {% trans "Admin" %}</a></li>
                     {% endif %}
                     <li class="divider"></li>
-                    <form style="margin: 0;" action="{% url "account_logout" %}" method="POST">
-                        <li>
-                            {% csrf_token %}
-                            <a id="account_logout" href="{% url "account_logout" %}"><i class="icon-off"></i> {% trans "Log out" %}</a>
-                        </li>
-                    </form>
+                    <li>
+                        <a id="account_logout" href="{% url "account_logout" %}"><i class="icon-off"></i> {% trans "Log out" %}</a>
+                    </li>
                 </ul>
             </li>
         {% else %}
@@ -32,3 +29,7 @@
         {% endif %}
     </ul>
 </div>
+
+<form id="accountLogOutForm" style="display: none;" action="{% url "account_logout" %}" method="POST">
+    {% csrf_token %}
+</form>
