@@ -166,6 +166,9 @@ For copies of both licenses, see LICENSE.
 Includes icons from `Glyphicons Free <http://glyphicons.com/>`_, licensed
 under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>`_.
 
+Includes icons from
+`Font Awesome <http://fortawesome.github.io/Font-Awesome/>`_.
+
 
 .. _PaginationTemplate: https://github.com/pinax/pinax-theme-bootstrap/blob/master/pinax_theme_bootstrap/templates/pagination/pagination.html
 .. _django-pagination: https://github.com/ericflo/django-pagination
