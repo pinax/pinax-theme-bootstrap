@@ -12,7 +12,6 @@
         {% block style_base %}
             <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
             <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
-            <link href="{% static "bootstrap/css/bootstrap-responsive.css" %}" rel="stylesheet">
             {% block extra_style %}{% endblock %}
         {% endblock %}
 
@@ -31,30 +30,28 @@
         <div class="{% block wrapper_class %}{% endblock %}">
 
             {% block topbar_base %}
-                <div class="navbar {% block navbar_class %}navbar-fixed-top{% endblock %}">
-                    <div class="navbar-inner">
-                        <div class="container">
-                            {% block topbar %}
-                                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </a>
-                                {% block site_brand %}<a class="brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
-                                <div class="nav-collapse">
-                                    {% block nav %}
-                                        {% comment %}
-                                            <ul class="nav">
-                                                <li><a href="#tab_one">One</a></li>
-                                                <li><a href="#tab_two">Two</a></li>
-                                            </ul>
-                                        {% endcomment %}
-                                    {% endblock %}
-                                    {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
-                                </div>
-                            {% endblock %}
+                <div class="navbar navbar-default {% block navbar_class %}navbar-fixed-top{% endblock %}">
+                    {% block topbar %}
+                        <div class="navbar-header">
+                            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
                         </div>
-                    </div>
+                        <div class="collapse navbar-collapse">
+                            {% block nav %}
+                                {% comment %}
+                                    <ul class="nav">
+                                        <li><a href="#tab_one">One</a></li>
+                                        <li><a href="#tab_two">Two</a></li>
+                                    </ul>
+                                {% endcomment %}
+                            {% endblock %}
+                            {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+                        </div>
+                    {% endblock %}
                 </div>
             {% endblock %}
 

@@ -10,8 +10,6 @@
         <legend>Account</legend>
         {% csrf_token %}
         {{ form|as_bootstrap }}
-        <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Save</button>
-        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
     </form>
 {% endblock %}

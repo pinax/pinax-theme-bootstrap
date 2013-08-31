@@ -72,10 +72,8 @@ and include your form using something like the following markup: ::
         <legend>My Form</legend>
         {% csrf_token %}
         {{ form|as_bootstrap }}
-        <div class="form-actions">
-          <a href="#back" class="btn">Go back</a>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
+        <a href="#back" class="btn btn-default">Go back</a>
+        <button type="submit" class="btn btn-primary">Save changes</button>
     </form>
 
 Bootstrap includes styles for four types of forms. To change the display of
@@ -98,7 +96,7 @@ Navigation
 To modify your site's navigation bar, implement the "nav" block in
 your site_base.html using the following pattern: ::
 
-    <ul class="nav">
+    <ul class="nav navbar-nav">
         <li id="tab_first">
             <a href="#">First Link</a>
         </li>
@@ -122,19 +120,14 @@ Responsive Grid
 ---------------
 
 Bootstrap's responsive grid makes designing layouts that work well on every
-device a snap. We've included the the responsive stylesheet in this theme by
-default. If you'd like to remove this from your site, include the following
-two in your site_base.html: ::
+device a snap. If you'd like to remove this from your site, unset the viewport
+in your site_base.html: ::
 
     {# unset the viewport, telling mobile devices to scale your site #}
     {% block viewport %}{% endblock %}
 
-    {# include all default stylesheets except the responsive grid #}
-    {% block style_base %}
-        <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
-        <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
-        {% block extra_style %}{% endblock %}
-    {% endblock %}
+and follow the rest of the `instructions for disabling responsiveness`_.
+
 
 Pagination
 ----------
@@ -170,5 +163,6 @@ Includes icons from
 `Font Awesome <http://fortawesome.github.io/Font-Awesome/>`_.
 
 
+.. _instructions for disabling responsiveness: http://getbootstrap.com/getting-started/#disable-responsive
 .. _PaginationTemplate: https://github.com/pinax/pinax-theme-bootstrap/blob/master/pinax_theme_bootstrap/templates/pagination/pagination.html
 .. _django-pagination: https://github.com/ericflo/django-pagination
