@@ -31,6 +31,7 @@
 
             {% block topbar_base %}
                 <div class="navbar navbar-default {% block navbar_class %}navbar-fixed-top{% endblock %}">
+                    <div class="container">
                     {% block topbar %}
                         <div class="navbar-header">
                             <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,6 +53,7 @@
                             {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
                         </div>
                     {% endblock %}
+                    </div>
                 </div>
             {% endblock %}
 
