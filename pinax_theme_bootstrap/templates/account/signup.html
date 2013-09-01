@@ -9,16 +9,14 @@
 {% block body %}
     <div class="row">
         <div class="col-md-8">
-            <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" class="form-horizontal"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+            <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
                 <legend>{% trans "Sign up" %}</legend>
-                <fieldset>
-                    {% csrf_token %}
-                    {{ form|as_bootstrap }}
-                    {% if redirect_field_value %}
-                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                    {% endif %}
-                    <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
-                </fieldset>
+                {% csrf_token %}
+                {{ form|as_bootstrap }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
             </form>
         </div>
         <div class="col-md-4">
