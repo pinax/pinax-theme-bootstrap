@@ -57,21 +57,21 @@ version of django-staticfiles as we use the `{% render %}` template tag.
 Forms
 -----
 
-This theme makes use of django-forms-bootstrap for simple forms support.
-Make sure you have the latest version of django-forms-bootstrap installed
+This theme makes use of django-bootstrap-form for simple forms support.
+Make sure you have the latest version of django-bootstrap-form installed
 in your virtualenv (if you install this theme with pip it will be installed
-automatically) and add "django_forms_bootstrap" to your `INSTALLED_APPS`.
+automatically) and add "bootstrapform" to your `INSTALLED_APPS`.
 
 To style forms, add the following to the top of your template ::
     
-    {% load bootstrap_tags %}
+    {% load bootstrap %}
 
 and include your form using something like the following markup: ::
     
     <form>
         <legend>My Form</legend>
         {% csrf_token %}
-        {{ form|as_bootstrap }}
+        {{ form|bootstrap }}
         <a href="#back" class="btn btn-default">Go back</a>
         <button type="submit" class="btn btn-primary">Save changes</button>
     </form>
