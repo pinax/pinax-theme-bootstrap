@@ -8,7 +8,7 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-lg-4">
             <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
                 <legend>{% trans "Sign up" %}</legend>
                 {% csrf_token %}
@@ -19,7 +19,7 @@
                 <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
             </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4">
             {% include "account/_signup_sidebar.html" %}
         </div>
     </div>

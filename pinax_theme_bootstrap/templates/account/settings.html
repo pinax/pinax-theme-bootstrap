@@ -8,10 +8,14 @@
 {% block head_title %}Account{% endblock %}
 
 {% block body %}
-    <form method="POST" action="{% url "account_settings" %}">
-        <legend>Account</legend>
-        {% csrf_token %}
-        {{ form|bootstrap }}
-        <button class="btn btn-primary" type="submit">Save</button>
-    </form>
+    <div class="row">
+        <div class="col-lg-5">
+            <form method="POST" action="{% url "account_settings" %}">
+                <legend>Account</legend>
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <button class="btn btn-primary" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
