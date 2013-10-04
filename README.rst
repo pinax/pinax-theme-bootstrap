@@ -49,7 +49,7 @@ Upgrade Notes
 Requirements
 ------------
 
-This theme is officially supported when used in conjuction with Pinax 0.9.
+This theme is officially supported when used in conjunction with Pinax 0.9.
 If using the theme with Django < 1.4, you will need to install a recent
 version of django-staticfiles as we use the `{% render %}` template tag.
 
