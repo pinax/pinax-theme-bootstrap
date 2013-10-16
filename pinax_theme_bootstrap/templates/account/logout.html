@@ -7,15 +7,13 @@
 
 {% block body %}
     <div class="row">
-        <div class="span12">
-            <form method="POST" action="{% url "account_logout" %}" class="form-horizontal">
+        <div class="col-lg-5">
+            <form method="POST" action="{% url "account_logout" %}">
                 <legend>{% trans "Log out" %}</legend>
                 <fieldset>
                     {% csrf_token %}
                     <p>{% trans "Are you sure you want to log out?" %}</p>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">{% trans "Log out" %}</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">{% trans "Log out" %}</button>
                 </fieldset>
             </form>
         </div>

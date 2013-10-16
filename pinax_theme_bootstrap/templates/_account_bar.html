@@ -2,33 +2,31 @@
 {% load account_tags %}
 {% load url from future %}
 
-<div class="pull-right">
-    <ul class="nav pull-right">
-        {% if request.user.is_authenticated %}
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    {% user_display request.user %}
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="{% url "account_settings" %}"><i class="icon-user"></i> {% trans "Settings" %}</a></li>
-                    {% if request.user.is_staff %}
-                        <li><a href="{% url THEME_ADMIN_URL|default:"admin:index" %}"><i class="icon-cog"></i> {% trans "Admin" %}</a></li>
-                    {% endif %}
-                    <li class="divider"></li>
-                    <li>
-                        <a id="account_logout" href="{% url "account_logout" %}"><i class="icon-off"></i> {% trans "Log out" %}</a>
-                    </li>
-                </ul>
-            </li>
-        {% else %}
-            <li><a href="{% url "account_login" %}">{% trans "Log in" %}</a></li>
-            {% if ACCOUNT_OPEN_SIGNUP %}
-                <li><a href="{% url "account_signup" %}">{% trans "Sign up" %}</a></li>
-            {% endif %}
+<ul class="nav navbar-nav navbar-right">
+    {% if request.user.is_authenticated %}
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {% user_display request.user %}
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url "account_settings" %}"><i class="icon-user"></i> {% trans "Settings" %}</a></li>
+                {% if request.user.is_staff %}
+                    <li><a href="{% url THEME_ADMIN_URL|default:"admin:index" %}"><i class="icon-cog"></i> {% trans "Admin" %}</a></li>
+                {% endif %}
+                <li class="divider"></li>
+                <li>
+                    <a id="account_logout" href="{% url "account_logout" %}"><i class="icon-off"></i> {% trans "Log out" %}</a>
+                </li>
+            </ul>
+        </li>
+    {% else %}
+        <li><a href="{% url "account_login" %}">{% trans "Log in" %}</a></li>
+        {% if ACCOUNT_OPEN_SIGNUP %}
+            <li><a href="{% url "account_signup" %}">{% trans "Sign up" %}</a></li>
         {% endif %}
-    </ul>
-</div>
+    {% endif %}
+</ul>
 
 <form id="accountLogOutForm" style="display: none;" action="{% url "account_logout" %}" method="POST">
     {% csrf_token %}
