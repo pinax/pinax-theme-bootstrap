@@ -6,10 +6,18 @@
 {% block body_class %}account{% endblock %}
 
 {% block subnav %}
-    <ul class="nav nav-list">
-        <li class="nav-header">{% trans "Account" %}</li>
-        <li><a href="{% url "account_settings" %}">{% trans "Settings" %}</a></li>
-        <li><a href="{% url "account_password" %}">{% trans "Change password" %}</a></li>
-        <li><a href="{% url "account_delete" %}">{% trans "Delete account" %}</a></li>
-    </ul>
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>{% trans "Account" %}</strong></div>
+    <div class="list-group">
+        <a class="list-group-item settings" href="{% url "account_settings" %}">
+            {% trans "Settings" %}
+        </a>
+        <a class="list-group-item password" href="{% url "account_password" %}">
+            {% trans "Change password" %}
+        </a>
+        <a class="list-group-item delete" href="{% url "account_delete" %}">
+            {% trans "Delete account" %}
+        </a>
+    </div>
+</div>
 {% endblock %}
