@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-23 20:17+0800\n"
+"POT-Creation-Date: 2013-10-29 16:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,7 +87,6 @@ msgid "Confirm Email"
 msgstr "确认电子邮件地址"
 
 #: templates/account/email_confirm.html:15
-#, python-format
 msgid "Confirm email address <b>%(email)s</b>?"
 msgstr "确认电子邮件地址<b>%(email)</b>正确？"
 
@@ -101,6 +100,7 @@ msgid "Confirm your email address"
 msgstr "确认您的电子邮件地址"
 
 #: templates/account/email_confirmation_sent.html:11
+#, python-format
 msgid ""
 "We have sent you an email to <b>%(email)s</b> for verification. Follow the "
 "link provided to finalize the signup process. If you do not receive it "
@@ -148,8 +148,8 @@ msgid ""
 "Forgotten your password? Enter your email address below, and we'll send you "
 "an email allowing you to reset it."
 msgstr ""
-"忘记了您的密码？请在下面输入您的电子邮件地址，我们将发送一封电子邮件到您的邮箱让"
-"您进行重置"
+"忘记了您的密码？请在下面输入您的电子邮件地址，我们将发送一封电子邮件到您的邮"
+"箱让您进行重置"
 
 #: templates/account/password_reset.html:23
 msgid "Reset my password"
@@ -176,21 +176,23 @@ msgid ""
 "try resending or contact us at <a href=\"mailto:%(THEME_CONTACT_EMAIL)s\">"
 "%(THEME_CONTACT_EMAIL)s</a>."
 msgstr ""
-"我们已经发送出一封密码重置的电子邮件。如果您在几分钟内没有收到我们的邮件，请联系我们："
-"<a href=\"mailto:%(THEME_CONTACT_EMAIL)s\">%(THEME_CONTACT_EMAIL)s</a>。"
+"我们已经发送出一封密码重置的电子邮件。如果您在几分钟内没有收到我们的邮件，请"
+"联系我们：<a href=\"mailto:%(THEME_CONTACT_EMAIL)s\">"
+"%(THEME_CONTACT_EMAIL)s</a>。"
 
 #: templates/account/password_reset_sent.html:21
 msgid "Resend"
 msgstr "重新发送"
 
 #: templates/account/password_reset_sent.html:26
+#, python-format
 msgid ""
 "We have resent the password email. If you do not receive it within a few "
 "minutes, contact us at <a href=\"mailto:%(THEME_CONTACT_EMAIL)s\">"
 "%(THEME_CONTACT_EMAIL)s</a>."
 msgstr ""
-"我们已经重新发送了密码重置邮件。如果您在几分钟内没有收到我们的邮件，请联系我们："
-"<a href=\"mailto:%(THEME_CONTACT_EMAIL)s\">%(THEME_CONTACT_EMAIL)s</a>。"
+"我们已经重新发送了密码重置邮件。如果您在几分钟内没有收到我们的邮件，请联系我"
+"们：<a href=\"mailto:%(THEME_CONTACT_EMAIL)s\">%(THEME_CONTACT_EMAIL)s</a>。"
 
 #: templates/account/password_reset_token.html:7
 #: templates/account/password_reset_token.html:13
@@ -207,18 +209,19 @@ msgstr "错误的验证码"
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used.  Please request a <a href=\"%(url)s\">new password reset</a>."
-msgstr "您请求的密码重置链接是无效的，很可能是因为它已经被使用过了，请重新申请<a href=\"%(url)s\">密码重置</a>。"
+msgstr ""
+"您请求的密码重置链接是无效的，很可能是因为它已经被使用过了，请重新申请<a "
+"href=\"%(url)s\">密码重置</a>。"
 
 #: templates/account/signup_closed.html:9
 msgid "This site is in private beta"
-msgstr ""
+msgstr "网站目前在内测中"
 
 #: templates/account/signup_closed.html:10
 msgid "If you have signup code you can enter it below."
-msgstr ""
+msgstr "如果您有注册码可以在下面输入。"
 
 #: templates/account/email/email_confirmation_message.txt:1
-#, python-format
 msgid ""
 "A user on %(site_name)s has created an account using this email address.\n"
 "\n"
@@ -226,11 +229,14 @@ msgid ""
 "\n"
 "If you did not sign up for this site, you can ignore this message.\n"
 msgstr ""
+"您刚在%(site_name)s上创建了一个帐号，确认当前电子邮件地址请前往：%(activate_url)s\n"
+"\n"
+"如果您没有在网站上进行注册，请忽略此邮件。\n"
 
 #: templates/account/email/email_confirmation_subject.txt:1
 #, python-format
 msgid "Confirm email address for %(site_name)s"
-msgstr ""
+msgstr "确认在%(site_name)s上的邮件地址"
 
 #: templates/account/email/password_reset.txt:1
 #, python-format
@@ -242,136 +248,27 @@ msgid ""
 "\n"
 "%(password_reset_url)s\n"
 msgstr ""
+"收到这封邮件是因为您本人或者其他人请求对%(site_name)s上的帐号进行密码重置。\n"
+"如果您没有请求密码重置，可以放心的忽略此邮件。点击下面的链接重置您的密码：\n"
+"\n"
+"%(password_reset_url)s\n"
+
 
 #: templates/account/email/password_reset_subject.txt:1
 #, python-format
 msgid "[%(site_name)s] Password reset"
-msgstr ""
+msgstr "[%(site_name)s] 密码重置"
 
 #: templates/pagination/builtin_pagination.html:10
 #: templates/pagination/builtin_pagination.html:13
 #: templates/pagination/django_pagination_pagination.html:9
 #: templates/pagination/django_pagination_pagination.html:12
 msgid "Previous"
-msgstr ""
+msgstr "前一页"
 
 #: templates/pagination/builtin_pagination.html:19
 #: templates/pagination/builtin_pagination.html:21
 #: templates/pagination/django_pagination_pagination.html:22
 #: templates/pagination/django_pagination_pagination.html:24
 msgid "Next"
-msgstr ""
-
-#~ msgid "Email Addresses"
-#~ msgstr "电子邮件地址"
-
-#~ msgid "Set Password"
-#~ msgstr "设置密码"
-
-#~ msgid "Language"
-#~ msgstr "语言"
-
-#~ msgid "Timezone"
-#~ msgstr "时区"
-
-#~ msgid "you are already logged in as %(user_display)s."
-#~ msgstr "您已经使用%(user_display)s登陆。"
-
-#~ msgid "Already logged in"
-#~ msgstr "已经登陆"
-
-#~ msgid ""
-#~ "You have confirmed that %(email)s is an email address for user "
-#~ "'%(user_display)s'."
-#~ msgstr "您已经对用户：%(user_display)s的电子邮件%(email)s确认成功。"
-
-#~ msgid "Invalid confirmation key."
-#~ msgstr "无效的确认码。"
-
-#~ msgid "Profile"
-#~ msgstr "个人信息"
-
-#~ msgid "Your Profile"
-#~ msgstr "您的个人信息"
-
-#~ msgid "All Profiles"
-#~ msgstr "所有档案"
-
-#~ msgid "Edit Profile"
-#~ msgstr "编辑个人信息"
-
-#~ msgid "Success!"
-#~ msgstr "成功！"
-
-#~ msgid "Notices"
-#~ msgstr "通知"
-
-#~ msgid "Notification Settings"
-#~ msgstr "通知设置"
-
-#~ msgid ""
-#~ "By clicking \"Sign Up\", you are indicating that you have read and agree "
-#~ "to the <a href=\"%(terms_url)s\">Terms of Use</a> and <a href="
-#~ "\"%(privacy_url)s\">Privacy Policy</a>."
-#~ msgstr ""
-#~ "点击\"注册\"按钮，将意味着您已经阅读并且同意<a href=\"%(terms_url)s\">使用"
-#~ "条款</a>和<a href=\"%(privacy_url)s\">隐私政策</a>。"
-
-#~ msgid "Change Password"
-#~ msgstr "修改密码"
-
-#~ msgid "verified"
-#~ msgstr "已通过验证"
-
-#~ msgid "unverified"
-#~ msgstr "未验证"
-
-#~ msgid "Add Email Address"
-#~ msgstr "添加电子邮件地址"
-
-#~ msgid "Log In"
-#~ msgstr "登录"
-
-#~ msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
-#~ msgstr "还没有一个帐号？<a href=\"%(signup_url)s\">现在注册</a>！"
-
-#~ msgid ""
-#~ "If you have any trouble logging in to your account, contact us at <a href="
-#~ "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-#~ msgstr ""
-#~ "如果您在登录您的帐号时有任何困难，请联系我们：<a href=\"mailto:"
-#~ "%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-
-#~ msgid "You've been logged out."
-#~ msgstr "您已经注销退出"
-
-#~ msgid "Password Deleted"
-#~ msgstr "密码已删除"
-
-#~ msgid "Your password has been deleted."
-#~ msgstr "您的密码已删除"
-
-#~ msgid "Sign Up"
-#~ msgstr "注册"
-
-#~ msgid "You are already logged in."
-#~ msgstr "您已经登录"
-
-#~ msgid "Already have an account?"
-#~ msgstr "已经有帐号？"
-
-#~ msgid ""
-#~ "If you have any trouble creating your account, contact us at <a href="
-#~ "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-#~ msgstr ""
-#~ "如果您在创建帐号时有任何疑问，请联系我们：<a href=\"mailto:"
-#~ "%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>。"
-
-#~ msgid "remove"
-#~ msgstr "删除"
-
-#~ msgid "Update"
-#~ msgstr "更新"
-
-#~ msgid "Update my profile"
-#~ msgstr "更新个人信息"
+msgstr "下一页"
