@@ -32,7 +32,7 @@ Upgrade Notes
   recommended that you read through the `official migration guide`_.
 
 - Forms Rendering: Versions prior to 4.0 used django-forms-bootstrap. We have switched
-  this app to "django-bootstrap-form" so you'll need to make the necessary updates
+  this app to `django-bootstrap-form`_ so you'll need to make the necessary updates
   to your templates and INSTALLED_APPS.
 
 
@@ -105,6 +105,7 @@ Includes icons from
 `Font Awesome <http://fortawesome.github.io/Font-Awesome/>`_.
 
 
+.. _django-bootstrap-form: https://github.com/tzangms/django-bootstrap-form
 .. _official migration guide: http://getbootstrap.com/getting-started/#migration
 .. _PaginationTemplate: https://github.com/pinax/pinax-theme-bootstrap/blob/master/pinax_theme_bootstrap/templates/pagination/pagination.html
 .. _django-pagination: https://github.com/ericflo/django-pagination
