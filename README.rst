@@ -8,7 +8,7 @@ Quick Start
 -----------
 
 Include "pinax-theme-bootstrap" in your requirements file and include
-"pinax_theme_bootstrap" and "django_bootstrap_form" (which is installed alongside
+"pinax_theme_bootstrap" and "bootstrapform" (which is installed alongside
 this theme) in your INSTALLED APPS.
 
 Make sure both template loaders and staticfiles finders includes
