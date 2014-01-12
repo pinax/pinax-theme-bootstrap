@@ -1,14 +1,14 @@
 Twitter Bootstrap Theme, for Pinax
 ==================================
 
-A theme for Pinax 0.9 based on Twitter's open source Bootstrap framework.
+A theme for Pinax based on Twitter's open source Bootstrap framework.
 
 
 Quick Start
 -----------
 
 Include "pinax-theme-bootstrap" in your requirements file and include
-"pinax_theme_bootstrap" and "django_bootstrap_form" (which is installed alongside
+"pinax_theme_bootstrap" and "bootstrapform" (which is installed alongside
 this theme) in your INSTALLED APPS.
 
 Make sure both template loaders and staticfiles finders includes
@@ -39,8 +39,8 @@ Upgrade Notes
 Requirements
 ------------
 
-This theme is officially supported when used in conjunction with Pinax 0.9.
-If using the theme with Django < 1.4, you will need to install a recent
+This theme is officially supported when used in conjunction with Pinax starter
+projects. If using the theme with Django < 1.4, you will need to install a recent
 version of django-staticfiles as we use the `{% render %}` template tag.
 
 

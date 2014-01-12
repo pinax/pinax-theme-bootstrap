@@ -12,6 +12,7 @@
         {% block style_base %}
             <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
             <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+            <link href="{% static "font-awesome/css/font-awesome.css" %}" rel="stylesheet">
             {% block extra_style %}{% endblock %}
         {% endblock %}
 
@@ -35,9 +36,9 @@
                     {% block topbar %}
                         <div class="navbar-header">
                             <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
+                                <span class="fa fa-bar"></span>
+                                <span class="fa fa-bar"></span>
+                                <span class="fa fa-bar"></span>
                             </button>
                             {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
                         </div>
