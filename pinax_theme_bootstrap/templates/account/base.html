@@ -9,13 +9,13 @@
 <div class="panel panel-default">
     <div class="panel-heading"><strong>{% trans "Account" %}</strong></div>
     <div class="list-group">
-        <a class="list-group-item settings" href="{% url "account_settings" %}">
+        <a class="list-group-item account-settings" href="{% url "account_settings" %}">
             {% trans "Settings" %}
         </a>
-        <a class="list-group-item password" href="{% url "account_password" %}">
+        <a class="list-group-item account-password" href="{% url "account_password" %}">
             {% trans "Change password" %}
         </a>
-        <a class="list-group-item delete" href="{% url "account_delete" %}">
+        <a class="list-group-item account-delete" href="{% url "account_delete" %}">
             {% trans "Delete account" %}
         </a>
     </div>
