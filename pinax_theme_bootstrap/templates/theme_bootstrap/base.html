@@ -31,45 +31,52 @@
         <div class="{% block wrapper_class %}{% endblock %}">
 
             {% block topbar_base %}
-                <div class="navbar navbar-default {% block navbar_class %}navbar-fixed-top{% endblock %}">
-                    <div class="container">
-                    {% block topbar %}
-                        <div class="navbar-header">
-                            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="fa fa-bar"></span>
-                                <span class="fa fa-bar"></span>
-                                <span class="fa fa-bar"></span>
-                            </button>
-                            {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
+                <header>
+                    <div class="navbar navbar-default {% block navbar_class %}navbar-fixed-top{% endblock %}">
+                        <div class="container">
+                        {% block topbar %}
+                            <div class="navbar-header">
+                                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="fa fa-bar"></span>
+                                    <span class="fa fa-bar"></span>
+                                    <span class="fa fa-bar"></span>
+                                </button>
+                                {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
+                            </div>
+                            <div class="collapse navbar-collapse">
+                                {% block nav %}
+                                    {% comment %}
+                                        <ul class="nav">
+                                            <li><a href="#tab_one">One</a></li>
+                                            <li><a href="#tab_two">Two</a></li>
+                                        </ul>
+                                    {% endcomment %}
+                                {% endblock %}
+                                {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+                            </div>
+                        {% endblock %}
                         </div>
-                        <div class="collapse navbar-collapse">
-                            {% block nav %}
-                                {% comment %}
-                                    <ul class="nav">
-                                        <li><a href="#tab_one">One</a></li>
-                                        <li><a href="#tab_two">Two</a></li>
-                                    </ul>
-                                {% endcomment %}
-                            {% endblock %}
-                            {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
-                        </div>
-                    {% endblock %}
                     </div>
-                </div>
+                </header>
             {% endblock %}
 
             {% block body_base %}
-                <div class="container">
-                    {% include "_messages.html" %}
-                    {% block body %}
-                    {% endblock %}
-                    {% block footer_base %}
-                        <hr />
-                        <footer>
-                            {% block footer %}{% endblock %}
-                        </footer>
-                    {% endblock %}
-                </div>
+                <section id="content_body">
+                    <div class="container">
+                        {% include "_messages.html" %}
+                        {% block body %}
+                        {% endblock %}
+                    </div>
+                </section>
+            {% endblock %}
+
+            {% block footer_base %}
+                <hr />
+                <footer>
+                    <div class="container">
+                        {% block footer %}{% endblock %}
+                    </div>
+                </footer>
             {% endblock %}
         </div>
 
