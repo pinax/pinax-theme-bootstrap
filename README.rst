@@ -4,6 +4,12 @@ Twitter Bootstrap Theme, for Pinax
 A theme for Pinax based on Twitter's open source Bootstrap framework.
 
 
+Versions
+--------
+
+* Bootstrap v3.1.1
+* Font Awesome v4.0.3
+
 Quick Start
 -----------
 
