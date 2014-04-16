@@ -100,7 +100,7 @@ License & Attribution
 The Pinax Bootstrap theme is released under the MIT license.
 
 This theme includes styles and scripts from the Bootstrap project,
-which is released under the Apache License, Version 2.0.
+which is (since v3.1.0) released under the MIT license.
 
 For copies of both licenses, see LICENSE.
 
