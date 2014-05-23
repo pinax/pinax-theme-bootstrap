@@ -1,7 +1,7 @@
-Twitter Bootstrap Theme, for Pinax
+Bootstrap Theme, for Pinax
 ==================================
 
-A theme for Pinax based on Twitter's open source Bootstrap framework.
+A theme for Pinax based on the open source Bootstrap front-end framework.
 
 
 Versions
@@ -99,8 +99,8 @@ License & Attribution
 
 The Pinax Bootstrap theme is released under the MIT license.
 
-This theme includes styles and scripts from the Twitter Bootstrap project,
-which is released under the Apache License, Version 2.0.
+This theme includes styles and scripts from the Bootstrap project,
+which is (since v3.1.0) released under the MIT license.
 
 For copies of both licenses, see LICENSE.
 
