@@ -8,7 +8,7 @@ Versions
 --------
 
 * Bootstrap v3.1.1
-* Font Awesome v4.0.3
+* Font Awesome v4.1.0
 
 Quick Start
 -----------
