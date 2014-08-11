@@ -9,6 +9,8 @@ Versions
 
 * Bootstrap v3.2.0
 * Font Awesome v4.1.0
+* jQuery v2.1.1
+
 
 Quick Start
 -----------
