@@ -13,6 +13,9 @@ def get_message_tags(message):
     Returns tags for a message
     """
     level_name = LEVEL_TAGS[message.level]
+    if level_name == u"error":
+        level_name = u"danger"
+
     level_tag = u"alert-{name}".format(name=level_name)
 
     tags = [level_tag]
