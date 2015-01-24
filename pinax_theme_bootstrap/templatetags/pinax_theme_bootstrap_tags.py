@@ -10,15 +10,18 @@ register = template.Library()
 @register.simple_tag()
 def get_message_tags(message):
     """
-    Returns tags for a message
+    Returns the message's level_tag prefixed with Bootstrap's "alert-" prefix
+    along with any tags included in message.extra_tags
+
+    Messages in Django >= 1.7 have a message.level_tag attr
     """
-    level_name = LEVEL_TAGS[message.level]
-    if level_name == u"error":
-        level_name = u"danger"
+    level_tag = LEVEL_TAGS[message.level]
+    if level_tag == u"error":
+        level_tag = u"danger"
 
-    level_tag = u"alert-{name}".format(name=level_name)
+    alert_level_tag = u"alert-{tag}".format(tag=level_tag)
 
-    tags = [level_tag]
+    tags = [alert_level_tag]
     if message.extra_tags:
         tags.append(message.extra_tags)
 
