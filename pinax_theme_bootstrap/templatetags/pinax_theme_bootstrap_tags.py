@@ -20,11 +20,17 @@ def get_message_tags(message):
     if level_tag == u"error":
         level_tag = u"danger"
 
-    alert_level_tag = u"alert-{tag}".format(tag=level_tag)
+    if level_tag:
+        alert_level_tag = u"alert-{tag}".format(tag=level_tag)
+    else:
+        alert_level_tag = None
 
-    tags = [alert_level_tag]
     extra_tags = force_text(message.extra_tags, strings_only=True)
-    if extra_tags:
-        tags.append(extra_tags)
 
-    return u" ".join(tags)
+    if extra_tags and alert_level_tag:
+        return u' '.join([extra_tags, alert_level_tag])
+    elif extra_tags:
+        return extra_tags
+    elif alert_level_tag:
+        return alert_level_tag
+    return u''
