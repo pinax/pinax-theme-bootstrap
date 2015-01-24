@@ -18,6 +18,8 @@ def get_message_tags(message):
     """
     level_tag = force_text(LEVEL_TAGS.get(message.level, ''), strings_only=True)
     if level_tag == u"error":
+        # Alias the error tag as danger, since .alert-error no longer exists
+        # in Bootstrap 3
         level_tag = u"danger"
 
     if level_tag:
