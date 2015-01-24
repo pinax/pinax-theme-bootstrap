@@ -1,19 +1,13 @@
 body {
-  padding-top: 80px;
+  padding-top: 50px;
   position: relative;
 }
 section {
-  padding-top: 60px;
+  padding: 20px 0px;
 }
 .modal form {
   margin-bottom: 0px;
 }
-#footer {
-  margin-top: 80px;
-}
-#footer p {
-  margin-bottom: 0;
-}
-#footer p.right {
-  float: right;
+footer {
+    padding-bottom: 20px;
 }
