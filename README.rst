@@ -7,9 +7,9 @@ A theme for Pinax based on the open source Bootstrap front-end framework.
 Versions
 --------
 
-* Bootstrap v3.3.0
 * Font Awesome v4.2.0
 * jQuery v2.1.1
+* Bootstrap v3.3.2
 
 
 Quick Start

@@ -4,7 +4,7 @@ $(function () {
   module('tooltip plugin')
 
   test('should be defined on jquery object', function () {
-    ok($(document.body).tooltip, 'popover method is defined')
+    ok($(document.body).tooltip, 'tooltip method is defined')
   })
 
   module('tooltip', {
@@ -233,37 +233,6 @@ $(function () {
 
     $div.find('a').click()
     equal($('.tooltip').length, 0, 'tooltip was removed from dom')
-  })
-
-  test('should show tooltips with different delegate selectors on the same node on click', function () {
-    var tooltipHTML = '<div>'
-        + '<a href="#" class="first" rel="tooltip" title="First delegated tooltip"/>'
-        + '<a href="#" class="second" rel="tooltip" title="Second delegated tooltip"/>'
-        + '</div>'
-
-    var $div = $(tooltipHTML)
-      .append()
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({
-        selector: 'a.first[rel="tooltip"]',
-        trigger: 'click'
-      })
-      .bootstrapTooltip({
-        selector: 'a.second[rel="tooltip"]',
-        trigger: 'click'
-      })
-
-    $div.find('a.first').click()
-    ok($('.tooltip').is('.fade.in'), 'first tooltip is faded in')
-
-    $div.find('a.first').click()
-    equal($('.tooltip').length, 0, 'first tooltip was removed from dom')
-
-    $div.find('a.second').click()
-    ok($('.tooltip').is('.fade.in'), 'second tooltip is faded in')
-
-    $div.find('a.second').click()
-    equal($('.tooltip').length, 0, 'second tooltip was removed from dom')
   })
 
   test('should show tooltip when toggle is called', function () {
