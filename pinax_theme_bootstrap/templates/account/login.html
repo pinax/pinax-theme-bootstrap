@@ -20,8 +20,7 @@
                 <a href="{% url "account_password_reset" %}" class="btn btn-link">{% trans "Forgot your password?" %}</a>
             </form>
             {% if ACCOUNT_OPEN_SIGNUP %}
-                <br />
-                <p>
+                <p class="login-signup">
                     <small>
                         {% trans "Don't have an account?" %}  <strong><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></strong>
                     </small>
