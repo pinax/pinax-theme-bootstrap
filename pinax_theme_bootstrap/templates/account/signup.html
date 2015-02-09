@@ -18,6 +18,11 @@
                 {% endif %}
                 <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
             </form>
+            <p class="login-signup">
+                <small>
+                    {% trans "Already have an account?" %}  <strong><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></strong>
+                </small>
+            </p>
         </div>
         <div class="col-md-4">
             {% include "account/_signup_sidebar.html" %}
