@@ -1,6 +1,10 @@
 Bootstrap Theme, for Pinax
 ==================================
 
+.. image:: https://badges.gitter.im/Join%20Chat.svg
+   :alt: Join the chat at https://gitter.im/pinax/pinax-theme-bootstrap
+   :target: https://gitter.im/pinax/pinax-theme-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 A theme for Pinax based on the open source Bootstrap front-end framework.
 
 
