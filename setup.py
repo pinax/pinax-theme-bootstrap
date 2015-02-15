@@ -107,8 +107,8 @@ def find_package_data(
 PACKAGE = "pinax_theme_bootstrap"
 NAME = "pinax-theme-bootstrap"
 DESCRIPTION = "a theme for Pinax based on Bootstrap"
-AUTHOR = "James Tauber"
-AUTHOR_EMAIL = "jtauber@jtauber.com"
+AUTHOR = "Pinax Team"
+AUTHOR_EMAIL = "developers@pinaxproject.com"
 URL = "http://github.com/pinax/pinax-theme-bootstrap"
 VERSION = __import__(PACKAGE).__version__
 INSTALL_REQUIRES = [
