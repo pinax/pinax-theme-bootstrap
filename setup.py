@@ -112,7 +112,7 @@ AUTHOR_EMAIL = "jtauber@jtauber.com"
 URL = "http://github.com/pinax/pinax-theme-bootstrap"
 VERSION = __import__(PACKAGE).__version__
 INSTALL_REQUIRES = [
-    "django-appconf==0.6",
+    "django-appconf>=0.6",
     "django-bootstrap-form>=3.0.0",
 ]
 
