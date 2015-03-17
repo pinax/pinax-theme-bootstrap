@@ -5,16 +5,16 @@
 
 {% block body_class %}account account-settings{% endblock %}
 
-{% block head_title %}Account{% endblock %}
+{% block head_title %}{% trans "Account" %}{% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-md-5">
             <form method="POST" action="{% url "account_settings" %}">
-                <legend>Account</legend>
+                <legend>{% trans "Account" %}</legend>
                 {% csrf_token %}
                 {{ form|bootstrap }}
-                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
             </form>
         </div>
     </div>
