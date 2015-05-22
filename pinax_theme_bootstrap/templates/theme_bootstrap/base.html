@@ -27,7 +27,7 @@
             {% block extra_head %}{% endblock %}
         {% endblock %}
     </head>
-    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}" {% block body_extra_attributes %}{% endblock %}>
         <div class="{% block wrapper_class %}{% endblock %}">
 
             {% block topbar_base %}
