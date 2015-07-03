@@ -1,0 +1,24 @@
+{# uses Newer / Older instead of Prev / Next for use in reverse chronological lists #}
+{# Pagination for default django.core.paginator.Paginator #}
+{# This template will work with CBV views with ``paginate_by`` specified. #}
+{% load i18n %}
+
+{% if is_paginated %}
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li class="prev">
+                <a href="?page={{ page_obj.previous_page_number|stringformat:"d" }}{{ getvars }}{{ hashtag }}">← {% trans "Newer" %}</a>
+            </li>
+        {% else %}
+            <li class="prev disabled"><a>← {% trans "Newer" %}</a></li>
+        {% endif %}
+        {% for page in paginator.page_range %}
+            <li class="{% ifequal page page_obj.number %}active{% endifequal %}"><a href="?page={{ page|stringformat:"d" }}{{ getvars }}{{ hashtag }}">{{ page|stringformat:"d" }}</a></li>
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li class="next"><a href="?page={{ page_obj.next_page_number|stringformat:"d" }}{{ getvars }}{{ hashtag }}">{% trans "Older" %} →</a></li>
+        {% else %}
+            <li class="next disabled"><a>{% trans "Older" %} →</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
