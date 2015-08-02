@@ -5,15 +5,47 @@ Bootstrap Theme, for Pinax
    :alt: Join the chat at https://gitter.im/pinax/pinax-theme-bootstrap
    :target: https://gitter.im/pinax/pinax-theme-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
-A theme for Pinax based on the open source Bootstrap front-end framework.
+A theme for Pinax based on the open source Bootstrap front-end framework and
+the Font Awesome icon library.
 
 
-Versions
---------
+Upgrade Notes
+-------------
 
-* Bootstrap v3.3.5
-* Font Awesome v4.3.0
-* jQuery v2.1.4
+Upgrading to 6.0, you should be aware of a few changes:
+
+* `style_base` and `extra_style` blocks have been merged into `styles`
+* `script_base` and `extra_script` blocks have been merged into `scripts` and
+  the `theme.js` script is now loaded within a `theme_script` block after the
+  `scripts` block. It now expects that you'll load the necessary `jQuery`
+  library at the project level in the `scripts` block.
+* No vendored assets ship with the theme anymore. You are responsible for
+  setting up your own static assets at the project level. We have made it easy
+  by just using one of our starter projects.
+
+
+Dependencies
+------------
+
+* Bootstrap
+* Font Awesome
+* jQuery
+
+We previously vendored these packages and had an undocumented build process
+pre-configured in our starter projects that use this theme. This has gone the
+way of the 80s hair band and we are now using proper packaging in the starter
+projects.
+
+The templates in this project are currently tested with the following versions:
+
+* Bootstrap 3.3.5
+* Font Awesome 4.4.0
+* jQuery 2.1.4
+
+If you are not using one of our starter projects, you will need to go about
+setting up a build environment to use these libraries. We recommend using
+`webpack <http://webpack.github.io/>`_ and installing these libraries with
+`npm`.
 
 
 Quick Start
@@ -41,24 +73,12 @@ Your pages should have blocks "head_title" and "body" and should extend
 The url name "home" should be defined as the homepage.
 
 
-License & Attribution
----------------------
+License
+-------
 
 The Pinax Bootstrap theme is released under the MIT license.
 
-This theme includes styles and scripts from the Bootstrap project,
-which is (since v3.1.0) released under the MIT license.
-
-For copies of both licenses, see LICENSE.
-
-Includes icons from `Glyphicons Free <http://glyphicons.com/>`_, licensed
-under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>`_.
-
-Includes icons from
-`Font Awesome <http://fortawesome.github.io/Font-Awesome/>`_.
-
 
 .. _django-bootstrap-form: https://github.com/tzangms/django-bootstrap-form
-.. _official migration guide: http://getbootstrap.com/getting-started/#migration
 .. _PaginationTemplate: https://github.com/pinax/pinax-theme-bootstrap/blob/master/pinax_theme_bootstrap/templates/pagination/pagination.html
 .. _django-pagination: https://github.com/ericflo/django-pagination
