@@ -1,0 +1,24 @@
+{% load i18n %}
+{% load bootstrap %}
+
+<div class="pinax-invitations-invites-form">
+    {% if user.invitationstat.can_send %}
+        <form action="{% url "pinax-invitations_invite" %}"
+              class="form ajax"
+              data-replace-closest=".pinax-invitations-invites-form"
+              method="POST"
+              accept-charset="utf-8">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    {% trans "Invite" %}
+                </button>
+            </div>
+        </form>
+    {% else %}
+        <p>
+            {% trans "You do not have any invitations currrently." %}
+        </p>
+    {% endif %}
+</div>

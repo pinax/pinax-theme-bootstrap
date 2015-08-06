@@ -1,0 +1,20 @@
+{% load i18n %}
+{% load invitations_tags %}
+
+<ul class="pinax-invitations-invites-sent">
+    {% for invited in invited_list %}
+        <li class="{{ invited|status_class }}">
+            {% if invited.to_user %}
+                <a href="{{ invited.to_user.get_profile.get_absolute_url }}">
+                    {{ invited.signup_code.email }}
+                </a>
+            {% else %}
+                {{ invited.signup_code.email }}
+            {% endif %}
+        </li>
+    {% empty %}
+        <li class="empty-invites">
+            {% trans "You have not sent any invitations yet." %}
+        </li>
+    {% endfor %}
+</ul>
