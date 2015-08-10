@@ -1,5 +1,6 @@
 {% extends "site_base.html" %}
 
+{% load account_tags %}
 {% load i18n %}
 {% load bootstrap %}
 
@@ -19,7 +20,7 @@
             </form>
             <p class="login-signup">
                 <small>
-                    {% trans "Already have an account?" %}  <strong><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></strong>
+                    {% trans "Already have an account?" %}  <strong><a href="{% urlnext 'account_login' %}">{% trans "Log in" %}</a></strong>
                 </small>
             </p>
         </div>

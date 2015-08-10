@@ -1,5 +1,6 @@
 {% extends "site_base.html" %}
 
+{% load account_tags %}
 {% load i18n %}
 {% load bootstrap %}
 
@@ -21,7 +22,7 @@
             {% if ACCOUNT_OPEN_SIGNUP %}
                 <p class="login-signup">
                     <small>
-                        {% trans "Don't have an account?" %}  <strong><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></strong>
+                        {% trans "Don't have an account?" %}  <strong><a href="{% urlnext 'account_signup' %}">{% trans "Sign up" %}</a></strong>
                     </small>
                 </p>
             {% endif %}
