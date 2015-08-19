@@ -4,8 +4,17 @@ Bootstrap Theme, for Pinax
 .. image:: http://slack.pinaxproject.com/badge.svg
    :target: http://slack.pinaxproject.com/
 
-A theme for Pinax based on the open source Bootstrap front-end framework and
+pinax-theme-bootstrap is a theme for Pinax based on the open source Bootstrap front-end framework and
 the Font Awesome icon library.
+
+Pinax is an open-source platform built on the Django Web Framework. It is an ecosystem of reusable Django apps, themes, and starter project templates. 
+This collection can be found at http://pinaxproject.com.
+
+In order to foster a kind, inclusive, and harassment-free community, the Pinax Project has a code of conduct, which can be found here  http://pinaxproject.com/pinax/code_of_conduct/.
+
+The Pinax documentation is available at http://pinaxproject.com/pinax/.
+
+For updates and news regarding the Pinax Project, please follow us on Twitter at @pinaxproject and check out our blog http://blog.pinaxproject.com.
 
 
 Upgrade Notes
