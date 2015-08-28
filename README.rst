@@ -76,7 +76,7 @@ Upgrading to 6.0, you should be aware of a few changes:
 * ``style_base`` and ``extra_style`` blocks have been merged into ``styles``
 * ``script_base`` and ``extra_script`` blocks have been merged into ``scripts`` and
   the ``theme.js`` script is now loaded within a ``theme_script`` block after the
-  ``scripts``block. It now expects that you'll load the necessary ``jQuery``
+  ``scripts`` block. It now expects that you'll load the necessary ``jQuery``
   library at the project level in the ``scripts`` block.
 * No vendored assets ship with the theme anymore. You are responsible for
   setting up your own static assets at the project level. We have made it easy
