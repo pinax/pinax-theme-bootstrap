@@ -1,35 +1,47 @@
-Bootstrap Theme, for Pinax
+Pinax Theme Bootstrap
 ==================================
 
 .. image:: http://slack.pinaxproject.com/badge.svg
    :target: http://slack.pinaxproject.com/
 
-pinax-theme-bootstrap is a theme for Pinax based on the open source Bootstrap front-end framework and
-the Font Awesome icon library.
+
+Pinax
+-------
 
 Pinax is an open-source platform built on the Django Web Framework. It is an ecosystem of reusable Django apps, themes, and starter project templates. 
 This collection can be found at http://pinaxproject.com.
 
-In order to foster a kind, inclusive, and harassment-free community, the Pinax Project has a code of conduct, which can be found here  http://pinaxproject.com/pinax/code_of_conduct/.
 
-The Pinax documentation is available at http://pinaxproject.com/pinax/.
+pinax-theme-bootstrap
+----------------------
 
-For updates and news regarding the Pinax Project, please follow us on Twitter at @pinaxproject and check out our blog http://blog.pinaxproject.com.
+``pinax-theme-bootstrap`` is a theme for Pinax based on the open source Bootstrap front-end framework and
+the Font Awesome icon library.
 
 
-Upgrade Notes
--------------
+Getting Started
+-----------------
 
-Upgrading to 6.0, you should be aware of a few changes:
+Include ``pinax-theme-bootstrap`` in your requirements file and include
+``pinax_theme_bootstrap`` and ``bootstrapform`` (which is installed alongside
+this theme) in your ``INSTALLED APPS``.
 
-* `style_base` and `extra_style` blocks have been merged into `styles`
-* `script_base` and `extra_script` blocks have been merged into `scripts` and
-  the `theme.js` script is now loaded within a `theme_script` block after the
-  `scripts` block. It now expects that you'll load the necessary `jQuery`
-  library at the project level in the `scripts` block.
-* No vendored assets ship with the theme anymore. You are responsible for
-  setting up your own static assets at the project level. We have made it easy
-  by just using one of our starter projects.
+Add ``django.core.context_processors.request`` and
+``pinax_theme_bootstrap.context_processors.theme`` to your ``TEMPLATE_CONTEXT_PROCESSORS``
+to ensure the user selector and site name work correctly.
+
+Make sure both template loaders and staticfiles finders includes
+app directories.
+
+Site name comes from Sites fixture.
+
+Your ``site_base.html`` should extend ``theme_bootstrap/base.html`` and should provide
+``footer`` and ``nav`` blocks (the latter should just be a ul of li of a links).
+
+Your pages should have blocks ``head_title`` and ``body`` and should extend
+``site_base.html``.
+
+The url name ``home`` should be defined as the homepage.
 
 
 Dependencies
@@ -53,38 +65,47 @@ The templates in this project are currently tested with the following versions:
 If you are not using one of our starter projects, you will need to go about
 setting up a build environment to use these libraries. We recommend using
 `webpack <http://webpack.github.io/>`_ and installing these libraries with
-`npm`.
+``npm``.
 
 
-Quick Start
------------
+Upgrade Notes
+-------------
 
-Include "pinax-theme-bootstrap" in your requirements file and include
-"pinax_theme_bootstrap" and "bootstrapform" (which is installed alongside
-this theme) in your INSTALLED APPS.
+Upgrading to 6.0, you should be aware of a few changes:
 
-Add 'django.core.context_processors.request' and
-"pinax_theme_bootstrap.context_processors.theme" to your TEMPLATE_CONTEXT_PROCESSORS
-to ensure the user selector and site name work correctly.
+* ``style_base`` and ``extra_style`` blocks have been merged into ``styles``
+* ``script_base`` and ``extra_script`` blocks have been merged into ``scripts`` and
+  the ``theme.js`` script is now loaded within a ``theme_script`` block after the
+  ``scripts``block. It now expects that you'll load the necessary ``jQuery``
+  library at the project level in the ``scripts`` block.
+* No vendored assets ship with the theme anymore. You are responsible for
+  setting up your own static assets at the project level. We have made it easy
+  by just using one of our starter projects.
 
-Make sure both template loaders and staticfiles finders includes
-app directories.
 
-Site name comes from Sites fixture.
+Documentation
+--------------
 
-Your "site_base.html" should extend "theme_bootstrap/base.html" and should provide
-"footer" and "nav" blocks (the latter should just be a ul of li of a links).
-
-Your pages should have blocks "head_title" and "body" and should extend
-"site_base.html".
-
-The url name "home" should be defined as the homepage.
+The Pinax documentation is available at http://pinaxproject.com/pinax/.
 
 
 License
 -------
 
 The Pinax Bootstrap theme is released under the MIT license.
+
+
+Code of Conduct
+-----------------
+
+In order to foster a kind, inclusive, and harassment-free community, the Pinax Project has a code of conduct, which can be found here  http://pinaxproject.com/pinax/code_of_conduct/.
+
+
+Pinax Project Blog and Twitter
+--------------------------------
+
+For updates and news regarding the Pinax Project, please follow us on Twitter at @pinaxproject and check out our blog http://blog.pinaxproject.com.
+
 
 
 .. _django-bootstrap-form: https://github.com/tzangms/django-bootstrap-form
