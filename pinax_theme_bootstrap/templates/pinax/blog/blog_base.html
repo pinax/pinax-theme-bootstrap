@@ -1,0 +1,51 @@
+{% extends "site_base.html" %}
+
+{% load pinax_blog_tags %}
+
+{% block body_class %}blog{% endblock %}
+
+{% block body %}
+    <div class="row blog-container">
+        <div class="col-md-3 sidebar">
+            {% block sidebar %}
+                <h1>
+                    <a href="{% url "blog" %}">{{ SITE_NAME }}</a>
+                </h1>
+                <p class="lead">
+                    This is where you can list your bio, add links
+                    etc., by editing the <code>pinax/blog/blog_base.html</code>
+                    template.
+                </p>
+                <p>
+                    <a href="{% url 'blog_feed' 'all' 'atom' %}"><i class="fa fa-rss"></i> Atom Feed</a>
+                </p>
+                <div class="search">
+                    {% if section_slug %}
+                        {% url "blog_section" section_slug as search_url %}
+                    {% else %}
+                        {% url "blog" as search_url %}
+                    {% endif %}
+
+                    <form class="form-search" action="{{ search_url }}">
+                        <label><i class="fa fa-search"></i></label>
+                        <input class="form-control" type="search" placeholder="Search..." name="q" value="{{ search_term|default:"" }}">
+                    </form>
+                </div>
+                <ul class="">
+                    <li class="{% if current_section == "all" %}active{% endif %}">
+                        <a href="{% url "blog" %}">All</a>
+                    </li>
+                    {% blog_sections as sections %}
+                    {% for section in sections %}
+                        <li class="{% if current_section == section %}active{% endif %}">
+                            <a href="{% url "blog_section" section.slug %}">{{ section.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endblock %}
+        </div>
+        <div class="col-md-8 blog-content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

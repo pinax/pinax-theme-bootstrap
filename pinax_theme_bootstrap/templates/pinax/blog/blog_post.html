@@ -1,0 +1,48 @@
+{% extends "pinax/blog/blog_base.html" %}
+
+{% block body_class %}blog blog-post{% endblock %}
+
+{% block head_title_base %}{{ post.title }} | {{ SITE_NAME }}{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <meta name="twitter:card" content="summary">
+    {% comment %}
+    <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/62846141/pinaxproject_avatar.png">
+    {% endcomment %}
+    <meta property="og:title" content="{{ post.title }}">
+    {% if post.description %}
+        <meta name="description" content="{{ post.description }}">
+        <meta property="og:description" content="{{ post.description }}">
+    {% else %}
+        <meta name="description" content="{{ post.teaser_html|striptags }}">
+        <meta property="og:description" content="{{ post.teaser_html|striptags }}">
+    {% endif %}
+    {% if post.primary_image %}
+        <meta property="og:image" content="http://{{ SITE_DOMAIN }}{{ post.primary_image.image_path.url }}">
+    {% else %}
+        {% comment %}
+        <meta property="og:image" content="https://pbs.twimg.com/profile_images/62846141/pinaxproject_avatar.png">
+        {% endcomment %}
+    {% endif %}
+    <meta property="og:url" content="http://{{ SITE_DOMAIN }}{{ post.get_absolute_url }}">
+    <meta property="og:type" content="article">
+{% endblock %}
+
+{% block content %}
+    <div class="post-detail">
+        <div class="post">
+            <h1>{{ post.title }}</h1>
+            {% include "pinax/blog/dateline_stale.html" %}
+
+            <div class="teaser">{{ post.teaser_html|safe }}</div>
+
+            <div class="content">{{ post.content_html|safe }}</div>
+
+            <div class="twitter-button">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+        </div>
+    </div>
+{% endblock %}
