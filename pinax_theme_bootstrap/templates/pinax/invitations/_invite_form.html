@@ -3,7 +3,7 @@
 
 <div class="pinax-invitations-invites-form">
     {% if user.invitationstat.can_send %}
-        <form action="{% url "pinax-invitations_invite" %}"
+        <form action="{% url "pinax-invitations-invite" %}"
               class="form ajax"
               data-replace-closest=".pinax-invitations-invites-form"
               method="POST"
