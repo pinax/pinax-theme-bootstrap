@@ -1,0 +1,50 @@
+{% extends "pinax/stripe/base.html" %}
+
+
+{% load bootstrap %}
+
+{% block body_class %}pinax-stripe-subscriptions{% endblock %}
+
+{% block body %}
+
+{% if object %}
+    {% url "pinax_stripe_subscription_update" object.pk as post_url %}
+{% else %}
+    {% url "pinax_stripe_subscription_create" as post_url %}
+{% endif %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="pull-right">{% if object %}{{ object.plan.name }}{% endif %}</span>
+        <h4 class="panel-title">{% if object %}Change{% else %}Add{% endif %} Subscription</h4>
+    </div>
+    <div class="panel-body">
+        {% if errors %}
+            <div class="alert alert-danger">
+                {{ errors }}
+            </div>
+        {% endif %}
+        <form class="form" {% if not request.user.customer.default_source %}data-stripe-key="{{ PINAX_STRIPE_PUBLIC_KEY }}"{% endif %} action="{{ post_url }}" method="post">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            {% if not request.user.customer.default_source %}
+                <div class="card">
+                    <div class="errors"></div>
+                    <input type="text" size="20" data-stripe="number" placeholder="Card number"/>
+                    <input type="text" size="2" data-stripe="exp-month"/>
+                    <input type="text" size="4" data-stripe="exp-year"/>
+                    <input type="text" size="4" data-stripe="cvc" placeholder="CVC"/>
+                </div>
+            {% endif %}
+            <button class="btn btn-primary">{% if object %}Update{% else %}Subscribe{% endif %}</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+    {{ block.super }}
+    {% include "pinax/stripe/_stripe_js.html" %}
+{% endblock %}

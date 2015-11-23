@@ -1,0 +1,58 @@
+{% extends "pinax/stripe/base.html" %}
+
+
+{% load bootstrap %}
+
+{% block body_class %}pinax-stripe-payment-methods{% endblock %}
+
+{% block body %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">Create Payment Method</h4>
+    </div>
+    <div class="panel-body">
+        {% if errors %}
+            <div class="alert alert-danger">
+                {{ errors }}
+            </div>
+        {% endif %}
+        <form class="form-horizontal" data-stripe-key="{{ PINAX_STRIPE_PUBLIC_KEY }}" action="{% url "pinax_stripe_payment_method_create" %}" method="post">
+            {% csrf_token %}
+            <div class="card">
+                <div class="errors"></div>
+                  <div class="form-group">
+                    <label for="number" class="col-sm-2 control-label">Card Number</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" size="20" data-stripe="number" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="expMonth" class="col-sm-2 control-label">Expiration</label>
+                    <div class="col-sm-1">
+                        <input type="text" size="2" class="form-control" data-stripe="exp-month"/>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" size="4" class="form-control" data-stripe="exp-year"/>
+                    </div>
+                    <label for="cvc" class="col-sm-2 control-label">CVC</label>
+                    <div class="col-sm-2">
+                      <input type="text" size="4" class="form-control" data-stripe="cvc" />
+                    </div>
+                  </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+    {{ block.super }}
+    {% include "pinax/stripe/_stripe_js.html" %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "pinax/stripe/base.html" %}
+
+
+{% load bootstrap %}
+
+{% block body_class %}pinax-stripe-subscriptions{% endblock %}
+
+{% block body %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="pull-right">{{ object.plan.name }}</span>
+        <h4 class="panel-title">Cancel Subscription</h4>
+    </div>
+    {% if errors %}
+        <div class="panel-body">
+            <div class="alert alert-danger">
+                {{ errors }}
+            </div>
+        </div>
+    {% endif %}
+    {% include "pinax/stripe/_invoice_table.html" with invoices=object.invoice_set.all %}
+    <div class="panel-body">
+        <form class="form" action="{% url "pinax_stripe_subscription_delete" object.pk %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger">Cancel</button>
+        </form>
+    </div>
+    <div class="panel-footer">
+        You began your subscription of <strong>{{ object.plan.name }}</strong> on
+        {{ object.start }}.
+    </div>
+</div>
+{% endblock %}

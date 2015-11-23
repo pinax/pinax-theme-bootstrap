@@ -1,0 +1,39 @@
+{% extends "pinax/stripe/base.html" %}
+
+
+{% block body_class %}pinax-stripe-payment-methods{% endblock %}
+
+{% block body %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a class="pull-right btn btn-xs btn-primary" href="{% url "pinax_stripe_payment_method_create" %}">
+            <i class="fa fa-plus"></i>
+            Add Payment Method
+        </a>
+        <h4 class="panel-title">Payment Methods</h4>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr><th></th><th>Kind</th><th>Last 4</th><th class="text-right">Expiration</th><th class="text-right">Created</th></tr>
+        </thead>
+        <tbody>
+            {% for source in object_list %}
+            <tr>
+                <td>
+                    <a class="btn btn-xs btn-default" href="{% url "pinax_stripe_payment_method_delete" source.pk %}">Delete</a>
+                    <a class="btn btn-xs btn-default" href="{% url "pinax_stripe_payment_method_update" source.pk %}">Update</a>
+                </td>
+                <td>{{ source.brand }}</td>
+                <td>{{ source.last4 }}</td>
+                <td class="text-right">{{ source.exp_month }} / {{ source.exp_year }}</td>
+                <td class="text-right">{{ source.created_at }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">You have no payment methods</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

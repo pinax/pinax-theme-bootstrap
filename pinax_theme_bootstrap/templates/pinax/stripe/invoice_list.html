@@ -1,0 +1,15 @@
+{% extends "pinax/stripe/base.html" %}
+
+
+{% load bootstrap %}
+
+{% block body_class %}pinax-stripe-invoices{% endblock %}
+
+{% block body %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Payment History</h4>
+        </div>
+        {% include "pinax/stripe/_invoice_table.html" with invoices=object_list %}
+    </div>
+{% endblock %}

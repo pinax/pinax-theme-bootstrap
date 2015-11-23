@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Date</th><th>Description</th><th>Period</th><th>Total</th><th>Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for invoice in invoices %}
+    <tr>
+        <td>
+            {{ invoice.date }}
+        </td>
+        <td>
+            {{ invoice.subscription.plan.name }}
+        </td>
+        <td>
+            {{ invoice.period_start }}—{{ invoice.period_end }}
+        </td>
+        <td class="text-right">
+            {{ invoice.total }}
+        </td>
+        <td class="text-center">
+            {% if invoice.paid %}<i class="text-success fa fa-fw fa-check"></i>{% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    <tbody>
+</table>
