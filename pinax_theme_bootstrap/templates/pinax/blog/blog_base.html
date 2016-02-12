@@ -20,10 +20,10 @@
                     <a href="{% url 'blog_feed' 'all' 'atom' %}"><i class="fa fa-rss"></i> Atom Feed</a>
                 </p>
                 <div class="search">
-                    {% if section_slug %}
-                        {% url "blog_section" section_slug as search_url %}
-                    {% else %}
+                    {% if current_section == "all" %}
                         {% url "blog" as search_url %}
+                    {% else %}
+                        {% url "blog_section" current_section.slug as search_url %}
                     {% endif %}
 
                     <form class="form-search" action="{{ search_url }}">
