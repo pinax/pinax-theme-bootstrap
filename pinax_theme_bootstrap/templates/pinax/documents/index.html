@@ -1,0 +1,11 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}Documents{% endblock %}
+
+{% block body_class %}documents{% endblock %}
+
+{% block body %}
+    <h1>Documents</h1>
+    {% include "documents/_usage.html" %}
+    {% include "documents/_member_table.html" %}
+{% endblock %}

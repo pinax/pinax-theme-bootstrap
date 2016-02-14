@@ -1,0 +1,18 @@
+{% extends "site_base.html" %}
+
+{% load bootstrap %}
+
+{% block head_title %}Upload file{% if folder %} in {{ folder.name }}{% endif %}{% endblock %}
+
+{% block body %}
+    <h1>Upload file{% if folder %} in {{ folder.name }}{% endif %}</h1>
+    {% include "documents/_breadcrumbs.html" %}
+
+    <form method="POST" action="{% url 'documents_document_create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Upload</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}{{ document.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ document.name }}</h1>
+    {% include "documents/_breadcrumbs.html" with member=document %}
+    <a href="{{ document.download_url }}"><i class="icon-download"></i> Download</a><br />
+{% endblock %}

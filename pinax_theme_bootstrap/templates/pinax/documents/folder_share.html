@@ -1,0 +1,27 @@
+{% extends "site_base.html" %}
+
+{% load bootstrap %}
+{% load account_tags %}
+
+{% block head_title %}Share folder{% endblock %}
+
+{% block body %}
+    <h1>Share folder</h1>
+    <form method="POST" action="{% url 'documents_folder_share' folder.id %}">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Share</button>
+            <a class="btn" href="#">Cancel</a>
+        </div>
+    </form>
+    <h2>Shared with</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <ul>
+            {% for participant in participants %}
+                <li>{% user_display participant %} <button type="submit" class="btn btn-danger" name="remove" value="{{ participant.pk }}">remove</button></li>
+            {% endfor %}
+        </ul>
+    </form>
+{% endblock %}
