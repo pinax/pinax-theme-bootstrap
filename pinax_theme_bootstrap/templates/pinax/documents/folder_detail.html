@@ -1,0 +1,9 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}{{ folder.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ folder.name }}</h1>
+    {% include "documents/_breadcrumbs.html" with member=folder %}
+    {% include "documents/_member_table.html" %}
+{% endblock %}

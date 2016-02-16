@@ -1,0 +1,47 @@
+{% load account_tags documents_tags %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="btn-group pull-right">
+            <a href="{% url 'documents_folder_create' %}{% if folder %}?p={{ folder.id }}{% endif %}" class="btn btn-xs btn-default"><i class="fa fa-fw fa-plus"></i> Create folder</a>
+            <a href="{% url 'documents_document_create' %}{% if folder %}?f={{ folder.id }}{% endif %}" class="btn btn-xs btn-default"><i class="fa fa-fw fa-upload"></i> Upload file</a>
+            {% if folder|can_share:user %}<a href="{% url 'documents_folder_share' folder.id %}" class="btn btn-xs btn-default"><i class="fa fa-fw fa-share"></i> Share</a>{% endif %}
+        </div>
+        <h3 class="panel-title">{{ folder.name }}</h3>
+    </div>
+{% if members %}
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Modified At</th>
+            <th>Modified By</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for member in members %}
+                <tr>
+                    <td>
+                        <i class="fa fa-fw fa-{{ member.icon }}"></i>
+                        <a href="{{ member.get_absolute_url }}"><strong>{{ member.name }}</strong></a><br />
+                    </td>
+                    <td>{{ member.size|readable_bytes }}</td>
+                    <td>{{ member.modified|date:"N j, Y" }}</td>
+                    <td>{% user_display member.modified_by %} {% if member.shared_ui %}<b>[shared]</b>{% endif %}</td>
+                    <td>
+                        {% if member.icon == "file" %}
+                            <a class="btn btn-xs btn-default" href="{{ member.download_url }}"><i class="fa fa-fw fa-download"></i> download</a>
+                            <a class="btn btn-xs btn-default" href="#"><i class="fa fa-fw fa-trash"></i> delete</a>
+                        {% else %}
+                            <a class="btn btn-xs btn-default" href="{{ member.get_absolute_url }}"><i class="fa fa-fw fa-folder-open"></i> open</a>
+                            <a class="btn btn-xs btn-default" href="{% url 'documents_document_create' %}?f={{ member.id }}"><i class="fa fa-fw fa-upload"></i> upload to this folder</a>
+                            {% if member|can_share:user %}<a class="btn btn-xs btn-default" href="{% url 'documents_folder_share' member.id %}"><i class="fa fa-fw fa-share"></i> share</a>{% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No folders or files</p>
+{% endif %}
+</div>
