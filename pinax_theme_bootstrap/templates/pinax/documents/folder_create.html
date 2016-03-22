@@ -8,7 +8,7 @@
     <h1>Create folder{% if parent %} in {{ parent.name }}{% endif %}</h1>
     {% include "documents/_breadcrumbs.html" %}
 
-    <form method="POST" action="{% url 'documents_folder_create' %}">
+    <form method="POST" action="{% url 'pinax_documents:folder_create' %}">
         {% csrf_token %}
         {{ form|bootstrap }}
         <div class="form-actions">

@@ -8,7 +8,7 @@
     <h1>Upload file{% if folder %} in {{ folder.name }}{% endif %}</h1>
     {% include "documents/_breadcrumbs.html" %}
 
-    <form method="POST" action="{% url 'documents_document_create' %}" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'pinax_documents:document_create' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|bootstrap }}
         <div class="form-actions">

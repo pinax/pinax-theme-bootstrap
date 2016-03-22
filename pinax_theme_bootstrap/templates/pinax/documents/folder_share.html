@@ -7,7 +7,7 @@
 
 {% block body %}
     <h1>Share folder</h1>
-    <form method="POST" action="{% url 'documents_folder_share' folder.id %}">
+    <form method="POST" action="{% url 'pinax_documents:folder_share' folder.id %}">
         {% csrf_token %}
         {{ form|bootstrap }}
         <div class="form-actions">
