@@ -30,7 +30,7 @@
                     <td>
                         {% if member.icon == "file" %}
                             <a class="btn btn-xs btn-default" href="{{ member.download_url }}"><i class="fa fa-fw fa-download"></i> download</a>
-                            <a class="btn btn-xs btn-default" href="#"><i class="fa fa-fw fa-trash"></i> delete</a>
+                            <a class="btn btn-xs btn-default" href="{{ member.delete_url }}"><i class="fa fa-fw fa-trash"></i> delete</a>
                         {% else %}
                             <a class="btn btn-xs btn-default" href="{{ member.get_absolute_url }}"><i class="fa fa-fw fa-folder-open"></i> open</a>
                             <a class="btn btn-xs btn-default" href="{% url 'pinax_documents:document_create' %}?f={{ member.id }}"><i class="fa fa-fw fa-upload"></i> upload to this folder</a>

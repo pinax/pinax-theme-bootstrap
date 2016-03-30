@@ -1,0 +1,27 @@
+{% extends "site_base.html" %}
+
+{% load i18n bootstrap %}
+
+{% block head_title %}Confirm Delete: {{ document.name }}{% endblock %}
+
+{% block body_class %}documents{% endblock %}
+
+{% block body %}
+    <h1>{% trans "Delete Document?" %}</h1>
+
+    {% include "pinax/documents/_breadcrumbs.html" with member=document %}
+
+    {% url member.delete_url as post_url %}
+    <p class="lead">
+        {% trans "Are you sure you want to delete this document?" %}
+    </p>
+    <p><b>{{ document.name }}</b></p>
+
+    <form action="{{ post_url }}" method="POST" class="form form-horizontal">
+        {% csrf_token %}
+        <div class="form-actions">
+            <a href="{% url "pinax_documents:document_index" %}" class="btn">{% trans "Cancel" %}</a>
+            <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+        </div>
+    </form>
+{% endblock %}
