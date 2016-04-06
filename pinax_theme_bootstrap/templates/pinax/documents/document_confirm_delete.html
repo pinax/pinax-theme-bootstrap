@@ -12,9 +12,15 @@
     {% include "pinax/documents/_breadcrumbs.html" with member=document %}
 
     {% url member.delete_url as post_url %}
-    <p class="lead">
-        {% trans "Are you sure you want to delete this document?" %}
-    </p>
+
+    <div class="alert alert-warning" role="alert">
+
+        <p class="lead">
+            {% trans "Are you sure you want to delete this document?" %}
+        </p>
+
+    </div>
+
     <p><b>{{ document.name }}</b></p>
 
     <form action="{{ post_url }}" method="POST" class="form form-horizontal">

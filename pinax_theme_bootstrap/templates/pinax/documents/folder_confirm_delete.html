@@ -10,9 +10,15 @@
     <h1>{% trans "Delete Folder?" %}</h1>
 
     {% include "pinax/documents/_breadcrumbs.html" with member=document %}
-    <p class="lead">
-        {% trans "Are you sure you want to delete this folder and all of it's contents?" %}
-    </p>
+
+    <div class="alert alert-warning" role="alert">
+
+        <p class="lead">
+            {% trans "Are you sure you want to delete this folder and all of it's contents?" %}
+        </p>
+
+    </div>
+
     {% include "pinax/documents/_member_table.html" with members=folder.members %}
 
     {% url member.delete_url as post_url %}
