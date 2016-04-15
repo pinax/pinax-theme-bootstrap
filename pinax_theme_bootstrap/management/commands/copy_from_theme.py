@@ -38,5 +38,5 @@ class Command(BaseCommand):
         base = os.path.join(os.path.dirname(__file__), "../../templates")
         dest = os.path.join(settings.PACKAGE_ROOT, "templates")
         for f in glob.glob(os.path.join(base, path)):
-            print f.replace(base, dest)
+            print(f.replace(base, dest))
             copy(f, f.replace(base, dest))
