@@ -1,0 +1,5 @@
+{% if instance.get_absolute_url %}
+	<a class="likes likes-{{ like.type }}" href="{{ instance.get_absolute_url }}">{{ instance }}</a>
+{% else %}
+	<span class="likes likes-{{ like.type }}">{{ instance }}</span>
+{% endif %}
