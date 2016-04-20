@@ -14,3 +14,19 @@ footer {
 p.login-signup {
     margin-top: 20px;
 }
+
+
+// ------------------------  Stripe
+
+#payment-exp-month, #payment-exp-cvc {
+    padding: 6px;
+    min-width: 40px;
+}
+
+#payment-exp-year {
+    margin-left: -15px;
+}
+
+.for-cvc {
+    max-width: 50px;
+}
