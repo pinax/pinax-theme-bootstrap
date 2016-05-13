@@ -1,0 +1,94 @@
+{% extends "site_base.html" %}
+
+{% block body_class %}authed cohorts{% endblock %}
+
+{% block head_title %}{{ cohort.name }} cohort{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-info cohort-detail">
+                <div class="panel-heading">
+                    <strong>{{ cohort.name }}</strong>
+                    <span class="pull-right">Users: {{ cohort.member_counts.users }}, Members: {{ cohort.member_counts.total }}</span>
+                </div>
+                <table class="table">
+                    <tr><th>Member</th><th>Status</th>
+                    {% for member in cohort.members %}
+                        <tr>
+                            <td>{{ member.email }}</td>
+                            <td>
+                                <span class="label {% if member.user %}label-primary{% else %}{% if member.invited %}label-success{% else %}label-info{% endif %}{% endif %}">
+                                    {% if member.user %}<i class="fa fa-fw fa-user"></i> {{ member.user }}{% else %}{% if member.invited %}invited{% else %}pending{% endif %}{% endif %}
+                                </span>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="2" class="lead">No Cohort Members Yet</td></tr>
+                    {% endfor %}
+                </table>
+                {% if cohort.member_counts.pending %}
+                    <div class="panel-footer text-right">
+                        <form method="POST" action="{% url "pinax_cohorts:send_invitations" cohort.pk %}" class="form-inline">
+                            {% csrf_token %}
+                            <button class="btn btn-primary btn-sm">
+                                Send Out Invitations to {{ cohort.member_counts.pending }} {{ cohort.member_counts.pending|pluralize:"Person,People" }}
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+            <em>Created {{ cohort.created }}</em>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-info cohort-invite">
+                <div class="panel-heading">
+                    <strong>Invite Email Address</strong>
+                </div>
+                <div class="panel-body">
+                    <form method="POST" action="{% url "pinax_cohorts:member_add" cohort.pk %}" class="form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input id="id_email" type="text" name="email" class="form-control input-md" maxlength="75" />
+                        </div>
+                        <button class="btn btn-primary btn-md pull-right">Invite</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-info cohort-invite">
+                <div class="panel-heading">
+                    <strong>Waiting List ({{ waiting_list.count }})</strong>
+                </div>
+                <div class="panel-body">
+                    <form method="POST" action="{% url "pinax_cohorts:member_add" cohort.pk %}" class="form-inline">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            Invite next <input type="number" min="1" name="invite_next" class="form-control" style="width: 70px;"> people
+                            <button class="btn btn-primary btn-xs"><i class="fa fa-fw fa-caret-down"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="list-group">
+                    {% for item in waiting_list %}
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div><strong>{{ item.email }}</strong></div>
+                                    <div class="text-muted small">{{ item.created|date }}</div>
+                                </div>
+                                <div class="col-md-2">
+                                    <form method="POST" action="{% url "pinax_cohorts:member_add" cohort.pk %}" class="form-inline pull-right">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="email" value="{{ item.email }}" />
+                                        <button class="btn btn-success btn-xs"><i class="fa fa-fw fa-plus"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

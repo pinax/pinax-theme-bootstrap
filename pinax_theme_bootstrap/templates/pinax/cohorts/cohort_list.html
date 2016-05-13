@@ -1,0 +1,34 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+    <div class="panel panel-info cohort-list">
+        <div class="panel-heading">
+            <strong>Cohorts</strong>
+            <a class="btn btn-default btn-info btn-xs pull-right" href="{% url "pinax_cohorts:create" %}">
+                Create a Cohort
+            </a>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Name</th><th>Totals</th><th>Members</th>
+            </tr>
+            {% for cohort in cohorts %}
+            <tr>
+                <td>
+                    <a href="{% url "pinax_cohorts:detail" cohort.pk %}">
+                        {{ cohort.name }}
+                    </a>
+                </td>
+                <td>
+                    {{ cohort.member_counts.users }} / {{ cohort.member_counts.total }}
+                </td>
+                <td>
+                    {% include "pinax/cohorts/_members.html" %}
+                </td>
+            </tr>
+            {% empty %}
+                <tr><td colspan="3" class="lead">No Members Yet</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
