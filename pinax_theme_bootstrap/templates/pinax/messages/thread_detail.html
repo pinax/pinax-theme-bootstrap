@@ -1,0 +1,28 @@
+{% extends "site_base.html" %}
+
+{% load bootstrap %}
+
+{% block body %}
+
+    <h2>{{ thread.subject }}</h2>
+
+    <section>
+        {% for message in thread.messages.all %}
+            <div class="message">
+                <p class="text-muted">
+                    {{ message.sender.username }} - {{ message.sent_at }}
+                </p>
+                <div>{{ message.content|urlize|linebreaks }}</div>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <form class="comment-form" action="{% url "pinax_messages:thread_detail" thread.pk %}" method="post">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <button class="btn btn-primary pull-right">Send</button>
+        </form>
+        <a class="btn btn-default" href="{% url "pinax_messages:inbox" %}">Cancel</a>
+    </section>
+{% endblock %}
