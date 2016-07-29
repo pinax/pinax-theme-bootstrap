@@ -1,0 +1,17 @@
+{% extends "site_base.html" %}
+
+{% load bootstrap %}
+
+{% block body %}
+
+    <h2>New Message</h2>
+
+    <section>
+        <form class="comment-form" action="{% url "pinax_messages:message_create" %}" method="post">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <button class="btn btn-primary pull-right">Send</button>
+        </form>
+        <a class="btn btn-default" href="{% url "pinax_messages:inbox" %}">Cancel</a>
+    </section>
+{% endblock %}
