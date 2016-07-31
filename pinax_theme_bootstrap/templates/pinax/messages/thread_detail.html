@@ -25,4 +25,8 @@
         </form>
         <a class="btn btn-default" href="{% url "pinax_messages:inbox" %}">Cancel</a>
     </section>
+
+    <section>
+        <a class="btn" href="{% url "pinax_messages:thread_delete" thread.pk %}">Delete Thread</a>
+    </section>
 {% endblock %}
