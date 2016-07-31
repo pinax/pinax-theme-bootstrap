@@ -1,6 +1,6 @@
 # ChangeLog
 
-## 7.10.1 (Pinax 16.07)
+## 7.10.1
 
  - add "thread_confirm_delete.html" for pinax-messages
  - add delete link to "thread_detail.html" for pinax-messages
