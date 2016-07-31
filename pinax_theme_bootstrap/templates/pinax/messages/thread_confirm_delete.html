@@ -19,8 +19,7 @@
 
     </div>
 
-    <p><b>{{ thread.subject }}</b></p>
-    <p><em>{{ thread.users }}</em></p>
+    <p><b>{{ thread }}</b></p>
 
     <form action="{{ post_url }}" method="POST" class="form form-horizontal">
         {% csrf_token %}
