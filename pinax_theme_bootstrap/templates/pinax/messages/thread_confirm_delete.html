@@ -1,0 +1,31 @@
+{% extends "site_base.html" %}
+
+{% load i18n bootstrap %}
+
+{% block head_title %}Confirm Delete: {{ thread.subject }}{% endblock %}
+
+{% block body_class %}threads{% endblock %}
+
+{% block body %}
+    <h1>{% trans "Delete Thread?" %}</h1>
+
+    {% url "pinax_messages:thread_delete" thread.pk as post_url %}
+
+    <div class="alert alert-warning" role="alert">
+
+        <p class="lead">
+            {% trans "Are you sure you want to delete this thread?" %}
+        </p>
+
+    </div>
+
+    <p><b>{{ thread }}</b></p>
+
+    <form action="{{ post_url }}" method="POST" class="form form-horizontal">
+        {% csrf_token %}
+        <div class="form-actions">
+            <a href="{% url "pinax_messages:inbox" %}" class="btn">{% trans "Cancel" %}</a>
+            <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+        </div>
+    </form>
+{% endblock %}
