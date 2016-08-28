@@ -7,7 +7,7 @@
             {% if folder|can_share:user %}<a href="{% url 'pinax_documents:folder_share' folder.id %}" class="btn btn-xs btn-default"><i class="fa fa-fw fa-share"></i> Share</a>{% endif %}
             {% if folder.id %}<a href="{% url 'pinax_documents:folder_delete' folder.id %}" class="btn btn-xs btn-default"><i class="fa fa-fw fa-trash"></i> Delete</a>{% endif %}
         </div>
-        <h3 class="panel-title">{{ folder.name }}</h3>
+        <h3 class="panel-title">{{ folder.name|default:"Root" }}</h3>
     </div>
 {% if members %}
     <table class="table table-bordered table-condensed">
@@ -22,7 +22,7 @@
             {% for member in members %}
                 <tr>
                     <td>
-                        <i class="fa fa-fw fa-{{ member.icon }}"></i>
+                        <i class="fa fa-fw fa-{{ member.icon }}-o"></i>
                         <a href="{{ member.get_absolute_url }}"><strong>{{ member.name }}</strong></a><br />
                     </td>
                     <td>{{ member.size|readable_bytes }}</td>
@@ -32,7 +32,6 @@
                         {% if member.icon == "file" %}
                             <a class="btn btn-xs btn-default" href="{{ member.download_url }}"><i class="fa fa-fw fa-download"></i> download</a>
                         {% else %}
-                            <a class="btn btn-xs btn-default" href="{{ member.get_absolute_url }}"><i class="fa fa-fw fa-folder-open"></i> open</a>
                             <a class="btn btn-xs btn-default" href="{% url 'pinax_documents:document_create' %}?f={{ member.id }}"><i class="fa fa-fw fa-upload"></i> upload to this folder</a>
                             {% if member|can_share:user %}<a class="btn btn-xs btn-default" href="{% url 'pinax_documents:folder_share' member.id %}"><i class="fa fa-fw fa-share"></i> share</a>{% endif %}
                         {% endif %}
@@ -43,6 +42,6 @@
         </tbody>
     </table>
 {% else %}
-    <p>No folders or files</p>
+    <div class="panel-body lead">No folders or files</div>
 {% endif %}
 </div>

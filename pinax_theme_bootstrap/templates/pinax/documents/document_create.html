@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1>Upload file{% if folder %} in {{ folder.name }}{% endif %}</h1>
-    {% include "pinax/documents/_breadcrumbs.html" %}
+    {% include "pinax/documents/_breadcrumbs.html" with member=folder %}
 
     <form method="POST" action="{% url 'pinax_documents:document_create' %}" enctype="multipart/form-data">
         {% csrf_token %}

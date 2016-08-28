@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1>Create folder{% if parent %} in {{ parent.name }}{% endif %}</h1>
-    {% include "pinax/documents/_breadcrumbs.html" %}
+    {% include "pinax/documents/_breadcrumbs.html" with member=parent %}
 
     <form method="POST" action="{% url 'pinax_documents:folder_create' %}">
         {% csrf_token %}

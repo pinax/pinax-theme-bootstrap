@@ -7,12 +7,13 @@
 
 {% block body %}
     <h1>Share folder</h1>
+    {% include "pinax/documents/_breadcrumbs.html" with member=folder %}
     <form method="POST" action="{% url 'pinax_documents:folder_share' folder.id %}">
         {% csrf_token %}
         {{ form|bootstrap }}
         <div class="form-actions">
+            <a class="btn btn-default" href="#">Cancel</a>
             <button class="btn btn-primary" type="submit">Share</button>
-            <a class="btn" href="#">Cancel</a>
         </div>
     </form>
     <h2>Shared with</h2>

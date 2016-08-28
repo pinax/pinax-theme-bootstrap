@@ -1,2 +1,2 @@
 {% load pinax_documents_tags %}<div>{{ storage.bytes_used|readable_bytes }} of {{ storage.bytes_total|readable_bytes }}</div>
-<div class="progress progress-{{ storage.color }}"><div class="bar" style="width: {{ storage.percentage }}%;"></div></div>
+<div class="progress progress-{{ storage.color }}"><div class="progress-bar" style="width: {{ storage.percentage }}%;"></div></div>

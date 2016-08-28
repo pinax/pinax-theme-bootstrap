@@ -5,5 +5,5 @@
 {% block body %}
     <h1>{{ document.name }}</h1>
     {% include "pinax/documents/_breadcrumbs.html" with member=document %}
-    <a href="{{ document.download_url }}"><i class="icon-download"></i> Download</a><br />
+    <a href="{{ document.download_url }}" class="btn btn-primary"><i class="fa fa-download"></i> Download</a><br />
 {% endblock %}

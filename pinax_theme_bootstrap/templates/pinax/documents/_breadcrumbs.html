@@ -1,13 +1,13 @@
 <ul class="breadcrumb">
     <li>
-        <a href="{% url 'pinax_documents:document_index' %}">Files</a>{% if member.breadcrumbs %} <span class="divider">/</span>{% endif %}
+        <a href="{% url 'pinax_documents:document_index' %}">Root</a>
     </li>
     {% if member.breadcrumbs %}
         {% for breadcrumb in member.breadcrumbs %}
             <li>
-                <a href="{{ breadcrumb.get_absolute_url }}">{{ breadcrumb.name }}</a> <span class="divider">/</span>
+                <a href="{{ breadcrumb.get_absolute_url }}">{{ breadcrumb.name }}</a>
             </li>
         {% endfor %}
-        <li class="active">{{ member.name }}</li>
     {% endif %}
+    <li class="active">{{ member.name }}</li>
 </ul>
