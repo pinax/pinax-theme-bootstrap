@@ -3,8 +3,6 @@ import glob
 import os
 import shutil
 
-from optparse import make_option
-
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
@@ -24,14 +22,13 @@ def copy(src, dest):
 
 class Command(BaseCommand):
 
-    option_list = BaseCommand.option_list + (
-        make_option(
+    def add_arguments(self, parser):
+        parser.add_argument(
             "--path",
-            type="string",
+            type=str,
             dest="path",
             help="a glob wildcard to copy templates from"
-        ),
-    )
+        )
 
     def handle(self, *args, **options):
         path = options["path"]
