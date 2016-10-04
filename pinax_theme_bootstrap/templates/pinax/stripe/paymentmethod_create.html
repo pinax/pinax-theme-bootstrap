@@ -7,46 +7,32 @@
 
 {% block body %}
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title">Create Payment Method</h4>
-    </div>
-    <div class="panel-body">
-        {% if errors %}
-            <div class="alert alert-danger">
-                {{ errors }}
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Create Payment Method</h4>
             </div>
-        {% endif %}
-        <form class="form-horizontal" data-stripe-key="{{ PINAX_STRIPE_PUBLIC_KEY }}" action="{% url "pinax_stripe_payment_method_create" %}" method="post">
-            {% csrf_token %}
-            <div class="card">
-                <div class="errors"></div>
-                  <div class="form-group">
-                    <label for="number" class="col-sm-2 control-label">Card Number</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" size="20" data-stripe="number" />
+            <div class="panel-body">
+                {% if errors %}
+                    <div class="alert alert-danger">
+                        {{ errors }}
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="expMonth" class="col-sm-2 col-xs-3 control-label">Expiration</label>
-                    <div class="col-sm-1 col-xs-2">
-                        <input type="text" size="2" class="form-control" id="payment-exp-month" data-stripe="exp-month" placeholder="MM"/>
+                {% endif %}
+                <form class="form-horizontal with-card" data-stripe-key="{{ PINAX_STRIPE_PUBLIC_KEY }}" action="{% url "pinax_stripe_payment_method_create" %}" method="post">
+                    {% csrf_token %}
+                    <div class="card-wrapper"></div>
+                    <div class="card">
+                        <input type="text" placeholder="Card Number" class="card-number form-control" size="20" data-stripe="number" />
+                        <input type="text" placeholder="Name on Card" class="card-name form-control" size="20" name="name" />
+                        <input type="text" size="2" class="card-exp-month form-control" data-stripe="exp-month" placeholder="MM"/>
+                        <input type="text" size="4" class="card-exp-year form-control" data-stripe="exp-year" placeholder="YYYY"/>
+                        <input type="text" size="4" class="card-cvc form-control" data-stripe="cvc" placeholder="CVC" />
+                        <button class="btn btn-primary">Add</button>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
-                        <input type="text" size="4" class="form-control" id="payment-exp-year" data-stripe="exp-year" placeholder="YYYY"/>
-                    </div>
-                    <label for="cvc" class="col-xs-2 control-label for-cvc">CVC</label>
-                    <div class="col-sm-2 col-xs-2">
-                      <input type="text" size="4" class="form-control" id="payment-exp-cvc" data-stripe="cvc" placeholder="000" />
-                    </div>
-                  </div>
+                </form>
             </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn btn-primary">Add</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 {% endblock %}
