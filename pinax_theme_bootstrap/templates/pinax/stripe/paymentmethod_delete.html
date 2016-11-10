@@ -24,7 +24,7 @@
         <form action="{% url "pinax_stripe_payment_method_delete" object.pk %}" method="post">
             {% csrf_token %}
             <button class="btn btn-danger">Delete</button>
-        </button>
+        </form>
     </div>
 </div>
 {% endblock %}
