@@ -9,7 +9,7 @@
         <div class="col-md-3 sidebar">
             {% block sidebar %}
                 <h1>
-                    <a href="{% url "pinax_blog:blog" %}">{{ SITE_NAME }}</a>
+                    <a href="{% url "pinax_blog:blog" scoped_var %}">{{ SITE_NAME }}</a>
                 </h1>
                 <p class="lead">
                     This is where you can list your bio, add links
@@ -17,7 +17,7 @@
                     template.
                 </p>
                 <p>
-                    <a href="{% url "pinax_blog:blog_feed" "all" "atom" %}"><i class="fa fa-rss"></i> Atom Feed</a>
+                    <a href="{% url "pinax_blog:blog_feed" scoped_var "all" "atom" %}"><i class="fa fa-rss"></i> Atom Feed</a>
                 </p>
                 <div class="search">
                     {% if current_section == "all" %}
@@ -33,12 +33,12 @@
                 </div>
                 <ul class="">
                     <li class="{% if current_section == "all" %}active{% endif %}">
-                        <a href="{% url "pinax_blog:blog" %}">All</a>
+                        <a href="{% url "pinax_blog:blog" scoped_var %}">All</a>
                     </li>
                     {% blog_sections as sections %}
                     {% for section in sections %}
                         <li class="{% if current_section == section %}active{% endif %}">
-                            <a href="{% url "pinax_blog:blog_section" section.slug %}">{{ section.name }}</a>
+                            <a href="{% url "pinax_blog:blog_section" scoped_var section.slug %}">{{ section.name }}</a>
                         </li>
                     {% endfor %}
                 </ul>
