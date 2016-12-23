@@ -9,8 +9,8 @@
         <div class="col-md-3 sidebar">
             {% block sidebar %}
                 <h1>
-                    {% if scoped_var %}
-                        {% url "pinax_blog:blog" scoped_var as blog_url %}
+                    {% if scoper_lookup %}
+                        {% url "pinax_blog:blog" scoper_lookup as blog_url %}
                     {% else %}
                         {% url "pinax_blog:blog" as blog_url %}
                     {% endif %}
@@ -22,8 +22,8 @@
                     template.
                 </p>
                 <p>
-                    {% if scoped_var %}
-                        {% url "pinax_blog:blog_feed" scoped_var "all" "atom" as feed_url %}
+                    {% if scoper_lookup %}
+                        {% url "pinax_blog:blog_feed" scoper_lookup "all" "atom" as feed_url %}
                     {% else %}
                         {% url "pinax_blog:blog_feed" "all" "atom" as feed_url %}
                     {% endif %}
@@ -31,14 +31,14 @@
                 </p>
                 <div class="search">
                     {% if current_section == "all" %}
-                        {% if scoped_var %}
-                            {% url "pinax_blog:blog" scoped_var as search_url %}
+                        {% if scoper_lookup %}
+                            {% url "pinax_blog:blog" scoper_lookup as search_url %}
                         {% else %}
                             {% url "pinax_blog:blog" as search_url %}
                         {% endif %}
                     {% else %}
-                        {% if scoped_var %}
-                            {% url "pinax_blog:blog_section" scoped_var current_section.slug as search_url %}
+                        {% if scoper_lookup %}
+                            {% url "pinax_blog:blog_section" scoper_lookup current_section.slug as search_url %}
                         {% else %}
                             {% url "pinax_blog:blog_section" current_section.slug as search_url %}
                         {% endif %}
@@ -55,8 +55,8 @@
                     </li>
                     {% blog_sections as sections %}
                     {% for section in sections %}
-                        {% if scoped_var %}
-                            {% url "pinax_blog:blog_section" scoped_var section.slug as section_url %}
+                        {% if scoper_lookup %}
+                            {% url "pinax_blog:blog_section" scoper_lookup section.slug as section_url %}
                         {% else %}
                             {% url "pinax_blog:blog_section" section.slug as section_url %}
                         {% endif %}
