@@ -3,5 +3,10 @@
         <span class="date">{% if post.published %}{{ post.published|date:"jS F Y" }}{% else %}Not published yet{% endif %}</span> /
     {% endif %}
     by <span class="author">{{ post.author.get_full_name }}</span> in
-    <a href="{% url "pinax_blog:blog_section" post.section.slug %}"><span class="section">{{ post.section.name }}</span></a>
+    {% if scoper_lookup %}
+        {% url "pinax_blog:blog_section" scoper_lookup post.section.slug as section_url %}
+    {% else %}
+        {% url "pinax_blog:blog_section" post.section.slug as section_url %}
+    {% endif %}
+    <a href="{{ section_url }}"><span class="section">{{ post.section.name }}</span></a>
 </p>

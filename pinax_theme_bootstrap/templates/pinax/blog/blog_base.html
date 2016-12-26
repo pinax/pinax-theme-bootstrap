@@ -9,7 +9,12 @@
         <div class="col-md-3 sidebar">
             {% block sidebar %}
                 <h1>
-                    <a href="{% url "pinax_blog:blog" %}">{{ SITE_NAME }}</a>
+                    {% if scoper_lookup %}
+                        {% url "pinax_blog:blog" scoper_lookup as blog_url %}
+                    {% else %}
+                        {% url "pinax_blog:blog" as blog_url %}
+                    {% endif %}
+                    <a href="{{ blog_url }}">{{ SITE_NAME }}</a>
                 </h1>
                 <p class="lead">
                     This is where you can list your bio, add links
@@ -17,13 +22,26 @@
                     template.
                 </p>
                 <p>
-                    <a href="{% url "pinax_blog:blog_feed" "all" "atom" %}"><i class="fa fa-rss"></i> Atom Feed</a>
+                    {% if scoper_lookup %}
+                        {% url "pinax_blog:blog_feed" scoper_lookup "all" "atom" as feed_url %}
+                    {% else %}
+                        {% url "pinax_blog:blog_feed" "all" "atom" as feed_url %}
+                    {% endif %}
+                    <a href="{{ feed_url }}"><i class="fa fa-rss"></i> Atom Feed</a>
                 </p>
                 <div class="search">
                     {% if current_section == "all" %}
-                        {% url "pinax_blog:blog" as search_url %}
+                        {% if scoper_lookup %}
+                            {% url "pinax_blog:blog" scoper_lookup as search_url %}
+                        {% else %}
+                            {% url "pinax_blog:blog" as search_url %}
+                        {% endif %}
                     {% else %}
-                        {% url "pinax_blog:blog_section" current_section.slug as search_url %}
+                        {% if scoper_lookup %}
+                            {% url "pinax_blog:blog_section" scoper_lookup current_section.slug as search_url %}
+                        {% else %}
+                            {% url "pinax_blog:blog_section" current_section.slug as search_url %}
+                        {% endif %}
                     {% endif %}
 
                     <form class="form-search" action="{{ search_url }}">
@@ -33,12 +51,17 @@
                 </div>
                 <ul class="">
                     <li class="{% if current_section == "all" %}active{% endif %}">
-                        <a href="{% url "pinax_blog:blog" %}">All</a>
+                        <a href="{{ blog_url }}">All</a>
                     </li>
                     {% blog_sections as sections %}
                     {% for section in sections %}
+                        {% if scoper_lookup %}
+                            {% url "pinax_blog:blog_section" scoper_lookup section.slug as section_url %}
+                        {% else %}
+                            {% url "pinax_blog:blog_section" section.slug as section_url %}
+                        {% endif %}
                         <li class="{% if current_section == section %}active{% endif %}">
-                            <a href="{% url "pinax_blog:blog_section" section.slug %}">{{ section.name }}</a>
+                            <a href="{{ section_url }}">{{ section.name }}</a>
                         </li>
                     {% endfor %}
                 </ul>
