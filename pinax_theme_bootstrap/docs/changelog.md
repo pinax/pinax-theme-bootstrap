@@ -1,5 +1,11 @@
 # ChangeLog
 
+## 8.0.0
+
+- updated templates to support new pinax-blog
+- merged #121 to add support for sites without Sites framework installed (thanks jpic)
+- merged #130 to fix an HTML bug in a pinax-stripe template (thanks jensenbox)
+
 ## 7.10.1
 
  - add "thread_confirm_delete.html" for pinax-messages
