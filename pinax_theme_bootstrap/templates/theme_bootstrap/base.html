@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <title>{% block head_title_base %}{% if SITE_NAME %}{{ SITE_NAME }} | {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
         {% block viewport %}
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         {% endblock %}
 
         {% block styles %}{% endblock %}
@@ -26,38 +26,34 @@
 
             {% block topbar_base %}
                 <header>
-                    <div class="navbar navbar-default {% block navbar_class %}navbar-fixed-top{% endblock %}">
-                        <div class="container">
-                        {% block topbar %}
-                            <div class="navbar-header">
-                                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="fa fa-bars"></span>
-                                </button>
-                                {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
-                            </div>
-                            <div class="collapse navbar-collapse navbar-responsive-collapse">
-                                {% block nav %}
+                    {% block topbar %}
+                    <nav>
+                        <button class="expand" type="button" data-toggle="collapse" data-target=".nav-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i></i>
+                        </button>
+                        {% block site_brand %}<a href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
+
+                        <div class="nav-container">
+                            {% block nav %}
+                                <ul class="main-bar">
                                     {% comment %}
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#tab_one">One</a></li>
-                                            <li><a href="#tab_two">Two</a></li>
-                                        </ul>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">Two</a></li>
                                     {% endcomment %}
-                                {% endblock %}
-                                {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
-                            </div>
-                        {% endblock %}
+                                </ul>
+                            {% endblock %}
+                            {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
                         </div>
-                    </div>
+                    </nav>
+                    {% endblock %}
                 </header>
             {% endblock %}
 
             {% block body_base %}
                 <section id="content_body">
-                    <div class="container">
+                    <div>
                         {% include "_messages.html" %}
-                        {% block body %}
-                        {% endblock %}
+                        {% block body %}{% endblock %}
                     </div>
                 </section>
             {% endblock %}
@@ -65,7 +61,7 @@
             {% block footer_base %}
                 <hr />
                 <footer>
-                    <div class="container">
+                    <div>
                         {% block footer %}{% endblock %}
                     </div>
                 </footer>
