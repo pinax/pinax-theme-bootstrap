@@ -8,14 +8,10 @@
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-5">
-            <form method="POST" action="{% url "account_settings" %}">
-                <legend>{% trans "Account" %}</legend>
-                {% csrf_token %}
-                {{ form|bootstrap }}
-                <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
-            </form>
-        </div>
-    </div>
+    <form method="POST" action="{% url "account_settings" %}">
+        <legend>{% trans "Account" %}</legend>
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+    </form>
 {% endblock %}
