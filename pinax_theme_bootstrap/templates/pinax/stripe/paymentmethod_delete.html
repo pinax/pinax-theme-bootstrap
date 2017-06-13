@@ -1,5 +1,6 @@
 {% extends "pinax/stripe/base.html" %}
 
+{% load i18n %}
 
 {% load bootstrap %}
 
@@ -13,7 +14,7 @@
             {{ object.last4 }}
             Expires {{ object.exp_month }} / {{ object.exp_year }}
         </div>
-        <h4 class="panel-title">Delete Payment Method</h4>
+        <h4 class="panel-title">{% trans "Delete Payment Method" %}</h4>
     </div>
     <div class="panel-body">
         {% if errors %}
@@ -23,8 +24,8 @@
         {% endif %}
         <form action="{% url "pinax_stripe_payment_method_delete" object.pk %}" method="post">
             {% csrf_token %}
-            <button class="btn btn-danger">Delete</button>
-        </form>
+            <button class="btn btn-danger">{% trans "Delete" %}</button>
+        </button>
     </div>
 </div>
 {% endblock %}
