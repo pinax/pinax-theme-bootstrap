@@ -26,26 +26,28 @@
 
             {% block topbar_base %}
                 <header>
-                    {% block topbar %}
                     <nav>
-                        <button class="expand" type="button" data-toggle="collapse" data-target=".nav-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i></i>
-                        </button>
-                        {% block site_brand %}<a href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
+                        <div class="topbar-container">
+                        {% block topbar %}
+                            {% block site_brand %}<a href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
+                            <button class="expand" type="button" data-toggle="collapse" data-target=".nav-container" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <i></i>
+                            </button>
 
-                        <div class="nav-container">
-                            {% block nav %}
-                                <ul class="main-bar">
-                                    {% comment %}
-                                    <li><a href="#">One</a></li>
-                                    <li><a href="#">Two</a></li>
-                                    {% endcomment %}
-                                </ul>
-                            {% endblock %}
-                            {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+                            <div class="nav-container" id="navbar">
+                                {% block nav %}
+                                    <ul class="main-bar">
+                                        {% comment %}
+                                        <li><a href="#">One</a></li>
+                                        <li><a href="#">Two</a></li>
+                                        {% endcomment %}
+                                    </ul>
+                                {% endblock %}
+                                {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+                            </div>
+                        {% endblock %}
                         </div>
                     </nav>
-                    {% endblock %}
                 </header>
             {% endblock %}
 
@@ -59,7 +61,6 @@
             {% endblock %}
 
             {% block footer_base %}
-                <hr />
                 <footer>
                     <div>
                         {% block footer %}{% endblock %}
@@ -69,10 +70,6 @@
         </div>
 
         {% block scripts %}{% endblock %}
-
-        {% block theme_script %}
-            <script src="{% static "pinax/js/theme.js" %}"></script>
-        {% endblock %}
 
         {% block extra_body_base %}
             {% block extra_body %}{% endblock %}
