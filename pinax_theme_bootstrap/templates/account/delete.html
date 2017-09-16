@@ -7,11 +7,10 @@
 {% block head_title %}{% trans "Delete Account" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Delete Account" %}</h1>
-
-    <p>{% blocktrans %}If you go ahead and delete your account, your information will be <b>expunged within {{ ACCOUNT_DELETION_EXPUNGE_HOURS }} hours</b>.{% endblocktrans %}</p>
 
     <form method="post" action="{% url "account_delete" %}" autocapitalize="off">
+        <legend>{% trans "Delete Account" %}</legend>
+        <p class="lead">{% blocktrans %}If you go ahead and delete your account, your information will be <b>expunged within {{ ACCOUNT_DELETION_EXPUNGE_HOURS }} hours</b>.{% endblocktrans %}</p>
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">{% trans "Delete My Account" %}</button>
     </form>

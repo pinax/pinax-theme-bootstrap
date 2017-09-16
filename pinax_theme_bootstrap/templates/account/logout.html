@@ -6,14 +6,14 @@
 {% block head_title %}{% trans "Log out" %}{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-5">
+    <div class="logout">
+        <div>
             <form method="POST" action="{% url "account_logout" %}">
                 <legend>{% trans "Log out" %}</legend>
                 <fieldset>
                     {% csrf_token %}
                     <p>{% trans "Are you sure you want to log out?" %}</p>
-                    <button type="submit" class="btn btn-primary">{% trans "Log out" %}</button>
+                    <button>{% trans "Log out" %}</button>
                 </fieldset>
             </form>
         </div>

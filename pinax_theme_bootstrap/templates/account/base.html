@@ -1,4 +1,4 @@
-{% extends "theme_bootstrap/subnav_base.html" %}
+{% extends "subnav_base.html" %}
 
 {% load i18n %}
 
@@ -6,7 +6,9 @@
 
 {% block subnav %}
 <nav class="settings-nav">
-    <div class="heading">{% trans "Settings" %}</div>
+    <div class="heading">
+        <h5>{% trans "Settings" %}</h5>
+    </div>
     <a class="account-settings" href="{% url "account_settings" %}">
         {% trans "Account" %}
     </a>
