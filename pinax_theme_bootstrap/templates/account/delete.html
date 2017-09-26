@@ -10,9 +10,9 @@
 
     <form method="post" action="{% url "account_delete" %}" autocapitalize="off">
         <legend>{% trans "Delete Account" %}</legend>
-        <p class="lead">{% blocktrans %}If you go ahead and delete your account, your information will be <b>expunged within {{ ACCOUNT_DELETION_EXPUNGE_HOURS }} hours</b>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}If you go ahead and delete your account, your information will be <strong>expunged within {{ ACCOUNT_DELETION_EXPUNGE_HOURS }} hours</strong>.{% endblocktrans %}</p>
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">{% trans "Delete My Account" %}</button>
+        <button>{% trans "Delete My Account" %}</button>
     </form>
 
 {% endblock %}
