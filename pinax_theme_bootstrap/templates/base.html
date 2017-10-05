@@ -21,7 +21,7 @@
             {% block extra_head %}{% endblock %}
         {% endblock %}
     </head>
-    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}" {% block body_extra_attributes %}{% endblock %}>
+    <body class="{% block body_class_base %}{% block body_class %}{% endblock %}{% endblock %}" id="{% block body_id %}{% endblock %}" {% block body_extra_attributes %}{% endblock %}>
         {% block topbar_base %}
             <header>
                 <nav>
