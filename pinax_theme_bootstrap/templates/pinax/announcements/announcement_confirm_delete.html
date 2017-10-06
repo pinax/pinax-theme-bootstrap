@@ -1,6 +1,6 @@
 {% extends "pinax/announcements/base.html" %}
 
-{% load i18n bootstrap %}
+{% load i18n %}
 
 {% block body_class %}announcements{% endblock %}
 
@@ -15,7 +15,6 @@
 
     <form action="{{ post_url }}" method="POST" class="form form-horizontal">
         {% csrf_token %}
-        {{ form|bootstrap }}
         <div class="form-actions">
             <a href="{% url "pinax_announcements:announcement_list" %}" class="btn">{% trans "Cancel" %}</a>
             <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
