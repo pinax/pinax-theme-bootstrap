@@ -52,7 +52,7 @@
         {% block body_base %}
             <main>
                 <div>
-                    {% include "_messages.html" %}
+                    {% block messages %}{% include "_messages.html" %}{% endblock %}
                     {% block body %}{% endblock %}
                 </div>
             </main>
