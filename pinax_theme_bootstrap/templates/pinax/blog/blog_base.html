@@ -6,6 +6,9 @@
 
 {% block body %}
     <div class="row blog-container">
+        <div class="col-md-8 blog-content">
+            {% block content %}{% endblock %}
+        </div>
         <div class="col-md-3 sidebar">
             {% block sidebar %}
                 <h1>
@@ -16,19 +19,22 @@
                     {% endif %}
                     <a href="{{ blog_url }}">{{ SITE_NAME }}</a>
                 </h1>
-                <p class="lead">
+                <div class="profile-picture">
+                    <img src="https://robohash.org/pinax" />
+                </div>
+                <p class="bio">
                     This is where you can list your bio, add links
-                    etc., by editing the <code>pinax/blog/blog_base.html</code>
-                    template.
+                    etc., by editing the template found at:
+                    <code>pinax/blog/blog_base.html</code>
                 </p>
-                <p>
+                <div class="feeds">
                     {% if scoper_lookup %}
                         {% url "pinax_blog:blog_feed" scoper_lookup "all" "atom" as feed_url %}
                     {% else %}
                         {% url "pinax_blog:blog_feed" "all" "atom" as feed_url %}
                     {% endif %}
-                    <a href="{{ feed_url }}"><i class="fa fa-rss"></i> Atom Feed</a>
-                </p>
+                    <a href="{{ feed_url }}"><i class="atom"></i> Atom Feed</a>
+                </div>
                 <div class="search">
                     {% if current_section == "all" %}
                         {% if scoper_lookup %}
@@ -45,14 +51,15 @@
                     {% endif %}
 
                     <form class="form-search" action="{{ search_url }}">
-                        <label><i class="fa fa-search"></i></label>
-                        <input class="form-control" type="search" placeholder="Search..." name="q" value="{{ search_term|default:"" }}">
+                        <div class="search-input">
+                            <i></i>
+                            <input type="search" placeholder="Search..." name="q" value="{{ search_term|default:"" }}">
+                        </div>
                     </form>
                 </div>
-                <ul class="">
-                    <li class="{% if current_section == "all" %}active{% endif %}">
-                        <a href="{{ blog_url }}">All</a>
-                    </li>
+                <nav class="sections-nav">
+                    <div class="heading">Sections</div>
+                    <a class="{% if current_section == "all" %}current-section{% endif %}" href="{{ blog_url }}">All</a>
                     {% blog_sections as sections %}
                     {% for section in sections %}
                         {% if scoper_lookup %}
@@ -60,15 +67,10 @@
                         {% else %}
                             {% url "pinax_blog:blog_section" section.slug as section_url %}
                         {% endif %}
-                        <li class="{% if current_section == section %}active{% endif %}">
-                            <a href="{{ section_url }}">{{ section.name }}</a>
-                        </li>
+                        <a class="{% if current_section == section %}current-section{% endif %}" href="{{ section_url }}">{{ section.name }}</a>
                     {% endfor %}
-                </ul>
+                </nav>
             {% endblock %}
-        </div>
-        <div class="col-md-8 blog-content">
-            {% block content %}{% endblock %}
         </div>
     </div>
 {% endblock %}
