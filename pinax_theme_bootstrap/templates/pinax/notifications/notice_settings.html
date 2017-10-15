@@ -1,0 +1,54 @@
+{% extends "pinax/notifications/base.html" %}
+
+{% load i18n %}
+
+{% block body_id %}notification-settings{% endblock %}
+
+{% block head_title %}{% trans "Notification Settings" %}{% endblock %}
+
+{% block content %}
+
+    {% url "account_settings" as email_url %}
+    {% if not request.user.email %}
+        {% blocktrans %}
+        <div class="no-verified-email">
+            <span>Note</span>:
+            You do not have a verified email address to which notices can be sent. <a href="{{ email_url }}">Add one</a> now.
+        </div>
+        {% endblocktrans %}
+    {% endif %}
+
+    <form method="post" action=".">
+        {% csrf_token %}
+        <legend>{% trans "Notification Settings" %}</legend>
+        <table class="notice-settings">
+            <tr>
+                <th>{% trans "Notification Type" %}</th>
+                {% for header in notice_settings.column_headers %}
+                    <th class="setting-header">
+                        {{ header.title }}
+                    </th>
+                {% endfor %}
+            </tr>
+            {% for row in notice_settings.rows %}
+                <tr class="setting-row">
+                    <td>
+                        <strong>{{ row.notice_type.display }}</strong><br/>
+                        <span class="notice-type-description">
+                            {{ row.notice_type.description }}
+                        </span>
+                    </td>
+                    {% for cell in row.cells %}
+                        <td class="setting">
+                            <input type="checkbox" name="{{ cell.0 }}" {% if cell.1 %}checked="yes"{% endif %} />
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        <div class="form-actions">
+            <button>{% trans "Change" %}</button>
+        </div>
+    </form>
+{% endblock %}

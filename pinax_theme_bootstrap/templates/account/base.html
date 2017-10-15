@@ -16,5 +16,9 @@
     <a class="account-delete" href="{% url "account_delete" %}">
         {% trans "Delete account" %}
     </a>
+    {% comment "figure out how to detect other pinax apps and dynamically add here" %}{% endcomment %}
+    <a class="notice-settings" href="{% url "pinax_notifications:notice_settings" %}">
+        {% trans "Notices" %}
+    </a>
 </nav>
 {% endblock %}
