@@ -22,7 +22,9 @@
     <div class="panel-body">
         <form class="form" action="{% url "pinax_stripe_subscription_delete" object.pk %}" method="post">
             {% csrf_token %}
-            <button class="btn btn-danger">Cancel</button>
+            <div class="form-actions">
+                <button class="btn btn-danger">Cancel</button>
+            </div>
         </form>
     </div>
     <div class="panel-footer">

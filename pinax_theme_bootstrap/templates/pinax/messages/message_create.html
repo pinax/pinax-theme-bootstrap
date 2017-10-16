@@ -10,7 +10,9 @@
         <form class="comment-form" action="{% url "pinax_messages:message_create" %}" method="post">
             {% csrf_token %}
             {{ form|bootstrap }}
-            <button class="btn btn-primary pull-right">Send</button>
+            <div class="form-actions">
+                <button class="btn btn-primary pull-right">Send</button>
+            </div>
         </form>
         <a class="btn btn-default" href="{% url "pinax_messages:inbox" %}">Cancel</a>
     </section>

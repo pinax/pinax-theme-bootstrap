@@ -12,6 +12,8 @@
         <legend>{% trans "Account" %}</legend>
         {% csrf_token %}
         {{ form|bootstrap }}
-        <button>{% trans "Save" %}</button>
+        <div class="form-actions">
+            <button>{% trans "Save" %}</button>
+        </div>
     </form>
 {% endblock %}

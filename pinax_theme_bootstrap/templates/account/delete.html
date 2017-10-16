@@ -12,7 +12,9 @@
         <legend>{% trans "Delete Account" %}</legend>
         <p>{% blocktrans %}If you go ahead and delete your account, your information will be <strong>expunged within {{ ACCOUNT_DELETION_EXPUNGE_HOURS }} hours</strong>.{% endblocktrans %}</p>
         {% csrf_token %}
-        <button>{% trans "Delete My Account" %}</button>
+        <div class="form-actions">
+            <button>{% trans "Delete My Account" %}</button>
+        </div>
     </form>
 
 {% endblock %}

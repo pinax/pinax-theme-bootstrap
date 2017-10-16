@@ -33,14 +33,7 @@
                         </button>
 
                         <div class="nav-container" id="navbar">
-                            {% block nav %}
-                                <ul class="main-bar">
-                                    {% comment %}
-                                    <li><a href="#">One</a></li>
-                                    <li><a href="#">Two</a></li>
-                                    {% endcomment %}
-                                </ul>
-                            {% endblock %}
+                            {% block nav %}{% include "_nav.html" %}{% endblock %}
                             {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
                         </div>
                     {% endblock %}

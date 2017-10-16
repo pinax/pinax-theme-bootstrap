@@ -15,7 +15,9 @@
         {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button>{% trans "Sign up" %}</button>
+        <div class="form-actions">
+            <button>{% trans "Sign up" %}</button>
+        </div>
         <p class="login-signup">
             {% trans "Already have an account?" %}
             <a href="{% urlnext 'account_login' %}">{% trans "Log in" %}</a>

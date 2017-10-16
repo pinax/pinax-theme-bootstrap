@@ -41,7 +41,9 @@
                             <input type="text" size="4" class="card-cvc form-control" data-stripe="cvc" placeholder="CVC" />
                         </div>
                     {% endif %}
-                    <button class="btn btn-primary pull-right" style="margin-top: 5px; margin-right: 10px;">{% if object %}Update{% else %}Subscribe{% endif %}</button>
+                    <div class="form-actions">
+                        <button class="btn btn-primary pull-right" style="margin-top: 5px; margin-right: 10px;">{% if object %}Update{% else %}Subscribe{% endif %}</button>
+                    </div>
                 </form>
             </div>
         </div>
