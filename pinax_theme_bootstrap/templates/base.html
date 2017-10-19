@@ -43,12 +43,14 @@
         {% endblock %}
 
         {% block body_base %}
-            <main>
-                <div>
-                    {% block messages %}{% include "_messages.html" %}{% endblock %}
-                    {% block body %}{% endblock %}
-                </div>
-            </main>
+        <main>
+            {% block content_left %}{% endblock %}
+            <section id="content_body">
+                {% block messages %}{% include "_messages.html" %}{% endblock %}
+                {% block body %}{% endblock %}
+            </section>
+            {% block content_right %}{% endblock %}
+        </main>
         {% endblock %}
 
         {% block footer_base %}
