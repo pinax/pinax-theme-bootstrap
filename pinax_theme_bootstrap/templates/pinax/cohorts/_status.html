@@ -1,0 +1,3 @@
+<span class="{% if member.user %}member-user{% elif member.invited %}member-invited{% else %}member-pending{% endif %}">
+    {% if member.user %}<i></i> {{ member.user }}{% elif member.invited %}invited{% else %}pending{% endif %}
+</span>

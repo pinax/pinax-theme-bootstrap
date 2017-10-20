@@ -15,7 +15,9 @@
             {% for cohort in cohorts %}
             <div class="cohort">
                 <h3>
-                    {{ cohort.name }}
+                    <a href="{% url "pinax_cohorts:detail" cohort.pk %}">
+                        {{ cohort.name }}
+                    </a>
                     <span class="totals">
                         <span class="users">{{ cohort.member_counts.users }}</span>
                         <span class="total">{{ cohort.member_counts.total }}</span>

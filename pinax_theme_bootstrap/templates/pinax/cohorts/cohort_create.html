@@ -7,19 +7,15 @@
 {% block head_title %}Cohort Create{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-9">
-            <h1>Create a cohort</h1>
-            <form class="form" method="POST" action="{% url "pinax_cohorts:create" %}">
-                {% csrf_token %}
-                <fieldset>
-                    {{ form|bootstrap }}
-                </fieldset>
-                <fieldset class="form-actions">
-                    <button class="btn btn-info">Create</button>
-                    <a class="btn btn-default" href="{% url "pinax_cohorts:list" %}">Cancel</a>
-                </fieldset>
-            </form>
-        </div>
+    <div class="create-cohort-container">
+        <form method="POST" action="{% url "pinax_cohorts:create" %}">
+            {% csrf_token %}
+            <h2>Create a cohort</h2>
+            {{ form|bootstrap }}
+            <div class="form-actions">
+                <a class="cancel" href="{% url "pinax_cohorts:list" %}">Cancel</a>
+                <button>Create</button>
+            </div>
+        </form>
     </div>
 {% endblock %}

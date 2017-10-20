@@ -2,9 +2,7 @@
     {% for member in cohort.members %}
         <li>
             {{ member.email }}
-            <span class="{% if member.user %}member-user{% elif member.invited %}member-invited{% else %}member-pending{% endif %}">
-                {% if member.user %}<i></i> {{ member.user }}{% elif member.invited %}invited{% else %}pending{% endif %}
-            </span>
+            {% include "pinax/cohorts/_status.html" %}
         </li>
     {% endfor %}
 </ul>
