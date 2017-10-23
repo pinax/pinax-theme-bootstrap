@@ -6,10 +6,10 @@
 
 {% block body %}
     <h2>
+        {% trans "Announcements" %}
         <a href="{% url "pinax_announcements:announcement_create" %}">
             {% trans "Add New Announcement" %}
         </a>
-        {% trans "Announcements" %}
     </h2>
 
     {% for announcement in announcement_list %}

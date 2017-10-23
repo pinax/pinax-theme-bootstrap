@@ -20,5 +20,16 @@
     <a class="notice-settings" href="{% url "pinax_notifications:notice_settings" %}">
         {% trans "Notices" %}
     </a>
+
+    <div class="heading">Billing</div>
+    <a class="pinax-stripe-subscriptions" href="{% url "pinax_stripe_subscription_list" %}">
+        {% trans "Subscriptions" %}
+    </a>
+    <a class="pinax-stripe-payment-methods" href="{% url "pinax_stripe_payment_method_list" %}">
+        {% trans "Payment Methods" %}
+    </a>
+    <a class="pinax-stripe-invoices" href="{% url "pinax_stripe_invoice_list" %}">
+        {% trans "Invoices" %}
+    </a>
 </nav>
 {% endblock %}

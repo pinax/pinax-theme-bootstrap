@@ -3,9 +3,9 @@
 
 {% load bootstrap %}
 
-{% block body_class %}pinax-stripe-subscriptions{% endblock %}
+{% block body_class %}{{ block.super }} pinax-stripe-subscriptions{% endblock %}
 
-{% block body %}
+{% block content %}
 
 {% if object %}
     {% url "pinax_stripe_subscription_update" object.pk as post_url %}

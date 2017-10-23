@@ -3,9 +3,9 @@
 
 {% load bootstrap %}
 
-{% block body_class %}pinax-stripe-payment-methods{% endblock %}
+{% block body_class %}{{ block.super }} pinax-stripe-payment-methods{% endblock %}
 
-{% block body %}
+{% block content %}
 
 <div class="row">
     <div class="col-md-6">
