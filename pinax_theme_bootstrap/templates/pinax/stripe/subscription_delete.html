@@ -14,18 +14,14 @@
         </div>
     {% endif %}
 
-    {% include "pinax/stripe/_invoice_table.html" with invoices=object.invoice_set.all %}
-
-    <form action="{% url "pinax_stripe_subscription_delete" object.pk %}" method="post">
-        {% csrf_token %}
-        <div class="form-actions">
-            <button>Cancel</button>
-        </div>
-    </form>
-
     <div class="summary">
         You began your subscription of <strong>{{ object.plan.name }}</strong> on
         {{ object.start }}.
     </div>
+
+    <form action="{% url "pinax_stripe_subscription_delete" object.pk %}" method="post">
+        {% csrf_token %}
+        <button>Cancel</button>
+    </form>
 </div>
 {% endblock %}
