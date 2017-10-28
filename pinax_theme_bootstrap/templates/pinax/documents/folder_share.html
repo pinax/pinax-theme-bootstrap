@@ -1,4 +1,6 @@
-{% extends "site_base.html" %}
+{% extends "pinax/documents/base.html" %}
+
+{% block body_class %}{{ block.super }} pinax-documents-folder-share{% endblock %}
 
 {% load bootstrap %}
 {% load account_tags %}
@@ -6,22 +8,26 @@
 {% block head_title %}Share folder{% endblock %}
 
 {% block body %}
-    <h1>Share folder</h1>
+<div class="pinax-documents-folder-share-container">
+    <h2>Share folder</h2>
+
     {% include "pinax/documents/_breadcrumbs.html" with member=folder %}
+
     <form method="POST" action="{% url 'pinax_documents:folder_share' folder.id %}">
         {% csrf_token %}
         {{ form|bootstrap }}
         <div class="form-actions">
-            <a class="btn btn-default" href="#">Cancel</a>
-            <button class="btn btn-primary" type="submit">Share</button>
+            <a class="cancel" href="#">Cancel</a>
+            <button>Share</button>
         </div>
     </form>
-    <h2>Shared with</h2>
-    <form method="POST" action="">
+
+    <h3>Shared with</h3>
+    <form method="POST" action="" class="remove-participants">
         {% csrf_token %}
         <ul>
             {% for participant in participants %}
-                <li>{% user_display participant %} <button type="submit" class="btn btn-danger" name="remove" value="{{ participant.pk }}">remove</button></li>
+                <li>{% user_display participant %} <button name="remove" value="{{ participant.pk }}">remove</button></li>
             {% endfor %}
         </ul>
     </form>
