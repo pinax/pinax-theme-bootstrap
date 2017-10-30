@@ -1,18 +1,28 @@
-{% extends "site_base.html" %}
+{% extends "pinax/documents/base.html" %}
+
+{% block body_class %}{{ block.super }} pinax-documents-document-create{% endblock %}
 
 {% load bootstrap %}
 
 {% block head_title %}Upload file{% if folder %} in {{ folder.name }}{% endif %}{% endblock %}
 
 {% block body %}
-    <h1>Upload file{% if folder %} in {{ folder.name }}{% endif %}</h1>
+<div class="pinax-documents-document-create-container">
+    <h2>
+        Upload file{% if folder %} in {{ folder.name }}{% endif %}
+    </h2>
+
     {% include "pinax/documents/_breadcrumbs.html" with member=folder %}
 
     <form method="POST" action="{% url 'pinax_documents:document_create' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form|bootstrap }}
+        <label class="custom-file">
+            <input type="file" id="id_file" class="custom-file-input">
+            <span class="custom-file-control" data-file="Choose file..."></span>
+        </label>
         <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Upload</button>
+            <button>Upload</button>
         </div>
     </form>
+</div>
 {% endblock %}

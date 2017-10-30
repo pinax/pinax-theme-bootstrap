@@ -1,37 +1,36 @@
-{% extends "site_base.html" %}
+{% extends "pinax/messages/base.html" %}
 ​
 {% load i18n %}
 {% load pinax_messages_tags %}
 ​
 {% block head_title %}Messages{% endblock %}
 ​
-{% block body_class %}messages{% endblock %}
+{% block body_class %}{{ block.super }} pinax-messages-inbox{% endblock %}
 ​
 {% block body %}
-    <section class="actions-header">
-        <div class="row">
-            <div class="col-sm-12">
-                <a class="btn btn-success pull-right" href="{% url "pinax_messages:message_create" %}">New message</a>
-                <h1>Inbox</h1>
-            </div>
-        </div>
-    </section>
-​
+<div class="pinax-messages-inbox-container">
+    <h2>
+        Inbox
+        <a href="{% url "pinax_messages:message_create" %}">
+            <i></i>
+            New Message
+        </a>
+    </h2>
+
     <section class="mailbox">
         {% for thread in threads %}
             <div class="thread {% if thread|unread:user %}unread{% endif %}">
-                <a href="{{thread.get_absolute_url}}" >
-                    <div class="row">
-                        <span class="col-sm-2 users">{{ thread.users.all|join:", " }}</span>
-                        <div class="col-sm-10">
-                            <p class="subject">{{ thread.subject }}</p>
-                            <p class="content text-muted">{{ thread.latest_message.content }}</p>
-                        </div>
+                <a href="{{thread.get_absolute_url}}">
+                    <div class="participants">{{ thread.users.all|join:", " }}</div>
+                    <div class="latest-message">
+                        <p class="subject">{{ thread.subject }}</p>
+                        <p class="content">{{ thread.latest_message.content }}</p>
                     </div>
                 </a>
             </div>
         {% empty %}
-            <div>You have no messages.</div>
+            <div class="no-messages">You have no messages.</div>
         {% endfor %}
     </section>
+</div>
 {% endblock %}

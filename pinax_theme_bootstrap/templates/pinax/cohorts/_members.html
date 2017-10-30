@@ -1,10 +1,8 @@
-<ul class="list-unstyled">
+<ul>
     {% for member in cohort.members %}
         <li>
             {{ member.email }}
-            <span class="label {% if member.user %}label-primary{% else %}{% if member.invited %}label-success{% else %}label-info{% endif %}{% endif %}">
-                {% if member.user %}<i class="fa fa-fw fa-user"></i> {{ member.user }}{% else %}{% if member.invited %}invited{% else %}pending{% endif %}{% endif %}
-            </span>
+            {% include "pinax/cohorts/_status.html" %}
         </li>
     {% endfor %}
 </ul>

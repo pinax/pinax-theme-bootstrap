@@ -1,5 +1,11 @@
 # ChangeLog
 
+## 9.0.0
+
+- move to semantic markup
+
+## 8.0.1
+
 ## 8.0.0
 
 - updated templates to support new pinax-blog

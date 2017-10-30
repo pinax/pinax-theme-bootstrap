@@ -1,32 +1,35 @@
-{% extends "site_base.html" %}
+{% extends "pinax/messages/base.html" %}
+
+{% block body_class %}{{ block.super }} pinax-messages-thread{% endblock %}
 
 {% load bootstrap %}
 
 {% block body %}
+<div class="pinax-messages-thread-detail-container">
+    <h2>
+        {{ thread.subject }}
+        <a href="{% url "pinax_messages:thread_delete" thread.pk %}">Delete Thread</a>
+    </h2>
 
-    <h2>{{ thread.subject }}</h2>
-
-    <section>
+    <section class="thread-messages">
         {% for message in thread.messages.all %}
-            <div class="message">
-                <p class="text-muted">
-                    {{ message.sender.username }} - {{ message.sent_at }}
-                </p>
-                <div>{{ message.content|urlize|linebreaks }}</div>
+            <div class="thread-message">
+                <div class="message-byline">
+                    <div class="message-from">{{ message.sender.username }}</div>
+                    <div class="message-sent">{{ message.sent_at }}</div>
+                </div>
+                <div class="message-content">{{ message.content|urlize|linebreaks }}</div>
             </div>
         {% endfor %}
     </section>
 
-    <section>
-        <form class="comment-form" action="{% url "pinax_messages:thread_detail" thread.pk %}" method="post">
-            {% csrf_token %}
-            {{ form|bootstrap }}
-            <button class="btn btn-primary pull-right">Send</button>
-        </form>
-        <a class="btn btn-default" href="{% url "pinax_messages:inbox" %}">Cancel</a>
-    </section>
-
-    <section>
-        <a class="btn" href="{% url "pinax_messages:thread_delete" thread.pk %}">Delete Thread</a>
-    </section>
+    <form class="comment-form" action="{% url "pinax_messages:thread_detail" thread.pk %}" method="post">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <div class="form-actions">
+            <a href="{% url "pinax_messages:inbox" %}" class="cancel">Cancel</a>
+            <button>Send</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

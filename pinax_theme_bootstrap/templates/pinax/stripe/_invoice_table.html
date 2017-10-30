@@ -1,4 +1,4 @@
-<table class="table table-bordered">
+<table>
     <thead>
         <tr>
             <th>Date</th><th>Description</th><th>Period</th><th>Total</th><th>Paid</th>
@@ -16,11 +16,11 @@
         <td>
             {{ invoice.period_start }}—{{ invoice.period_end }}
         </td>
-        <td class="text-right">
+        <td class="pinax-stripe-invoice-total">
             {{ invoice.total }}
         </td>
-        <td class="text-center">
-            {% if invoice.paid %}<i class="text-success fa fa-fw fa-check"></i>{% endif %}
+        <td class="pinax-stripe-invoice-paid">
+            {% if invoice.paid %}<i></i>{% endif %}
         </td>
     </tr>
     {% endfor %}

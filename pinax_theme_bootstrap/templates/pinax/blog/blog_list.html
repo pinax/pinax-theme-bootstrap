@@ -4,7 +4,6 @@
 
 
 {% block content %}
-    <h1>Blog Posts</h1>
     {% if post_list %}
         <div class="post-list">
             {% for post in post_list %}
@@ -16,7 +15,7 @@
                 </div>
             {% endfor %}
         </div>
-        {% include "pagination/builtin_pagination_reverse.html" %}
+        {% include "pagination/_pagination.html" %}
     {% else %}
         <p class="alert alert-info lead">No blog posts have been published.</p>
     {% endif %}

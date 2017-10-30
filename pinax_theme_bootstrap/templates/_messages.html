@@ -1,7 +1,6 @@
-{% load pinax_theme_bootstrap_tags %}
 {% for message in messages %}
-    <div class="alert fade in {% get_message_tags message %}">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div class="message {{ message.tags }}">
+        <button type="button" class="close" data-dismiss="message"><i></i></button>
         {{ message }}
     </div>
 {% endfor %}

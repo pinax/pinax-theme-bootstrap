@@ -4,35 +4,34 @@
 
 {% block head_title %}{% trans "Announcements Admin" %}{% endblock %}
 
-{% block body_class %}announcements{% endblock %}
 {% block body %}
-        <h2>{% trans "Announcements" %}</h2>
-        <a href="{% url "pinax_announcements:announcement_create" %}" class="btn btn-success">
+    <h2>
+        {% trans "Announcements" %}
+        <a href="{% url "pinax_announcements:announcement_create" %}">
             {% trans "Add New Announcement" %}
         </a>
+    </h2>
 
-        <table class="table">
-            {% for announcement in announcement_list %}
-                <tr>
-                    <td>
-                        <a href="{% url "pinax_announcements:announcement_update" pk=announcement.pk %}" class="btn btn-mini">
-                            <i class="icon icon-pencil"></i>
-                            {% trans "Edit" %}
-                        </a>
-                    </td>
-                    <td>
-                        {% if announcement.publish_start or announcement.publish_end %}
-                            <small>Published from <em>{{ announcement.publish_start|date:"F j, Y" }}</em> to
-                            <em>{{ announcement.publish_end|date:"F j, Y" }}</em></small>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {{ announcement.title }}
-                    </td>
-                    <td>
-                        {{ announcement.content }}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
+    {% for announcement in announcement_list %}
+        <div class="announcement">
+            <div class="announcement-body">
+                <div class="announcement-title">{{ announcement.title }}</div>
+                {{ announcement.content }}
+            </div>
+            <div class="announcement-meta">
+                <div class="announcment-date">
+                    {% if announcement.publish_start or announcement.publish_end %}
+                        <small>Published from <em>{{ announcement.publish_start|date:"F j, Y" }}</em> to
+                        <em>{{ announcement.publish_end|date:"F j, Y" }}</em></small>
+                    {% endif %}
+                </div>
+                <div class="announcement-actions">
+                    <a href="{% url "pinax_announcements:announcement_update" pk=announcement.pk %}" class="announcement-edit-link">
+                        <i></i>
+                        {% trans "Edit" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

@@ -1,22 +1,35 @@
-{% extends "theme_bootstrap/subnav_base.html" %}
+{% extends "subnav_base.html" %}
 
 {% load i18n %}
 
 {% block body_class %}account{% endblock %}
 
 {% block subnav %}
-<div class="panel panel-default">
-    <div class="panel-heading"><strong>{% trans "Settings" %}</strong></div>
-    <div class="list-group">
-        <a class="list-group-item account-settings" href="{% url "account_settings" %}">
-            {% trans "Account" %}
-        </a>
-        <a class="list-group-item account-password" href="{% url "account_password" %}">
-            {% trans "Change password" %}
-        </a>
-        <a class="list-group-item account-delete" href="{% url "account_delete" %}">
-            {% trans "Delete account" %}
-        </a>
-    </div>
-</div>
+<nav class="settings-nav">
+    <div class="heading">Settings</div>
+    <a class="account-settings" href="{% url "account_settings" %}">
+        {% trans "Account" %}
+    </a>
+    <a class="account-password" href="{% url "account_password" %}">
+        {% trans "Change password" %}
+    </a>
+    <a class="account-delete" href="{% url "account_delete" %}">
+        {% trans "Delete account" %}
+    </a>
+    {% comment "figure out how to detect other pinax apps and dynamically add here" %}{% endcomment %}
+    <a class="notice-settings" href="{% url "pinax_notifications:notice_settings" %}">
+        {% trans "Notices" %}
+    </a>
+
+    <div class="heading">Billing</div>
+    <a class="pinax-stripe-subscriptions" href="{% url "pinax_stripe_subscription_list" %}">
+        {% trans "Subscriptions" %}
+    </a>
+    <a class="pinax-stripe-payment-methods" href="{% url "pinax_stripe_payment_method_list" %}">
+        {% trans "Payment Methods" %}
+    </a>
+    <a class="pinax-stripe-invoices" href="{% url "pinax_stripe_invoice_list" %}">
+        {% trans "Invoices" %}
+    </a>
+</nav>
 {% endblock %}

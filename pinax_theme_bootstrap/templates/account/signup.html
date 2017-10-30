@@ -4,30 +4,25 @@
 {% load i18n %}
 {% load bootstrap %}
 
+{% block body_class %}account account-signup{% endblock %}
 {% block head_title %}{% trans "Sign up" %}{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-4">
-            <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-                <legend>{% trans "Sign up" %}</legend>
-                {% csrf_token %}
-                {{ form|bootstrap }}
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
-            </form>
-            <p class="login-signup">
-                <small>
-                    {% trans "Already have an account?" %}  <strong><a href="{% urlnext 'account_login' %}">{% trans "Log in" %}</a></strong>
-                </small>
-            </p>
+    <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+        <legend>{% trans "Sign up" %}</legend>
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="form-actions">
+            <button>{% trans "Sign up" %}</button>
         </div>
-        <div class="col-md-4">
-            {% include "account/_signup_sidebar.html" %}
-        </div>
-    </div>
+        <p class="login-signup">
+            {% trans "Already have an account?" %}
+            <a href="{% urlnext 'account_login' %}">{% trans "Log in" %}</a>
+        </p>
+    </form>
 {% endblock %}
 
 {% block scripts %}

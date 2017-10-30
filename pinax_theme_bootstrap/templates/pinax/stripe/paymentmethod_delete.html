@@ -3,28 +3,29 @@
 
 {% load bootstrap %}
 
-{% block body_class %}pinax-stripe-payment-methods{% endblock %}
+{% block body_class %}{{ block.super }} pinax-stripe-payment-methods{% endblock %}
 
-{% block body %}
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="current-card pull-right">
+{% block content %}
+<div class="pinax-stripe-payment-method-delete-container">
+    <h4>
+        Delete Payment Method
+    </h4>
+    {% if errors %}
+        <div class="errors">
+            {{ errors }}
+        </div>
+    {% endif %}
+    <form action="{% url "pinax_stripe_payment_method_delete" object.pk %}" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete this card?</p>
+        <div class="current-card">
             {{ object.brand }}
             {{ object.last4 }}
             Expires {{ object.exp_month }} / {{ object.exp_year }}
         </div>
-        <h4 class="panel-title">Delete Payment Method</h4>
-    </div>
-    <div class="panel-body">
-        {% if errors %}
-            <div class="alert alert-danger">
-                {{ errors }}
-            </div>
-        {% endif %}
-        <form action="{% url "pinax_stripe_payment_method_delete" object.pk %}" method="post">
-            {% csrf_token %}
-            <button class="btn btn-danger">Delete</button>
-        </form>
-    </div>
+        <div class="form-actions">
+            <button class="payment-method-delete">Yes, I'm sure. Delete.</button>
+        </div>
+    </form>
 </div>
 {% endblock %}

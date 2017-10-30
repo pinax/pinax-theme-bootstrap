@@ -1,17 +1,18 @@
 {% extends "pinax/stripe/base.html" %}
 
-{% block body_class %}pinax-stripe-subscriptions{% endblock %}
+{% block body_class %}{{ block.super }} pinax-stripe-subscriptions{% endblock %}
 
-{% block body %}
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <a class="pull-right btn btn-xs btn-primary" href="{% url "pinax_stripe_subscription_create" %}">
-            <i class="fa fa-plus"></i>
+{% block content %}
+<div class="pinax-stripe-subscriptions-container">
+    <h4>
+        Current Subscriptions
+        <a href="{% url "pinax_stripe_subscription_create" %}">
+            <i></i>
             Add Subscription
         </a>
-        <h4 class="panel-title">Current Subscriptions</h4>
+    </h4>
     </div>
-    <table class="table table-bordered">
+    <table>
         <thead>
             <tr><th></th><th>Current Period</th><th>Plan</th><th>Since</th><th>Status</th></tr>
         </thead>
@@ -19,8 +20,8 @@
             {% for subscription in object_list %}
             <tr>
                 <td>
-                    <a class="btn btn-xs btn-default" href="{% url "pinax_stripe_subscription_delete" subscription.pk %}">Cancel</a>
-                    <a class="btn btn-xs btn-default" href="{% url "pinax_stripe_subscription_update" subscription.pk %}">Update</a>
+                    <a class="subscription-cancel" href="{% url "pinax_stripe_subscription_delete" subscription.pk %}">Cancel</a>
+                    <a class="subscription-update" href="{% url "pinax_stripe_subscription_update" subscription.pk %}">Update</a>
                 </td>
                 <td>
                     {{ subscription.current_period_start.date }}—{{subscription.current_period_end.date }}

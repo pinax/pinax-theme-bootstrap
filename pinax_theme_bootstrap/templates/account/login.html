@@ -4,33 +4,30 @@
 {% load i18n %}
 {% load bootstrap %}
 
+{% block body_class %}account account-login{% endblock %}
 {% block head_title %}{% trans "Log in" %}{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-4">
-            <form method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-                <legend>{% trans "Log in to an existing account" %}</legend>
-                {% csrf_token %}
-                {{ form|bootstrap }}
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
-                <a href="{% url "account_password_reset" %}" class="btn btn-link">{% trans "Forgot your password?" %}</a>
-            </form>
-            {% if ACCOUNT_OPEN_SIGNUP %}
-                <p class="login-signup">
-                    <small>
-                        {% trans "Don't have an account?" %}  <strong><a href="{% urlnext 'account_signup' %}">{% trans "Sign up" %}</a></strong>
-                    </small>
-                </p>
-            {% endif %}
+    <form method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+        <legend>{% trans "Log in to your account" %}</legend>
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="form-actions">
+            <button>{% trans "Log in" %}</button>
         </div>
-        <div class="col-md-4">
-            {% include "account/_login_sidebar.html" %}
-        </div>
-    </div>
+
+        <a href="{% url "account_password_reset" %}" class="forgot-password">{% trans "Forgot your password?" %}</a>
+
+        {% if ACCOUNT_OPEN_SIGNUP %}
+            <p class="login-signup">
+                {% trans "Don't have an account?" %}
+                <a href="{% urlnext 'account_signup' %}">{% trans "Sign up" %}</a>
+            </p>
+        {% endif %}
+    </form>
 {% endblock %}
 
 {% block scripts %}

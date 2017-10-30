@@ -2,9 +2,10 @@
 
 {% load i18n %}
 
+{% block body_class %}account account-email-confirmation{% endblock %}
 {% block head_title %}{% trans "Email confirmed" %}{% endblock %}
 
 {% block body %}
     <h1>{% trans "Email confirmed" %}</h1>
-    <p>{% blocktrans with email=confirmation.email_address.email %}You have confirmed <b>{{ email }}</b>{% endblocktrans %}</p>
+    <p>{% blocktrans with email=confirmation.email_address.email %}You have confirmed <strong>{{ email }}</strong>{% endblocktrans %}</p>
 {% endblock %}

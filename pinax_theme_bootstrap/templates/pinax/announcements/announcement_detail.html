@@ -3,6 +3,8 @@
 {% block head_title %}{{ announcement.title }}{% endblock %}
 
 {% block body %}
-    <h1>{{ announcement }}</h1>
-
+<div class="announcement-container">
+    <h3>{{ announcement.title }}</h3>
+    <div class="content">{{ announcement.content }}</div>
+</div>
 {% endblock %}

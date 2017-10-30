@@ -2,19 +2,18 @@
 
 {% load i18n %}
 
+{% block body_class %}account account-email-confirmation{% endblock %}
 {% block head_title %}{% trans "Confirm Email" %}{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-5">
-            <form method="post" action="{% url "account_confirm_email" key=confirmation.key %}">
-                <legend>{% trans "Confirm Email" %}</legend>
-                <fieldset>
-                    {% csrf_token %}
-                    <p>{% blocktrans with email=confirmation.email_address.email %}Confirm email address <b>{{ email }}</b>?{% endblocktrans %}</p>
-                    <button type="submit" class="btn btn-primary">{% trans "Confirm" %}</button>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+    <form method="post" action="{% url "account_confirm_email" key=confirmation.key %}">
+        <legend>{% trans "Confirm Email" %}</legend>
+        <fieldset>
+            {% csrf_token %}
+            <p>{% blocktrans with email=confirmation.email_address.email %}Confirm email address <b>{{ email }}</b>?{% endblocktrans %}</p>
+            <div class="form-actions">
+                <button>{% trans "Confirm" %}</button>
+            </div>
+        </fieldset>
+    </form>
 {% endblock %}
