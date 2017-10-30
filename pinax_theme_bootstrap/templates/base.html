@@ -45,9 +45,11 @@
         {% block body_base %}
         <main>
             {% block content_left %}{% endblock %}
-            <section id="content_body">
-                {% block messages %}{% include "_messages.html" %}{% endblock %}
-                {% block body %}{% endblock %}
+            <section id="content-section">
+                <div id="content-body">
+                    {% block messages %}{% include "_messages.html" %}{% endblock %}
+                    {% block body %}{% endblock %}
+                </div>
             </section>
             {% block content_right %}{% endblock %}
         </main>
