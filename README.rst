@@ -26,7 +26,7 @@ Include ``pinax-theme-bootstrap`` in your requirements file and include
 ``pinax_theme_bootstrap`` and ``bootstrapform`` (which is installed alongside
 this theme) in your ``INSTALLED APPS``.
 
-Add ``django.core.context_processors.request`` and
+Add ``django.template.context_processors.request`` and
 ``pinax_theme_bootstrap.context_processors.theme`` to your ``TEMPLATE_CONTEXT_PROCESSORS``
 to ensure the user selector and site name work correctly.
 
