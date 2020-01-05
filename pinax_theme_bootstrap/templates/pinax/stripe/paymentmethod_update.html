@@ -1,5 +1,6 @@
 {% extends "pinax/stripe/base.html" %}
 
+{% load i18n %}
 
 {% load bootstrap %}
 
@@ -13,7 +14,7 @@
             {{ object.last4 }}
             Expires {{ object.exp_month }} / {{ object.exp_year }}
         </div>
-        <h4 class="panel-title">Update Payment Method</h4>
+        <h4 class="panel-title">{% trans "Update Payment Method" %}</h4>
     </div>
     <div class="panel-body">
         {% if errors %}
@@ -26,7 +27,7 @@
             <div class="card">
                 <div class="errors"></div>
                 <div class="form-group">
-                  <label for="expMonth" class="col-sm-2 control-label">Expiration</label>
+                  <label for="expMonth" class="col-sm-2 control-label">{% trans "Expiration" %}</label>
                   <div class="col-sm-1">
                       <input type="text" size="2" class="form-control" name="expMonth" />
                   </div>
@@ -37,7 +38,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn btn-primary">Update</button>
+                    <button class="btn btn-primary">{% trans "Update" %}</button>
                 </div>
             </div>
         </form>

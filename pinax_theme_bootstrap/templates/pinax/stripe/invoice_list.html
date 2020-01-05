@@ -1,5 +1,6 @@
 {% extends "pinax/stripe/base.html" %}
 
+{% load i18n %}
 
 {% load bootstrap %}
 
@@ -8,7 +9,7 @@
 {% block body %}
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title">Payment History</h4>
+            <h4 class="panel-title">{% trans "Payment History" %}</h4>
         </div>
         {% include "pinax/stripe/_invoice_table.html" with invoices=object_list %}
     </div>

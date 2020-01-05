@@ -1,5 +1,7 @@
 {% extends "pinax/stripe/base.html" %}
 
+{% load i18n %}
+
 {% block body_class %}pinax-stripe-subscriptions{% endblock %}
 
 {% block body %}
@@ -7,20 +9,26 @@
     <div class="panel-heading">
         <a class="pull-right btn btn-xs btn-primary" href="{% url "pinax_stripe_subscription_create" %}">
             <i class="fa fa-plus"></i>
-            Add Subscription
+            {% trans "Add Subscription" %}
         </a>
-        <h4 class="panel-title">Current Subscriptions</h4>
+        <h4 class="panel-title">{% trans "Current Subscriptions" %}</h4>
     </div>
     <table class="table table-bordered">
         <thead>
-            <tr><th></th><th>Current Period</th><th>Plan</th><th>Since</th><th>Status</th></tr>
+            <tr>
+                <th></th>
+                <th>{% trans "Current Period" %}</th>
+                <th>{% trans "Plan" %}</th>
+                <th>{% trans "Since" %}</th>
+                <th>{% trans "Status" %}</th>
+            </tr>
         </thead>
         <tbody>
             {% for subscription in object_list %}
             <tr>
                 <td>
-                    <a class="btn btn-xs btn-default" href="{% url "pinax_stripe_subscription_delete" subscription.pk %}">Cancel</a>
-                    <a class="btn btn-xs btn-default" href="{% url "pinax_stripe_subscription_update" subscription.pk %}">Update</a>
+                    <a class="btn btn-xs btn-default" href="{% url "pinax_stripe_subscription_delete" subscription.pk %}">{% trans "Cancel" %}</a>
+                    <a class="btn btn-xs btn-default" href="{% url "pinax_stripe_subscription_update" subscription.pk %}">{% trans "Update" %}</a>
                 </td>
                 <td>
                     {{ subscription.current_period_start.date }}—{{subscription.current_period_end.date }}
@@ -36,7 +44,9 @@
                 </td>
             </tr>
             {% empty %}
-            <tr><td colspan="5">You have no subscriptions.</td></tr>
+            <tr>
+                <td colspan="4">{% trans "You have no subscriptions" %}.</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
