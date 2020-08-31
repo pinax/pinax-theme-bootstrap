@@ -17,6 +17,8 @@
             <![endif]-->
         {% endblock %}
 
+        {% block head_js %}{% endblock %}
+        
         {% block extra_head_base %}
             {% block extra_head %}{% endblock %}
         {% endblock %}
@@ -78,6 +80,8 @@
             <script src="{% static "pinax/js/theme.js" %}"></script>
         {% endblock %}
 
+        {% block extra_scripts %}{% endblock %}
+        
         {% block extra_body_base %}
             {% block extra_body %}{% endblock %}
         {% endblock %}
